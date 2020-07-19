@@ -1,5 +1,6 @@
 package com.soebes.kata.bruch;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +8,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class BruchTest {
+
+  @Nested
+  class Verification {
+    @Test
+    void equals() {
+      EqualsVerifier.forClass(Bruch.class).usingGetClass().verify();
+    }
+
+    @Test
+    void check_to_string() {
+      Bruch bruch = new Bruch(1, 2);
+      assertThat(bruch.toString()).isEqualTo("Bruch[zaehler=1, nenner=2]");
+    }
+  }
 
   @Nested
   class UngueltigeWerte {
@@ -63,6 +78,14 @@ class BruchTest {
       Bruch subtrahend = new Bruch(2, 9);
       Bruch differenz = minuend.subtrahiere(subtrahend);
       assertThat(differenz).isEqualTo(new Bruch(3, 9));
+    }
+
+    @Test
+    void subtrahiere_x() {
+      Bruch minuend = new Bruch(21, 7);
+      Bruch subtrahend = new Bruch(12, 7);
+      Bruch differenz = minuend.subtrahiere(subtrahend);
+      assertThat(differenz).isEqualTo(new Bruch(9, 7));
     }
   }
 
