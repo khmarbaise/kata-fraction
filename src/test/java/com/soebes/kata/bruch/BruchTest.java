@@ -37,6 +37,7 @@ class BruchTest {
     @Test
     void normalisiere_0_x() {
       Bruch bruch = new Bruch(0, 6);
+
       assertThat(bruch.getZaehler()).isEqualTo(0);
       assertThat(bruch.getNenner()).isEqualTo(1);
     }
@@ -56,8 +57,33 @@ class BruchTest {
     void multiplikation() {
       Bruch multiplikator = new Bruch(2, 3);
       Bruch multiplikand = new Bruch(4, 5);
+
       Bruch produkt = multiplikator.multipliziere(multiplikand);
+
       assertThat(produkt).isEqualTo(new Bruch(8, 15));
+    }
+  }
+
+  @Nested
+  class Dividieren {
+    @Test
+    void dividiere_1_2_durch_2_5() {
+      Bruch dividend = new Bruch(1, 2);
+      Bruch divisor = new Bruch(2, 5);
+
+      Bruch quotient = dividend.dividieren(divisor);
+
+      assertThat(quotient).isEqualTo(new Bruch(5, 4));
+    }
+
+    @Test
+    void dividiere_same() {
+      Bruch dividend = new Bruch(1, 2);
+      Bruch divisor = new Bruch(1, 2);
+
+      Bruch quotient = dividend.dividieren(divisor);
+
+      assertThat(quotient).isEqualTo(new Bruch(1, 1));
     }
   }
 
@@ -68,7 +94,9 @@ class BruchTest {
     void subtrahiere_ein_weniger_zwei() {
       Bruch minuend = new Bruch(2, 3);
       Bruch subtrahend = new Bruch(1, 5);
+
       Bruch differenz = minuend.subtrahiere(subtrahend);
+
       assertThat(differenz).isEqualTo(new Bruch(7, 15));
     }
 
@@ -76,7 +104,9 @@ class BruchTest {
     void subtrahiere_bei_gleichem_nenner() {
       Bruch minuend = new Bruch(5, 9);
       Bruch subtrahend = new Bruch(2, 9);
+
       Bruch differenz = minuend.subtrahiere(subtrahend);
+
       assertThat(differenz).isEqualTo(new Bruch(3, 9));
     }
 
@@ -84,7 +114,9 @@ class BruchTest {
     void subtrahiere_x() {
       Bruch minuend = new Bruch(21, 7);
       Bruch subtrahend = new Bruch(12, 7);
+
       Bruch differenz = minuend.subtrahiere(subtrahend);
+
       assertThat(differenz).isEqualTo(new Bruch(9, 7));
     }
   }
@@ -96,7 +128,9 @@ class BruchTest {
       Bruch summand_1 = new Bruch(1, 2);
       Bruch summand_2 = new Bruch(1, 3);
       Bruch summand_3 = new Bruch(1, 4);
+
       Bruch summe = summand_1.addiere(summand_2).addiere(summand_3);
+
       assertThat(summe).isEqualTo(new Bruch(26, 24));
     }
 
@@ -105,7 +139,9 @@ class BruchTest {
       Bruch summand_1 = new Bruch(1, 2);
       Bruch summand_2 = new Bruch(1, 3);
       Bruch summand_3 = new Bruch(1, 4);
+
       Bruch summe = summand_1.addiere(summand_2).addiere(summand_3);
+
       assertThat(summe).isEqualTo(new Bruch(13, 12));
     }
 

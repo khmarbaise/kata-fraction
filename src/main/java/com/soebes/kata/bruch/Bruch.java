@@ -41,6 +41,10 @@ public class Bruch {
     return new Bruch(this.zaehler * factor.zaehler, this.nenner * factor.nenner);
   }
 
+  public Bruch dividieren(Bruch divisor) {
+    return new Bruch(this.zaehler * divisor.nenner, this.nenner * divisor.zaehler);
+  }
+
   public int getZaehler() {
     return zaehler;
   }
@@ -70,4 +74,5 @@ public class Bruch {
         .add("nenner=" + nenner)
         .toString();
   }
+
 }
