@@ -15,10 +15,10 @@ public class Bruch implements Comparable<Bruch> {
       this.zaehler = 0;
       this.nenner = 1;
     } else {
-      int result_signum = Integer.signum(zaehler) * Integer.signum(nenner);
+      int vorzeichen = Integer.signum(zaehler) * Integer.signum(nenner);
 
-      int kgv = MathUtil.berechne_kgv(zaehler, nenner);
-      this.zaehler = result_signum * Math.abs(zaehler) / kgv;
+      int kgv = MathUtil.berechneKgv(zaehler, nenner);
+      this.zaehler = vorzeichen * Math.abs(zaehler) / kgv;
       this.nenner = Math.abs(nenner) / kgv;
     }
   }

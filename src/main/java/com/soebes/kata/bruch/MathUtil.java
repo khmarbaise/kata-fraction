@@ -13,7 +13,7 @@ public class MathUtil {
    * @param nenner Nenner
    * @return kleinste gemeinsames Vielfache.
    */
-  public static int berechne_kgv(int zaehler, int nenner) {
+  public static int berechneKgv(int zaehler, int nenner) {
     return BigInteger.valueOf(zaehler).gcd(BigInteger.valueOf(nenner)).intValueExact();
   }
 }

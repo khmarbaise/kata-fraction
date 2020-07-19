@@ -43,7 +43,7 @@ class BruchTest {
       Bruch bruch_eins = new Bruch(1, 2);
       Bruch bruch_zwei = new Bruch(1, 2);
 
-      assertThat(bruch_eins.compareTo(bruch_zwei)).isEqualTo(0);
+      assertThat(bruch_eins).isEqualByComparingTo(bruch_zwei);
     }
 
     @Test
@@ -51,7 +51,7 @@ class BruchTest {
       Bruch bruch_eins = new Bruch(1, 1);
       Bruch bruch_zwei = new Bruch(1, 2);
 
-      assertThat(bruch_eins.compareTo(bruch_zwei)).isGreaterThan(0);
+      assertThat(bruch_eins.compareTo(bruch_zwei)).isPositive();
     }
 
     @Test
@@ -59,7 +59,7 @@ class BruchTest {
       Bruch bruch_eins = new Bruch(1, 3);
       Bruch bruch_zwei = new Bruch(1, 2);
 
-      assertThat(bruch_eins.compareTo(bruch_zwei)).isLessThan(0);
+      assertThat(bruch_eins.compareTo(bruch_zwei)).isNegative();
     }
 
   }
@@ -74,7 +74,7 @@ class BruchTest {
     @Test
     void check_to_string() {
       Bruch bruch = new Bruch(1, 2);
-      assertThat(bruch.toString()).isEqualTo("Bruch[zaehler=1, nenner=2]");
+      assertThat(bruch).hasToString("Bruch[zaehler=1, nenner=2]");
     }
   }
 
@@ -98,7 +98,7 @@ class BruchTest {
     void normalisiere_0_x() {
       Bruch bruch = new Bruch(0, 6);
 
-      assertThat(bruch.zaehler()).isEqualTo(0);
+      assertThat(bruch.zaehler()).isZero();
       assertThat(bruch.nenner()).isEqualTo(1);
     }
 
