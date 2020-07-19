@@ -3,7 +3,7 @@ package com.soebes.kata.bruch;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-public class Bruch {
+public class Bruch implements Comparable<Bruch> {
   private final int zaehler;
   private final int nenner;
 
@@ -15,9 +15,11 @@ public class Bruch {
       this.zaehler = 0;
       this.nenner = 1;
     } else {
+      int result_signum = Integer.signum(zaehler) * Integer.signum(nenner);
+
       int kgv = MathUtil.berechne_kgv(zaehler, nenner);
-      this.zaehler = zaehler / kgv;
-      this.nenner = nenner / kgv;
+      this.zaehler = result_signum * Math.abs(zaehler) / kgv;
+      this.nenner = Math.abs(nenner) / kgv;
     }
   }
 
@@ -33,7 +35,7 @@ public class Bruch {
     if (this.nenner == subtrahend.nenner) {
       return new Bruch(this.zaehler - subtrahend.zaehler, this.nenner);
     } else {
-      return new Bruch(this.zaehler * subtrahend.nenner - this.nenner * subtrahend.zaehler , subtrahend.nenner * this.nenner);
+      return new Bruch(this.zaehler * subtrahend.nenner - this.nenner * subtrahend.zaehler, subtrahend.nenner * this.nenner);
     }
   }
 
@@ -51,6 +53,24 @@ public class Bruch {
 
   public int getNenner() {
     return nenner;
+  }
+
+  @Override
+  public int compareTo(Bruch vergleich) {
+    if (vergleich == null) {
+      throw new IllegalArgumentException("vergleich darf nicht null sein.");
+    }
+    return this.subtrahiere(vergleich).signum();
+  }
+
+  /**
+   * Returns the signum function of this {@code Bruch}.
+   *
+   * @return -1, 0, or 1 as the value of this {@code Bruch}
+   * is negative, zero, or positive.
+   */
+  public int signum() {
+    return Integer.signum(zaehler);
   }
 
   @Override

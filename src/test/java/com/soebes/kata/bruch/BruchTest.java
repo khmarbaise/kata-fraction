@@ -10,6 +10,61 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 class BruchTest {
 
   @Nested
+  class Signum {
+    @Test
+    void signum_bei_z_pos_n_pos() {
+      Bruch bruch = new Bruch(1, 2);
+      assertThat(bruch.signum()).isEqualTo(+1);
+    }
+
+    @Test
+    void signum_bei_z_neg_n_pos() {
+      Bruch bruch = new Bruch(-1, 2);
+      assertThat(bruch.signum()).isEqualTo(-1);
+    }
+
+    @Test
+    void signum_bei_z_pos_n_neg() {
+      Bruch bruch = new Bruch(1, -2);
+      assertThat(bruch.signum()).isEqualTo(-1);
+    }
+
+    @Test
+    void signum_bei_z_neg_n_neg() {
+      Bruch bruch = new Bruch(-1, -2);
+      assertThat(bruch.signum()).isEqualTo(+1);
+    }
+  }
+
+  @Nested
+  class CompareTo {
+    @Test
+    void bruch_eins_und_zwei_identisch() {
+      Bruch bruch_eins = new Bruch(1, 2);
+      Bruch bruch_zwei = new Bruch(1, 2);
+
+      assertThat(bruch_eins.compareTo(bruch_zwei)).isEqualTo(0);
+    }
+
+    @Test
+    void bruch_eins_groesser_bruch_zwei() {
+      Bruch bruch_eins = new Bruch(1, 1);
+      Bruch bruch_zwei = new Bruch(1, 2);
+
+      assertThat(bruch_eins.compareTo(bruch_zwei)).isGreaterThan(0);
+    }
+
+    @Test
+    void bruch_eins_kleiner_bruch_zwei() {
+      Bruch bruch_eins = new Bruch(1, 3);
+      Bruch bruch_zwei = new Bruch(1, 2);
+
+      assertThat(bruch_eins.compareTo(bruch_zwei)).isLessThan(0);
+    }
+
+  }
+
+  @Nested
   class Verification {
     @Test
     void equals() {
@@ -28,6 +83,11 @@ class BruchTest {
     @Test
     void nenner_muss_ungleich_null_sein() {
       assertThatIllegalArgumentException().isThrownBy(() -> new Bruch(1, 0)).withMessage("nenner darf nicht 0 sein.");
+    }
+
+    @Test
+    void compare_to_null() {
+      assertThatIllegalArgumentException().isThrownBy(() -> new Bruch(1, 2).compareTo(null)).withMessage("vergleich darf nicht null sein.");
     }
   }
 
