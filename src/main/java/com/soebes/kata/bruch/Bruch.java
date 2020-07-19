@@ -47,11 +47,11 @@ public class Bruch implements Comparable<Bruch> {
     return new Bruch(this.zaehler * divisor.nenner, this.nenner * divisor.zaehler);
   }
 
-  public int getZaehler() {
+  public int zaehler() {
     return zaehler;
   }
 
-  public int getNenner() {
+  public int nenner() {
     return nenner;
   }
 

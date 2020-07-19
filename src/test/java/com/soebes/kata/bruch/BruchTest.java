@@ -98,15 +98,15 @@ class BruchTest {
     void normalisiere_0_x() {
       Bruch bruch = new Bruch(0, 6);
 
-      assertThat(bruch.getZaehler()).isEqualTo(0);
-      assertThat(bruch.getNenner()).isEqualTo(1);
+      assertThat(bruch.zaehler()).isEqualTo(0);
+      assertThat(bruch.nenner()).isEqualTo(1);
     }
 
     @Test
     void normalisiere_unechten_bruch() {
       Bruch unechterBruch = new Bruch(4, 6);
-      assertThat(unechterBruch.getZaehler()).isEqualTo(2);
-      assertThat(unechterBruch.getNenner()).isEqualTo(3);
+      assertThat(unechterBruch.zaehler()).isEqualTo(2);
+      assertThat(unechterBruch.nenner()).isEqualTo(3);
     }
   }
 
@@ -226,8 +226,8 @@ class BruchTest {
       Bruch summand_1 = new Bruch(1, 3);
       Bruch summand_2 = new Bruch(2, 3);
       Bruch summe = summand_1.addiere(summand_2);
-      assertThat(summe.getZaehler()).isEqualTo(1);
-      assertThat(summe.getNenner()).isEqualTo(1);
+      assertThat(summe.zaehler()).isEqualTo(1);
+      assertThat(summe.nenner()).isEqualTo(1);
     }
 
   }
