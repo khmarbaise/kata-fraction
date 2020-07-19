@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 class BruchTest {
 
@@ -14,25 +15,25 @@ class BruchTest {
     @Test
     void signum_bei_z_pos_n_pos() {
       Bruch bruch = new Bruch(1, 2);
-      assertThat(bruch.signum()).isEqualTo(+1);
+      assertThat(bruch.signum()).isOne();
     }
 
     @Test
     void signum_bei_z_neg_n_pos() {
       Bruch bruch = new Bruch(-1, 2);
-      assertThat(bruch.signum()).isEqualTo(-1);
+      assertThat(bruch.signum()).isNegative();
     }
 
     @Test
     void signum_bei_z_pos_n_neg() {
       Bruch bruch = new Bruch(1, -2);
-      assertThat(bruch.signum()).isEqualTo(-1);
+      assertThat(bruch.signum()).isNegative();
     }
 
     @Test
     void signum_bei_z_neg_n_neg() {
       Bruch bruch = new Bruch(-1, -2);
-      assertThat(bruch.signum()).isEqualTo(+1);
+      assertThat(bruch.signum()).isPositive();
     }
   }
 
@@ -87,7 +88,7 @@ class BruchTest {
 
     @Test
     void compare_to_null() {
-      assertThatIllegalArgumentException().isThrownBy(() -> new Bruch(1, 2).compareTo(null)).withMessage("vergleich darf nicht null sein.");
+      assertThatNullPointerException().isThrownBy(() -> new Bruch(1, 2).compareTo(null)).withMessage("vergleich darf nicht null sein.");
     }
   }
 
@@ -209,7 +210,9 @@ class BruchTest {
     void add() {
       Bruch summand_1 = new Bruch(2, 3);
       Bruch summand_2 = new Bruch(1, 5);
+
       Bruch summe = summand_1.addiere(summand_2);
+
       assertThat(summe).isEqualTo(new Bruch(13, 15));
     }
 
@@ -217,7 +220,9 @@ class BruchTest {
     void add_1_3_plus_2_3_should_be_1_1() {
       Bruch summand_1 = new Bruch(1, 3);
       Bruch summand_2 = new Bruch(2, 3);
+
       Bruch summe = summand_1.addiere(summand_2);
+
       assertThat(summe).isEqualTo(new Bruch(3, 3));
     }
 
@@ -225,7 +230,9 @@ class BruchTest {
     void add_1_3_plus_2_3_should_be_1_1_gekuerzt() {
       Bruch summand_1 = new Bruch(1, 3);
       Bruch summand_2 = new Bruch(2, 3);
+
       Bruch summe = summand_1.addiere(summand_2);
+
       assertThat(summe.zaehler()).isEqualTo(1);
       assertThat(summe.nenner()).isEqualTo(1);
     }

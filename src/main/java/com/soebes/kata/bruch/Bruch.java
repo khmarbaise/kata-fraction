@@ -58,7 +58,7 @@ public class Bruch implements Comparable<Bruch> {
   @Override
   public int compareTo(Bruch vergleich) {
     if (vergleich == null) {
-      throw new IllegalArgumentException("vergleich darf nicht null sein.");
+      throw new NullPointerException("vergleich darf nicht null sein.");
     }
     return this.subtrahiere(vergleich).signum();
   }
