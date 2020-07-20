@@ -12,9 +12,9 @@
   </parent>
 
   <groupId>com.soebes.katas</groupId>
-  <artifactId>kata-bruch</artifactId>
+  <artifactId>kata-fraction</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>Code-Kata Bruchrechnung</name>
+  <name>Code-Kata Fractions</name>
 
   <properties>
     <maven.compiler.release>11</maven.compiler.release>
@@ -26,7 +26,7 @@
       <dependency>
          <groupId>org.junit</groupId>
          <artifactId>junit-bom</artifactId>
-         <version>5.6.0</version>
+         <version>5.6.2</version>
          <scope>import</scope>
          <type>pom</type>
       </dependency>
@@ -34,6 +34,11 @@
         <groupId>nl.jqno.equalsverifier</groupId>
         <artifactId>equalsverifier</artifactId>
         <version>3.4.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>3.16.1</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -51,13 +56,6 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-        <version>3.15.0</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-core</artifactId>
-      <version>3.3.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>

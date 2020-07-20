@@ -1,4 +1,4 @@
-# Code Kata für Bruchrechnung
+# Code Kata for Fractions
 
 Create Mutation coverage via:
 ```bash
