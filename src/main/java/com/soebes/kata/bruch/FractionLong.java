@@ -43,7 +43,7 @@ public class FractionLong implements Comparable<FractionLong> {
     return new FractionLong(this.numerator * factor.numerator, this.denominator * factor.denominator);
   }
 
-  public FractionLong devide(FractionLong divisor) {
+  public FractionLong divide(FractionLong divisor) {
     return new FractionLong(this.numerator * divisor.denominator, this.denominator * divisor.numerator);
   }
 

@@ -13,25 +13,25 @@ class FractionLongTest {
   @Nested
   class Signum {
     @Test
-    void signum_bei_z_pos_n_pos() {
+    void signum_for_z_pos_n_pos() {
       FractionLong FractionLong = new FractionLong(1, 2);
       assertThat(FractionLong.signum()).isOne();
     }
 
     @Test
-    void signum_bei_z_neg_n_pos() {
+    void signum_for_z_neg_n_pos() {
       FractionLong FractionLong = new FractionLong(-1, 2);
       assertThat(FractionLong.signum()).isNegative();
     }
 
     @Test
-    void signum_bei_z_pos_n_neg() {
+    void signum_for_z_pos_n_neg() {
       FractionLong FractionLong = new FractionLong(1, -2);
       assertThat(FractionLong.signum()).isNegative();
     }
 
     @Test
-    void signum_bei_z_neg_n_neg() {
+    void signum_for_z_neg_n_neg() {
       FractionLong FractionLong = new FractionLong(-1, -2);
       assertThat(FractionLong.signum()).isPositive();
     }
@@ -40,7 +40,7 @@ class FractionLongTest {
   @Nested
   class CompareTo {
     @Test
-    void bruch_eins_und_zwei_identisch() {
+    void fraction_one_identical_to_fraction_two() {
       FractionLong FractionLong_eins = new FractionLong(1, 2);
       FractionLong FractionLong_zwei = new FractionLong(1, 2);
 
@@ -48,7 +48,7 @@ class FractionLongTest {
     }
 
     @Test
-    void bruch_eins_groesser_bruch_zwei() {
+    void fraction_one_greater_than_fraction_two() {
       FractionLong FractionLong_eins = new FractionLong(1, 1);
       FractionLong FractionLong_zwei = new FractionLong(1, 2);
 
@@ -56,7 +56,7 @@ class FractionLongTest {
     }
 
     @Test
-    void bruch_eins_kleiner_bruch_zwei() {
+    void fraction_one_less_than_fraction_two() {
       FractionLong FractionLong_eins = new FractionLong(1, 3);
       FractionLong FractionLong_zwei = new FractionLong(1, 2);
 
@@ -68,7 +68,7 @@ class FractionLongTest {
   @Nested
   class Verification {
     @Test
-    void equals() {
+    void hash_code_and_equals() {
       EqualsVerifier.forClass(FractionLong.class).usingGetClass().verify();
     }
 
@@ -104,7 +104,7 @@ class FractionLongTest {
     }
 
     @Test
-    void normalize_improper_FractionLong() {
+    void normalize_improper_fraction() {
       FractionLong unechterFractionLong = new FractionLong(4, 6);
       assertThat(unechterFractionLong.numerator()).isEqualTo(2);
       assertThat(unechterFractionLong.denominator()).isEqualTo(3);
@@ -132,17 +132,17 @@ class FractionLongTest {
       FractionLong dividend = new FractionLong(1, 2);
       FractionLong divisor = new FractionLong(2, 5);
 
-      FractionLong quotient = dividend.devide(divisor);
+      FractionLong quotient = dividend.divide(divisor);
 
       assertThat(quotient).isEqualTo(new FractionLong(5, 4));
     }
 
     @Test
-    void devide_the_same_FractionLong() {
+    void devide_the_same_fraction() {
       FractionLong dividend = new FractionLong(1, 2);
       FractionLong divisor = new FractionLong(1, 2);
 
-      FractionLong quotient = dividend.devide(divisor);
+      FractionLong quotient = dividend.divide(divisor);
 
       assertThat(quotient).isEqualTo(new FractionLong(1, 1));
     }
@@ -185,7 +185,7 @@ class FractionLongTest {
   @Nested
   class Addition {
     @Test
-    void chaining_addition_with_improper_FractionLong_result() {
+    void chaining_addition_with_improper_fraction_result() {
       FractionLong summand_1 = new FractionLong(1, 2);
       FractionLong summand_2 = new FractionLong(1, 3);
       FractionLong summand_3 = new FractionLong(1, 4);
@@ -196,7 +196,7 @@ class FractionLongTest {
     }
 
     @Test
-    void chaining_addition_with_proper_FractionLong_result() {
+    void chaining_addition_with_proper_fraction_result() {
       FractionLong summand_1 = new FractionLong(1, 2);
       FractionLong summand_2 = new FractionLong(1, 3);
       FractionLong summand_3 = new FractionLong(1, 4);
@@ -207,7 +207,7 @@ class FractionLongTest {
     }
 
     @Test
-    void addition_with_two_proper_FractionLongs() {
+    void addition_with_two_proper_fractions() {
       FractionLong summand_1 = new FractionLong(2, 3);
       FractionLong summand_2 = new FractionLong(1, 5);
 

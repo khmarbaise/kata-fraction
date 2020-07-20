@@ -13,25 +13,25 @@ class FractionTest {
   @Nested
   class Signum {
     @Test
-    void signum_bei_z_pos_n_pos() {
+    void signum_for_z_pos_n_pos() {
       Fraction fraction = new Fraction(1, 2);
       assertThat(fraction.signum()).isOne();
     }
 
     @Test
-    void signum_bei_z_neg_n_pos() {
+    void signum_for_z_neg_n_pos() {
       Fraction fraction = new Fraction(-1, 2);
       assertThat(fraction.signum()).isNegative();
     }
 
     @Test
-    void signum_bei_z_pos_n_neg() {
+    void signum_for_z_pos_n_neg() {
       Fraction fraction = new Fraction(1, -2);
       assertThat(fraction.signum()).isNegative();
     }
 
     @Test
-    void signum_bei_z_neg_n_neg() {
+    void signum_for_z_neg_n_neg() {
       Fraction fraction = new Fraction(-1, -2);
       assertThat(fraction.signum()).isPositive();
     }
@@ -40,7 +40,7 @@ class FractionTest {
   @Nested
   class CompareTo {
     @Test
-    void bruch_eins_und_zwei_identisch() {
+    void fraction_one_identical_to_fraction_two() {
       Fraction fraction_eins = new Fraction(1, 2);
       Fraction fraction_zwei = new Fraction(1, 2);
 
@@ -48,7 +48,7 @@ class FractionTest {
     }
 
     @Test
-    void bruch_eins_groesser_bruch_zwei() {
+    void fraction_one_greater_than_fraction_two() {
       Fraction fraction_eins = new Fraction(1, 1);
       Fraction fraction_zwei = new Fraction(1, 2);
 
@@ -56,7 +56,7 @@ class FractionTest {
     }
 
     @Test
-    void bruch_eins_kleiner_bruch_zwei() {
+    void fraction_one_less_than_fraction_two() {
       Fraction fraction_eins = new Fraction(1, 3);
       Fraction fraction_zwei = new Fraction(1, 2);
 
@@ -68,7 +68,7 @@ class FractionTest {
   @Nested
   class Verification {
     @Test
-    void equals() {
+    void hash_code_and_equals() {
       EqualsVerifier.forClass(Fraction.class).usingGetClass().verify();
     }
 
@@ -132,7 +132,7 @@ class FractionTest {
       Fraction dividend = new Fraction(1, 2);
       Fraction divisor = new Fraction(2, 5);
 
-      Fraction quotient = dividend.devide(divisor);
+      Fraction quotient = dividend.divide(divisor);
 
       assertThat(quotient).isEqualTo(new Fraction(5, 4));
     }
@@ -142,7 +142,7 @@ class FractionTest {
       Fraction dividend = new Fraction(1, 2);
       Fraction divisor = new Fraction(1, 2);
 
-      Fraction quotient = dividend.devide(divisor);
+      Fraction quotient = dividend.divide(divisor);
 
       assertThat(quotient).isEqualTo(new Fraction(1, 1));
     }
