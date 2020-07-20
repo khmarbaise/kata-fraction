@@ -1,5 +1,6 @@
 package com.soebes.kata.fraction;
 
+import java.math.BigInteger;
 import java.util.Objects;
 import java.util.StringJoiner;
 
@@ -45,6 +46,10 @@ public class FractionLong implements Comparable<FractionLong> {
 
   public FractionLong divide(FractionLong divisor) {
     return new FractionLong(this.numerator * divisor.denominator, this.denominator * divisor.numerator);
+  }
+
+  public FractionLong pow(int power) {
+    return new FractionLong(BigInteger.valueOf(this.numerator).pow(power).intValueExact(), BigInteger.valueOf(this.denominator).pow(power).intValueExact());
   }
 
   public long numerator() {

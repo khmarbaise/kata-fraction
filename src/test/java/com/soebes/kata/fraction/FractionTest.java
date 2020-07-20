@@ -126,7 +126,7 @@ class FractionTest {
   }
 
   @Nested
-  class Devide {
+  class Divide {
     @Test
     void devide_1_2_by_2_5() {
       Fraction dividend = new Fraction(1, 2);
@@ -239,6 +239,36 @@ class FractionTest {
 
   }
 
+  @Nested
+  class Pow {
+
+    @Test
+    void power_to_two() {
+      Fraction fraction = new Fraction(2, 3);
+
+      Fraction produkt = fraction.pow(2);
+
+      assertThat(produkt).isEqualTo(new Fraction(4, 9));
+    }
+
+    @Test
+    void power_to_three() {
+      Fraction fraction = new Fraction(2, 3);
+
+      Fraction produkt = fraction.pow(3);
+
+      assertThat(produkt).isEqualTo(new Fraction(8, 27));
+    }
+
+    @Test
+    void power_to_ten() {
+      Fraction fraction = new Fraction(2, 3);
+
+      Fraction produkt = fraction.pow(10);
+
+      assertThat(produkt).isEqualTo(new Fraction(1024, 59049));
+    }
+  }
 
   @Nested
   class Limits {

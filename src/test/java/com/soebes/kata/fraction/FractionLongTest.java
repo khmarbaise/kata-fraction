@@ -126,7 +126,7 @@ class FractionLongTest {
   }
 
   @Nested
-  class Devide {
+  class Divide {
     @Test
     void devide_1_2_by_2_5() {
       FractionLong dividend = new FractionLong(1, 2);
@@ -240,7 +240,39 @@ class FractionLongTest {
   }
 
   @Nested
+  class Pow {
+
+    @Test
+    void power_to_two() {
+      FractionLong fraction = new FractionLong(2, 3);
+
+      FractionLong produkt = fraction.pow(2);
+
+      assertThat(produkt).isEqualTo(new FractionLong(4, 9));
+    }
+
+    @Test
+    void power_to_three() {
+      FractionLong fraction = new FractionLong(2, 3);
+
+      FractionLong produkt = fraction.pow(3);
+
+      assertThat(produkt).isEqualTo(new FractionLong(8, 27));
+    }
+
+    @Test
+    void power_to_ten() {
+      FractionLong fraction = new FractionLong(2, 3);
+
+      FractionLong produkt = fraction.pow(10);
+
+      assertThat(produkt).isEqualTo(new FractionLong(1024, 59049));
+    }
+  }
+
+  @Nested
   class Limits {
+
     @Test
     void add_max_value() {
       FractionLong summand_1 = new FractionLong(Long.MAX_VALUE / 2, 1);
@@ -262,6 +294,7 @@ class FractionLongTest {
       assertThat(sum.numerator()).isEqualTo(Long.MIN_VALUE);
       assertThat(sum.denominator()).isEqualTo(1);
     }
+
   }
 
 

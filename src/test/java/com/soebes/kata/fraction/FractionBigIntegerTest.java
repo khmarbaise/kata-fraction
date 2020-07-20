@@ -132,7 +132,7 @@ class FractionBigIntegerTest {
   }
 
   @Nested
-  class Devide {
+  class Divide {
     @Test
     void devide_1_2_by_2_5() {
       FractionBigInteger dividend = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
@@ -243,6 +243,37 @@ class FractionBigIntegerTest {
       assertThat(sum.denominator()).isEqualByComparingTo(BigInteger.ONE);
     }
 
+  }
+
+  @Nested
+  class Pow {
+
+    @Test
+    void power_to_two() {
+      FractionBigInteger fraction = new FractionBigInteger(BigInteger.valueOf(2), BigInteger.valueOf(3));
+
+      FractionBigInteger produkt = fraction.pow(2);
+
+      assertThat(produkt).isEqualByComparingTo(new FractionBigInteger(BigInteger.valueOf(4), BigInteger.valueOf(9)));
+    }
+
+    @Test
+    void power_to_three() {
+      FractionBigInteger fraction = new FractionBigInteger(BigInteger.valueOf(2), BigInteger.valueOf(3));
+
+      FractionBigInteger produkt = fraction.pow(3);
+
+      assertThat(produkt).isEqualByComparingTo(new FractionBigInteger(BigInteger.valueOf(8), BigInteger.valueOf(27)));
+    }
+
+    @Test
+    void power_to_ten() {
+      FractionBigInteger fraction = new FractionBigInteger(BigInteger.valueOf(2), BigInteger.valueOf(3));
+
+      FractionBigInteger produkt = fraction.pow(10);
+
+      assertThat(produkt).isEqualByComparingTo(new FractionBigInteger(BigInteger.valueOf(1024), BigInteger.valueOf(59049)));
+    }
   }
 
   @Nested

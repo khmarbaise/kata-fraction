@@ -48,6 +48,10 @@ public class FractionBigInteger implements Comparable<FractionBigInteger> {
     return new FractionBigInteger(this.numerator.multiply(divisor.denominator), this.denominator.multiply(divisor.numerator));
   }
 
+  public FractionBigInteger pow(int power) {
+    return new FractionBigInteger(this.numerator.pow(power), this.denominator.pow(power));
+  }
+
   public BigInteger numerator() {
     return numerator;
   }
