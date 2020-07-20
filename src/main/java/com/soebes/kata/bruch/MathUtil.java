@@ -16,4 +16,7 @@ public class MathUtil {
   public static int calculateGcd(int numerator, int denominator) {
     return BigInteger.valueOf(numerator).gcd(BigInteger.valueOf(denominator)).intValueExact();
   }
+  public static int calculateGcd(long numerator, long denominator) {
+    return BigInteger.valueOf(numerator).gcd(BigInteger.valueOf(denominator)).intValueExact();
+  }
 }
