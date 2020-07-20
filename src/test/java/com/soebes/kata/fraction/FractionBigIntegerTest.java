@@ -13,8 +13,8 @@ import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 class FractionBigIntegerTest {
 
   private static final BigInteger THREE = BigInteger.valueOf(3);
-  private static final BigInteger MINUS_ONE = BigInteger.valueOf(-1);
-  private static final BigInteger MINUS_TWO = BigInteger.valueOf(-2);
+  private static final BigInteger MINUS_ONE = BigInteger.ONE.negate();
+  private static final BigInteger MINUS_TWO = BigInteger.TWO.negate();
 
   @Nested
   class Signum {
@@ -250,7 +250,7 @@ class FractionBigIntegerTest {
 
     @Test
     void power_to_two() {
-      FractionBigInteger fraction = new FractionBigInteger(BigInteger.valueOf(2), BigInteger.valueOf(3));
+      FractionBigInteger fraction = new FractionBigInteger(BigInteger.TWO, THREE);
 
       FractionBigInteger produkt = fraction.pow(2);
 
@@ -259,7 +259,7 @@ class FractionBigIntegerTest {
 
     @Test
     void power_to_three() {
-      FractionBigInteger fraction = new FractionBigInteger(BigInteger.valueOf(2), BigInteger.valueOf(3));
+      FractionBigInteger fraction = new FractionBigInteger(BigInteger.TWO, THREE);
 
       FractionBigInteger produkt = fraction.pow(3);
 
@@ -268,7 +268,7 @@ class FractionBigIntegerTest {
 
     @Test
     void power_to_ten() {
-      FractionBigInteger fraction = new FractionBigInteger(BigInteger.valueOf(2), BigInteger.valueOf(3));
+      FractionBigInteger fraction = new FractionBigInteger(BigInteger.TWO, THREE);
 
       FractionBigInteger produkt = fraction.pow(10);
 
