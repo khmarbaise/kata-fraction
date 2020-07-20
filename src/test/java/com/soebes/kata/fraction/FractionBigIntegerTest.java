@@ -12,6 +12,10 @@ import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 class FractionBigIntegerTest {
 
+  private static final BigInteger THREE = BigInteger.valueOf(3);
+  private static final BigInteger MINUS_ONE = BigInteger.valueOf(-1);
+  private static final BigInteger MINUS_TWO = BigInteger.valueOf(-2);
+
   @Nested
   class Signum {
     @Test
@@ -22,19 +26,19 @@ class FractionBigIntegerTest {
 
     @Test
     void signum_for_z_neg_n_pos() {
-      FractionBigInteger fractionBigInteger = new FractionBigInteger(BigInteger.valueOf(-1), BigInteger.TWO);
+      FractionBigInteger fractionBigInteger = new FractionBigInteger(MINUS_ONE, BigInteger.TWO);
       assertThat(fractionBigInteger.signum()).isNegative();
     }
 
     @Test
     void signum_for_z_pos_n_neg() {
-      FractionBigInteger fractionBigInteger = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(-2));
+      FractionBigInteger fractionBigInteger = new FractionBigInteger(BigInteger.ONE, MINUS_TWO);
       assertThat(fractionBigInteger.signum()).isNegative();
     }
 
     @Test
     void signum_for_z_neg_n_neg() {
-      FractionBigInteger fractionBigInteger = new FractionBigInteger(BigInteger.valueOf(-1), BigInteger.valueOf(-2));
+      FractionBigInteger fractionBigInteger = new FractionBigInteger(MINUS_ONE, MINUS_TWO);
       assertThat(fractionBigInteger.signum()).isPositive();
     }
   }
@@ -59,7 +63,7 @@ class FractionBigIntegerTest {
 
     @Test
     void fraction_one_less_than_fraction_two() {
-      FractionBigInteger fractionLong_one = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(3));
+      FractionBigInteger fractionLong_one = new FractionBigInteger(BigInteger.ONE, THREE);
       FractionBigInteger fractionLong_two = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
 
       assertThat(fractionLong_one.compareTo(fractionLong_two)).isNegative();
@@ -102,13 +106,13 @@ class FractionBigIntegerTest {
       FractionBigInteger fractionBigInteger = new FractionBigInteger(BigInteger.ZERO, BigInteger.valueOf(6));
 
       assertThat(fractionBigInteger.numerator()).isZero();
-      assertThat(fractionBigInteger.denominator()).isEqualTo(1);
+      assertThat(fractionBigInteger.denominator()).isEqualByComparingTo(BigInteger.ONE);
     }
 
     @Test
     void normalize_improper_fraction() {
       FractionBigInteger improperFraction = new FractionBigInteger(BigInteger.valueOf(4), BigInteger.valueOf(6));
-      assertThat(improperFraction.numerator()).isEqualTo(2);
+      assertThat(improperFraction.numerator()).isEqualByComparingTo(BigInteger.TWO);
       assertThat(improperFraction.denominator()).isEqualTo(3);
     }
   }
@@ -118,7 +122,7 @@ class FractionBigIntegerTest {
 
     @Test
     void multiply_multiplier_by_multiplicand() {
-      FractionBigInteger multiplier = new FractionBigInteger(BigInteger.TWO, BigInteger.valueOf(3));
+      FractionBigInteger multiplier = new FractionBigInteger(BigInteger.TWO, THREE);
       FractionBigInteger multiplicand = new FractionBigInteger(BigInteger.valueOf(4), BigInteger.valueOf(5));
 
       FractionBigInteger produkt = multiplier.multiply(multiplicand);
@@ -155,7 +159,7 @@ class FractionBigIntegerTest {
 
     @Test
     void subtract_first_minus_second() {
-      FractionBigInteger minuend = new FractionBigInteger(BigInteger.TWO, BigInteger.valueOf(3));
+      FractionBigInteger minuend = new FractionBigInteger(BigInteger.TWO, THREE);
       FractionBigInteger subtrahend = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(5));
 
       FractionBigInteger difference = minuend.subtract(subtrahend);
@@ -170,7 +174,7 @@ class FractionBigIntegerTest {
 
       FractionBigInteger difference = minuend.subtract(subtrahend);
 
-      assertThat(difference).isEqualByComparingTo(new FractionBigInteger(BigInteger.valueOf(3), BigInteger.valueOf(9)));
+      assertThat(difference).isEqualByComparingTo(new FractionBigInteger(THREE, BigInteger.valueOf(9)));
     }
 
     @Test
@@ -189,7 +193,7 @@ class FractionBigIntegerTest {
     @Test
     void chaining_addition_with_improper_fraction_result() {
       FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
-      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(3));
+      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.ONE, THREE);
       FractionBigInteger summand_3 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(4));
 
       FractionBigInteger sum = summand_1.add(summand_2).add(summand_3);
@@ -200,7 +204,7 @@ class FractionBigIntegerTest {
     @Test
     void chaining_addition_with_proper_fraction_result() {
       FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
-      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(3));
+      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.ONE, THREE);
       FractionBigInteger summand_3 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(4));
 
       FractionBigInteger sum = summand_1.add(summand_2).add(summand_3);
@@ -210,7 +214,7 @@ class FractionBigIntegerTest {
 
     @Test
     void addition_with_two_proper_fractions() {
-      FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.TWO, BigInteger.valueOf(3));
+      FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.TWO, THREE);
       FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(5));
 
       FractionBigInteger sum = summand_1.add(summand_2);
@@ -220,23 +224,23 @@ class FractionBigIntegerTest {
 
     @Test
     void add_1_3_plus_2_3_should_be_1_1() {
-      FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(3));
-      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.TWO, BigInteger.valueOf(3));
+      FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.ONE, THREE);
+      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.TWO, THREE);
 
       FractionBigInteger sum = summand_1.add(summand_2);
 
-      assertThat(sum).isEqualByComparingTo(new FractionBigInteger(BigInteger.valueOf(3), BigInteger.valueOf(3)));
+      assertThat(sum).isEqualByComparingTo(new FractionBigInteger(THREE, THREE));
     }
 
     @Test
     void add_1_3_plus_2_3_should_be_1_1_reduced() {
-      FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(3));
-      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.TWO, BigInteger.valueOf(3));
+      FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.ONE, THREE);
+      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.TWO, THREE);
 
       FractionBigInteger sum = summand_1.add(summand_2);
 
-      assertThat(sum.numerator()).isEqualTo(1);
-      assertThat(sum.denominator()).isEqualTo(1);
+      assertThat(sum.numerator()).isEqualByComparingTo(BigInteger.ONE);
+      assertThat(sum.denominator()).isEqualByComparingTo(BigInteger.ONE);
     }
 
   }
@@ -251,7 +255,7 @@ class FractionBigIntegerTest {
       FractionBigInteger sum = summand_1.add(summand_2);
 
       assertThat(sum.numerator()).isEqualTo(BigInteger.valueOf(Long.MAX_VALUE).subtract(BigInteger.ONE));
-      assertThat(sum.denominator()).isEqualTo(1);
+      assertThat(sum.denominator()).isEqualByComparingTo(BigInteger.ONE);
     }
 
     @Test
@@ -261,8 +265,8 @@ class FractionBigIntegerTest {
 
       FractionBigInteger sum = summand_1.add(summand_2);
 
-      assertThat(sum.numerator()).isEqualTo(Long.MIN_VALUE);
-      assertThat(sum.denominator()).isEqualTo(1);
+      assertThat(sum.numerator()).isEqualByComparingTo(BigInteger.valueOf(Long.MIN_VALUE));
+      assertThat(sum.denominator()).isEqualByComparingTo(BigInteger.ONE);
     }
   }
 
