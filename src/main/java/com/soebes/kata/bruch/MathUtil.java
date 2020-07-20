@@ -11,11 +11,17 @@ public class MathUtil {
   /**
    * @param numerator Numerator
    * @param denominator Denominator
-   * @return greatest common devisor.
+   * @return greatest common divisor.
    */
   public static int calculateGcd(int numerator, int denominator) {
     return BigInteger.valueOf(numerator).gcd(BigInteger.valueOf(denominator)).intValueExact();
   }
+
+  /**
+   * @param numerator Numerator
+   * @param denominator Denominator
+   * @return greatest common divisor.
+   */
   public static int calculateGcd(long numerator, long denominator) {
     return BigInteger.valueOf(numerator).gcd(BigInteger.valueOf(denominator)).intValueExact();
   }
