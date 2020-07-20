@@ -9,11 +9,11 @@ public class MathUtil {
   }
 
   /**
-   * @param zaehler Zaehler
-   * @param nenner Nenner
-   * @return kleinste gemeinsames Vielfache.
+   * @param numerator Numerator
+   * @param denominator Denominator
+   * @return greatest common devisor.
    */
-  public static int berechneKgv(int zaehler, int nenner) {
-    return BigInteger.valueOf(zaehler).gcd(BigInteger.valueOf(nenner)).intValueExact();
+  public static int calculateGcd(int numerator, int denominator) {
+    return BigInteger.valueOf(numerator).gcd(BigInteger.valueOf(denominator)).intValueExact();
   }
 }

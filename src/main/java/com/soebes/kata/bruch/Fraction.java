@@ -15,11 +15,11 @@ public class Fraction implements Comparable<Fraction> {
       this.numerator = 0;
       this.denominator = 1;
     } else {
-      int vorzeichen = Integer.signum(numerator) * Integer.signum(denominator);
+      int sign = Integer.signum(numerator) * Integer.signum(denominator);
 
-      int kgv = MathUtil.berechneKgv(numerator, denominator);
-      this.numerator = vorzeichen * Math.abs(numerator) / kgv;
-      this.denominator = Math.abs(denominator) / kgv;
+      int gcd = MathUtil.calculateGcd(numerator, denominator);
+      this.numerator = sign * Math.abs(numerator) / gcd;
+      this.denominator = Math.abs(denominator) / gcd;
     }
   }
 
