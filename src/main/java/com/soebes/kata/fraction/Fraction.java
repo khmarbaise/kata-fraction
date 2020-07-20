@@ -1,4 +1,4 @@
-package com.soebes.kata.bruch;
+package com.soebes.kata.fraction;
 
 import java.util.Objects;
 import java.util.StringJoiner;

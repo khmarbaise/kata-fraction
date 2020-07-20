@@ -1,4 +1,4 @@
-package com.soebes.kata.bruch;
+package com.soebes.kata.fraction;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Nested;
