@@ -41,26 +41,26 @@ class FractionTest {
   class CompareTo {
     @Test
     void fraction_one_identical_to_fraction_two() {
-      Fraction fraction_eins = new Fraction(1, 2);
-      Fraction fraction_zwei = new Fraction(1, 2);
+      Fraction fraction_one = new Fraction(1, 2);
+      Fraction fraction_two = new Fraction(1, 2);
 
-      assertThat(fraction_eins).isEqualByComparingTo(fraction_zwei);
+      assertThat(fraction_one).isEqualByComparingTo(fraction_two);
     }
 
     @Test
     void fraction_one_greater_than_fraction_two() {
-      Fraction fraction_eins = new Fraction(1, 1);
-      Fraction fraction_zwei = new Fraction(1, 2);
+      Fraction fraction_one = new Fraction(1, 1);
+      Fraction fraction_two = new Fraction(1, 2);
 
-      assertThat(fraction_eins.compareTo(fraction_zwei)).isPositive();
+      assertThat(fraction_one.compareTo(fraction_two)).isPositive();
     }
 
     @Test
     void fraction_one_less_than_fraction_two() {
-      Fraction fraction_eins = new Fraction(1, 3);
-      Fraction fraction_zwei = new Fraction(1, 2);
+      Fraction fraction_one = new Fraction(1, 3);
+      Fraction fraction_two = new Fraction(1, 2);
 
-      assertThat(fraction_eins.compareTo(fraction_zwei)).isNegative();
+      assertThat(fraction_one.compareTo(fraction_two)).isNegative();
     }
 
   }
@@ -105,9 +105,9 @@ class FractionTest {
 
     @Test
     void normalize_improper_fraction() {
-      Fraction unechterFraction = new Fraction(4, 6);
-      assertThat(unechterFraction.numerator()).isEqualTo(2);
-      assertThat(unechterFraction.denominator()).isEqualTo(3);
+      Fraction improperFraction = new Fraction(4, 6);
+      assertThat(improperFraction.numerator()).isEqualTo(2);
+      assertThat(improperFraction.denominator()).isEqualTo(3);
     }
   }
 

@@ -14,26 +14,26 @@ class FractionLongTest {
   class Signum {
     @Test
     void signum_for_z_pos_n_pos() {
-      FractionLong FractionLong = new FractionLong(1, 2);
-      assertThat(FractionLong.signum()).isOne();
+      FractionLong fractionLong = new FractionLong(1, 2);
+      assertThat(fractionLong.signum()).isOne();
     }
 
     @Test
     void signum_for_z_neg_n_pos() {
-      FractionLong FractionLong = new FractionLong(-1, 2);
-      assertThat(FractionLong.signum()).isNegative();
+      FractionLong fractionLong = new FractionLong(-1, 2);
+      assertThat(fractionLong.signum()).isNegative();
     }
 
     @Test
     void signum_for_z_pos_n_neg() {
-      FractionLong FractionLong = new FractionLong(1, -2);
-      assertThat(FractionLong.signum()).isNegative();
+      FractionLong fractionLong = new FractionLong(1, -2);
+      assertThat(fractionLong.signum()).isNegative();
     }
 
     @Test
     void signum_for_z_neg_n_neg() {
-      FractionLong FractionLong = new FractionLong(-1, -2);
-      assertThat(FractionLong.signum()).isPositive();
+      FractionLong fractionLong = new FractionLong(-1, -2);
+      assertThat(fractionLong.signum()).isPositive();
     }
   }
 
@@ -41,26 +41,26 @@ class FractionLongTest {
   class CompareTo {
     @Test
     void fraction_one_identical_to_fraction_two() {
-      FractionLong FractionLong_eins = new FractionLong(1, 2);
-      FractionLong FractionLong_zwei = new FractionLong(1, 2);
+      FractionLong fractionLong_one = new FractionLong(1, 2);
+      FractionLong fractionLong_two = new FractionLong(1, 2);
 
-      assertThat(FractionLong_eins).isEqualByComparingTo(FractionLong_zwei);
+      assertThat(fractionLong_one).isEqualByComparingTo(fractionLong_two);
     }
 
     @Test
     void fraction_one_greater_than_fraction_two() {
-      FractionLong FractionLong_eins = new FractionLong(1, 1);
-      FractionLong FractionLong_zwei = new FractionLong(1, 2);
+      FractionLong fractionLong_one = new FractionLong(1, 1);
+      FractionLong fractionLong_two = new FractionLong(1, 2);
 
-      assertThat(FractionLong_eins.compareTo(FractionLong_zwei)).isPositive();
+      assertThat(fractionLong_one.compareTo(fractionLong_two)).isPositive();
     }
 
     @Test
     void fraction_one_less_than_fraction_two() {
-      FractionLong FractionLong_eins = new FractionLong(1, 3);
-      FractionLong FractionLong_zwei = new FractionLong(1, 2);
+      FractionLong fractionLong_one = new FractionLong(1, 3);
+      FractionLong fractionLong_two = new FractionLong(1, 2);
 
-      assertThat(FractionLong_eins.compareTo(FractionLong_zwei)).isNegative();
+      assertThat(fractionLong_one.compareTo(fractionLong_two)).isNegative();
     }
 
   }
@@ -74,8 +74,8 @@ class FractionLongTest {
 
     @Test
     void check_to_string() {
-      FractionLong FractionLong = new FractionLong(1, 2);
-      assertThat(FractionLong).hasToString("FractionLong[numerator=1, denominator=2]");
+      FractionLong fractionLong = new FractionLong(1, 2);
+      assertThat(fractionLong).hasToString("fractionLong[numerator=1, denominator=2]");
     }
   }
 
@@ -97,17 +97,17 @@ class FractionLongTest {
 
     @Test
     void normalize_0_x() {
-      FractionLong FractionLong = new FractionLong(0, 6);
+      FractionLong fractionLong = new FractionLong(0, 6);
 
-      assertThat(FractionLong.numerator()).isZero();
-      assertThat(FractionLong.denominator()).isEqualTo(1);
+      assertThat(fractionLong.numerator()).isZero();
+      assertThat(fractionLong.denominator()).isEqualTo(1);
     }
 
     @Test
     void normalize_improper_fraction() {
-      FractionLong unechterFractionLong = new FractionLong(4, 6);
-      assertThat(unechterFractionLong.numerator()).isEqualTo(2);
-      assertThat(unechterFractionLong.denominator()).isEqualTo(3);
+      FractionLong improperFraction = new FractionLong(4, 6);
+      assertThat(improperFraction.numerator()).isEqualTo(2);
+      assertThat(improperFraction.denominator()).isEqualTo(3);
     }
   }
 
