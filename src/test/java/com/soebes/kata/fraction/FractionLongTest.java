@@ -75,7 +75,7 @@ class FractionLongTest {
     @Test
     void check_to_string() {
       FractionLong fractionLong = new FractionLong(1, 2);
-      assertThat(fractionLong).hasToString("fractionLong[numerator=1, denominator=2]");
+      assertThat(fractionLong).hasToString("FractionLong[numerator=1, denominator=2]");
     }
   }
 
