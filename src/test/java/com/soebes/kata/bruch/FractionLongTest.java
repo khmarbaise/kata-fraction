@@ -99,15 +99,15 @@ class FractionLongTest {
     void normalize_0_x() {
       FractionLong FractionLong = new FractionLong(0, 6);
 
-      assertThat(FractionLong.zaehler()).isZero();
-      assertThat(FractionLong.nenner()).isEqualTo(1);
+      assertThat(FractionLong.numerator()).isZero();
+      assertThat(FractionLong.denominator()).isEqualTo(1);
     }
 
     @Test
     void normalize_improper_FractionLong() {
       FractionLong unechterFractionLong = new FractionLong(4, 6);
-      assertThat(unechterFractionLong.zaehler()).isEqualTo(2);
-      assertThat(unechterFractionLong.nenner()).isEqualTo(3);
+      assertThat(unechterFractionLong.numerator()).isEqualTo(2);
+      assertThat(unechterFractionLong.denominator()).isEqualTo(3);
     }
   }
 
@@ -233,8 +233,8 @@ class FractionLongTest {
 
       FractionLong sum = summand_1.add(summand_2);
 
-      assertThat(sum.zaehler()).isEqualTo(1);
-      assertThat(sum.nenner()).isEqualTo(1);
+      assertThat(sum.numerator()).isEqualTo(1);
+      assertThat(sum.denominator()).isEqualTo(1);
     }
 
   }

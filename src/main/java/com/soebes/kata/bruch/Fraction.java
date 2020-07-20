@@ -47,11 +47,11 @@ public class Fraction implements Comparable<Fraction> {
     return new Fraction(this.numerator * divisor.denominator, this.denominator * divisor.numerator);
   }
 
-  public int zaehler() {
+  public int numerator() {
     return numerator;
   }
 
-  public int nenner() {
+  public int denominator() {
     return denominator;
   }
 

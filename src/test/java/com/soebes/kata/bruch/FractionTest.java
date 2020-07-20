@@ -99,15 +99,15 @@ class FractionTest {
     void normalize_0_x() {
       Fraction fraction = new Fraction(0, 6);
 
-      assertThat(fraction.zaehler()).isZero();
-      assertThat(fraction.nenner()).isEqualTo(1);
+      assertThat(fraction.numerator()).isZero();
+      assertThat(fraction.denominator()).isEqualTo(1);
     }
 
     @Test
     void normalize_improper_fraction() {
       Fraction unechterFraction = new Fraction(4, 6);
-      assertThat(unechterFraction.zaehler()).isEqualTo(2);
-      assertThat(unechterFraction.nenner()).isEqualTo(3);
+      assertThat(unechterFraction.numerator()).isEqualTo(2);
+      assertThat(unechterFraction.denominator()).isEqualTo(3);
     }
   }
 
@@ -233,8 +233,8 @@ class FractionTest {
 
       Fraction sum = summand_1.add(summand_2);
 
-      assertThat(sum.zaehler()).isEqualTo(1);
-      assertThat(sum.nenner()).isEqualTo(1);
+      assertThat(sum.numerator()).isEqualTo(1);
+      assertThat(sum.denominator()).isEqualTo(1);
     }
 
   }

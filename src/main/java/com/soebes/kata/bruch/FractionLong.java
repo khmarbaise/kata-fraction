@@ -47,11 +47,11 @@ public class FractionLong implements Comparable<FractionLong> {
     return new FractionLong(this.numerator * divisor.denominator, this.denominator * divisor.numerator);
   }
 
-  public long zaehler() {
+  public long numerator() {
     return numerator;
   }
 
-  public long nenner() {
+  public long denominator() {
     return denominator;
   }
 
