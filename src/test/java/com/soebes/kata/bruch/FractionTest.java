@@ -240,4 +240,29 @@ class FractionTest {
   }
 
 
+  @Nested
+  class Limits {
+    @Test
+    void add_max_value() {
+      Fraction summand_1 = new Fraction(Integer.MAX_VALUE / 2, 1);
+      Fraction summand_2 = new Fraction(Integer.MAX_VALUE / 2, 1);
+
+      Fraction sum = summand_1.add(summand_2);
+
+      assertThat(sum.numerator()).isEqualTo(Integer.MAX_VALUE - 1);
+      assertThat(sum.denominator()).isEqualTo(1);
+    }
+
+    @Test
+    void add_min_value() {
+      Fraction summand_1 = new Fraction(Integer.MIN_VALUE / 2, 1);
+      Fraction summand_2 = new Fraction(Integer.MIN_VALUE / 2, 1);
+
+      Fraction sum = summand_1.add(summand_2);
+
+      assertThat(sum.numerator()).isEqualTo(Integer.MIN_VALUE);
+      assertThat(sum.denominator()).isEqualTo(1);
+    }
+
+  }
 }

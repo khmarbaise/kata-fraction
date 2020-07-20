@@ -5,7 +5,7 @@ import java.math.BigInteger;
 public class MathUtil {
 
   private MathUtil() {
-    // Absichtlich keine Instanz bildbar.
+    // intentionally empty.
   }
 
   /**
@@ -22,7 +22,7 @@ public class MathUtil {
    * @param denominator Denominator
    * @return greatest common divisor.
    */
-  public static int calculateGcd(long numerator, long denominator) {
-    return BigInteger.valueOf(numerator).gcd(BigInteger.valueOf(denominator)).intValueExact();
+  public static long calculateGcd(long numerator, long denominator) {
+    return BigInteger.valueOf(numerator).gcd(BigInteger.valueOf(denominator)).longValueExact();
   }
 }

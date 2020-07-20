@@ -17,7 +17,7 @@ public class FractionLong implements Comparable<FractionLong> {
     } else {
       int sign = Long.signum(numerator) * Long.signum(denominator);
 
-      int gcd = MathUtil.calculateGcd(numerator, denominator);
+      long gcd = MathUtil.calculateGcd(numerator, denominator);
       this.numerator = sign * Math.abs(numerator) / gcd;
       this.denominator = Math.abs(denominator) / gcd;
     }

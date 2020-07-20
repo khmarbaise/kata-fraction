@@ -239,5 +239,30 @@ class FractionLongTest {
 
   }
 
+  @Nested
+  class Limits {
+    @Test
+    void add_max_value() {
+      FractionLong summand_1 = new FractionLong(Long.MAX_VALUE / 2, 1);
+      FractionLong summand_2 = new FractionLong(Long.MAX_VALUE / 2, 1);
+
+      FractionLong sum = summand_1.add(summand_2);
+
+      assertThat(sum.numerator()).isEqualTo(Long.MAX_VALUE - 1);
+      assertThat(sum.denominator()).isEqualTo(1);
+    }
+
+    @Test
+    void add_min_value() {
+      FractionLong summand_1 = new FractionLong(Long.MIN_VALUE / 2, 1);
+      FractionLong summand_2 = new FractionLong(Long.MIN_VALUE / 2, 1);
+
+      FractionLong sum = summand_1.add(summand_2);
+
+      assertThat(sum.numerator()).isEqualTo(Long.MIN_VALUE);
+      assertThat(sum.denominator()).isEqualTo(1);
+    }
+  }
+
 
 }
