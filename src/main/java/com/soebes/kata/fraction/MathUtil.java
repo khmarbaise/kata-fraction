@@ -25,4 +25,13 @@ public class MathUtil {
   public static long calculateGcd(long numerator, long denominator) {
     return BigInteger.valueOf(numerator).gcd(BigInteger.valueOf(denominator)).longValueExact();
   }
+
+  /**
+   * @param numerator Numerator
+   * @param denominator Denominator
+   * @return greatest common divisor.
+   */
+  public static BigInteger calculateGcd(BigInteger numerator, BigInteger denominator) {
+    return numerator.gcd(denominator);
+  }
 }
