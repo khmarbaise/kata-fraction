@@ -50,7 +50,7 @@ class FractionBigIntegerTest {
       FractionBigInteger fractionLong_one = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
       FractionBigInteger fractionLong_two = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
 
-      assertThat(fractionLong_one).isEqualByComparingTo(fractionLong_two);
+      assertThat(fractionLong_one.compareTo(fractionLong_two)).isEqualTo(0);
     }
 
     @Test
