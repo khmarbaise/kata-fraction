@@ -1,14 +1,48 @@
 package com.soebes.kata.fraction;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
+import org.assertj.core.data.Offset;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 class FractionTest {
+
+  @Nested
+  class Double {
+    @Test
+    void fraction_to_double() {
+      Fraction fraction = new Fraction(1, 1);
+      assertThat(fraction.doubleValue()).isEqualTo(1.0, Offset.offset(1E-6));
+    }
+  }
+
+  @Nested
+  class Negate {
+    @Test
+    void fraction_negate() {
+      Fraction fraction = new Fraction(1, 1);
+      assertThat(fraction.negate()).isEqualByComparingTo(new Fraction(-1, 1));
+    }
+
+    @Test
+    void fraction_negate_max() {
+      Fraction fraction = new Fraction(Integer.MAX_VALUE, 1);
+      assertThat(fraction.negate()).isEqualByComparingTo(new Fraction(-Integer.MAX_VALUE, 1));
+    }
+
+    @Test
+    void fraction_negate_min() {
+      Fraction fraction = new Fraction(Integer.MIN_VALUE, 1);
+      assertThatExceptionOfType(ArithmeticException.class)
+          .isThrownBy(() -> fraction.negate())
+          .withMessage("integer overflow");
+    }
+  }
 
   @Nested
   class Signum {
