@@ -1,14 +1,59 @@
 package com.soebes.kata.fraction;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
+import org.assertj.core.data.Offset;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 class FractionLongTest {
+
+  @Nested
+  class BigDecimalValue {
+    @Test
+    void fraction_to_bigdecimal() {
+      FractionLong fraction = new FractionLong(1, 1);
+      assertThat(fraction.bigDecimalValue()).isEqualByComparingTo(BigDecimal.valueOf(1));
+    }
+  }
+
+  @Nested
+  class DoubleValue {
+    @Test
+    void fraction_to_double() {
+      FractionLong fraction = new FractionLong(1, 1);
+      assertThat(fraction.doubleValue()).isEqualTo(1.0, Offset.offset(1E-6));
+    }
+  }
+
+  @Nested
+  class Negate {
+    @Test
+    void fraction_negate() {
+      FractionLong fraction = new FractionLong(1, 1);
+      assertThat(fraction.negate()).isEqualByComparingTo(new FractionLong(-1, 1));
+    }
+
+    @Test
+    void fraction_negate_max() {
+      FractionLong fraction = new FractionLong(Long.MAX_VALUE, 1);
+      assertThat(fraction.negate()).isEqualByComparingTo(new FractionLong(-Long.MAX_VALUE, 1));
+    }
+
+    @Test
+    void fraction_negate_min() {
+      FractionLong fraction = new FractionLong(Long.MIN_VALUE, 1);
+      assertThatExceptionOfType(ArithmeticException.class)
+          .isThrownBy(() -> fraction.negate())
+          .withMessage("long overflow");
+    }
+  }
 
   @Nested
   class Signum {

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
@@ -15,6 +16,29 @@ class FractionBigIntegerTest {
   private static final BigInteger THREE = BigInteger.valueOf(3);
   private static final BigInteger MINUS_ONE = BigInteger.ONE.negate();
   private static final BigInteger MINUS_TWO = BigInteger.TWO.negate();
+
+  @Nested
+  class Negate {
+    @Test
+    void fraction_negate() {
+      FractionBigInteger fraction = new FractionBigInteger(BigInteger.ONE, BigInteger.ONE);
+      assertThat(fraction.negate()).isEqualByComparingTo(new FractionBigInteger(BigInteger.ONE.negate(), BigInteger.ONE));
+    }
+
+    @Test
+    void fraction_negate_max() {
+      FractionBigInteger fraction = new FractionBigInteger(BigInteger.valueOf(Long.MAX_VALUE), BigInteger.ONE);
+      assertThat(fraction.negate()).isEqualByComparingTo(new FractionBigInteger(BigInteger.valueOf(-Long.MAX_VALUE), BigInteger.ONE));
+    }
+
+    @Test
+    void fraction_negate_min() {
+      FractionBigInteger fraction = new FractionBigInteger(BigInteger.valueOf(Long.MIN_VALUE), BigInteger.ONE);
+      assertThatExceptionOfType(ArithmeticException.class)
+          .isThrownBy(() -> fraction.negate())
+          .withMessage("long overflow");
+    }
+  }
 
   @Nested
   class Signum {
