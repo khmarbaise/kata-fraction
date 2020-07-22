@@ -5,6 +5,8 @@ import org.assertj.core.data.Offset;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
@@ -13,7 +15,16 @@ import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 class FractionTest {
 
   @Nested
-  class Double {
+  class BigDecimalValue {
+    @Test
+    void fraction_to_bigdecimal() {
+      Fraction fraction = new Fraction(1, 1);
+      assertThat(fraction.bigDecimalValue()).isEqualByComparingTo(BigDecimal.valueOf(1));
+    }
+  }
+
+  @Nested
+  class DoubleValue {
     @Test
     void fraction_to_double() {
       Fraction fraction = new Fraction(1, 1);

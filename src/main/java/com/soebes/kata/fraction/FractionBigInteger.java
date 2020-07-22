@@ -1,5 +1,6 @@
 package com.soebes.kata.fraction;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Objects;
 import java.util.StringJoiner;
@@ -78,18 +79,34 @@ public class FractionBigInteger implements Comparable<FractionBigInteger> {
     return numerator.signum();
   }
 
+  public FractionBigInteger negate() {
+    return new FractionBigInteger(this.numerator.negate(), this.denominator);
+  }
+
+  public double doubleValue() {
+    return this.numerator.divide(this.denominator).doubleValue();
+  }
+
+  public BigDecimal bigDecimalValue() {
+    return new BigDecimal(this.numerator).divide(new BigDecimal(this.denominator));
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    FractionBigInteger fraction = (FractionBigInteger) o;
-    return numerator == fraction.numerator &&
-        denominator == fraction.denominator;
+
+    FractionBigInteger that = (FractionBigInteger) o;
+
+    if (!numerator.equals(that.numerator)) return false;
+    return denominator.equals(that.denominator);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(numerator, denominator);
+    int result = numerator.hashCode();
+    result = 31 * result + denominator.hashCode();
+    return result;
   }
 
   @Override

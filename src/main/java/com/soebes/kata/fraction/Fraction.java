@@ -1,5 +1,6 @@
 package com.soebes.kata.fraction;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Objects;
 import java.util.StringJoiner;
@@ -84,6 +85,10 @@ public class Fraction implements Comparable<Fraction> {
 
   public double doubleValue() {
     return (double) this.numerator / (double) this.denominator;
+  }
+
+  public BigDecimal bigDecimalValue() {
+    return BigDecimal.valueOf(this.numerator).divide(BigDecimal.valueOf(this.denominator));
   }
 
   @Override
