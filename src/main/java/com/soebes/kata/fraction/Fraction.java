@@ -82,6 +82,10 @@ public class Fraction implements Comparable<Fraction> {
     return new Fraction(Math.negateExact(this.numerator), this.denominator);
   }
 
+  public double doubleValue() {
+    return (double) this.numerator / (double) this.denominator;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -89,10 +93,6 @@ public class Fraction implements Comparable<Fraction> {
     Fraction fraction = (Fraction) o;
     return numerator == fraction.numerator &&
         denominator == fraction.denominator;
-  }
-
-  public double doubleValue() {
-    return (double) this.numerator / (double) this.denominator;
   }
 
   @Override
