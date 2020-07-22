@@ -1,9 +1,12 @@
 package com.soebes.kata.fraction;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
+import org.assertj.core.data.Offset;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,6 +19,25 @@ class FractionBigIntegerTest {
   private static final BigInteger THREE = BigInteger.valueOf(3);
   private static final BigInteger MINUS_ONE = BigInteger.ONE.negate();
   private static final BigInteger MINUS_TWO = BigInteger.TWO.negate();
+
+  @Nested
+  class BigDecimalValue {
+    @Test
+    void fraction_to_bigdecimal() {
+      FractionBigInteger fraction = new FractionBigInteger(BigInteger.ONE, BigInteger.ONE);
+      assertThat(fraction.bigDecimalValue()).isEqualByComparingTo(BigDecimal.valueOf(1));
+    }
+  }
+
+  @Nested
+  class DoubleValue {
+    @Test
+    void fraction_to_double() {
+      FractionBigInteger fraction = new FractionBigInteger(BigInteger.ONE, BigInteger.ONE);
+      assertThat(fraction.doubleValue()).isEqualTo(1.0, Offset.offset(1E-6));
+    }
+  }
+
 
   @Nested
   class Negate {
@@ -32,6 +54,7 @@ class FractionBigIntegerTest {
     }
 
     @Test
+    @Disabled("Can not produce a exception.")
     void fraction_negate_min() {
       FractionBigInteger fraction = new FractionBigInteger(BigInteger.valueOf(Long.MIN_VALUE), BigInteger.ONE);
       assertThatExceptionOfType(ArithmeticException.class)
