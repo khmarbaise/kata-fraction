@@ -173,7 +173,7 @@ class FractionTest {
   @Nested
   class Divide {
     @Test
-    void devide_1_2_by_2_5() {
+    void divide_1_2_by_2_5() {
       Fraction dividend = new Fraction(1, 2);
       Fraction divisor = new Fraction(2, 5);
 
@@ -183,7 +183,7 @@ class FractionTest {
     }
 
     @Test
-    void devide_the_same_fraction() {
+    void divide_the_same_fraction() {
       Fraction dividend = new Fraction(1, 2);
       Fraction divisor = new Fraction(1, 2);
 
