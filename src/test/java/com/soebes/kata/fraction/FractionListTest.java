@@ -16,7 +16,6 @@ class FractionListTest {
 
   @Test
   void name() {
-
     assertThat(LIST_OF_FRACTIONS).containsExactly(new Fraction(1, 2),
         new Fraction(2, 3),
         new Fraction(3, 4),
