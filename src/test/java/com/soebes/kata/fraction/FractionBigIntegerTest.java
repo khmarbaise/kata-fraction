@@ -14,6 +14,9 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
+/**
+ * Java Doc for FractionBigInteger.
+ */
 class FractionBigIntegerTest {
 
   private static final BigInteger THREE = BigInteger.valueOf(3);
