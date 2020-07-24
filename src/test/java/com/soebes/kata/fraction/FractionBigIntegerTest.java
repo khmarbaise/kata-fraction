@@ -54,7 +54,7 @@ class FractionBigIntegerTest {
     }
 
     @Test
-    @Disabled("Can not produce a exception.")
+    @Disabled("Can not produce an exception here.")
     void fraction_negate_min() {
       FractionBigInteger fraction = new FractionBigInteger(BigInteger.valueOf(Long.MIN_VALUE), BigInteger.ONE);
       assertThatExceptionOfType(ArithmeticException.class)
