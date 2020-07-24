@@ -95,18 +95,14 @@ public class FractionBigInteger implements Comparable<FractionBigInteger> {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-
     FractionBigInteger that = (FractionBigInteger) o;
-
-    if (!numerator.equals(that.numerator)) return false;
-    return denominator.equals(that.denominator);
+    return Objects.equals(numerator, that.numerator) &&
+        Objects.equals(denominator, that.denominator);
   }
 
   @Override
   public int hashCode() {
-    int result = numerator.hashCode();
-    result = 31 * result + denominator.hashCode();
-    return result;
+    return Objects.hash(numerator, denominator);
   }
 
   @Override
