@@ -4,7 +4,7 @@ The idea of this code kata is to show separation of concerns in particular and o
 like how to use code coverage tools like JaCoCo as well as Mutation Testing to support the development
 process.
 
-This Kata is doing it's requirements in a very simple domain area which is basic school mathematics as
+This Kata defines the domain of working in a very simple domain which is basic school mathematics as
 given with fractions.
 
 # Requirement Definition I 
@@ -24,26 +24,36 @@ a negative fraction.
 
 * `{9/12}` This would define the fraction `9/12`.
 * `{-9/12}` This would define the fraction `-9/12`.
-* `{9/-12}` This would define the fraction `-9/12`.
-
-
+* `{9/-12}` This would define the fraction `9/-12`.
 
 ## Definition of the valid operations
 
 We define the following operations as valid on fractions:
 
  * `+` addition
- * `-` subtract
+ * `-` subtraction
  * `*` multiplication
  * `/` divide
  * `^` power
 
 We need to be able to add, subtract, divide, multiply or create the power of a fraction.
- 
 
+## Definition of power
 
+* The following gives an example how to define the operation `^`:
+  `{1/3}^5`. The exponent can only be an integer. So this also valid: `{1/3}^-5`.
+* The following gives an example how to add two fractions: `{3/2}+{4/4}`
+* The following gives an example how to subtract two fractions: `{3/2}-{4/4}`
+* The following gives an example how to multiply two fractions: `{3/2}*{4/4}`
+* The following gives an example how to divide two fractions: `{3/2}/{4/4}`
 
- and it should be handled to calculate the results of those
+## Example Lines
+The following is an example of a line of operations on fractions:
+```
+{3/2}+{4/4}/{2/3}
+``` 
+
+and it should be handled to calculate the results of those
 fraction operations.
 
 
@@ -51,12 +61,24 @@ fraction operations.
 
 The change vs I.
 
+Introduce parenthesis like this:
+```
+( {3/2}+{4/4} ) / {2/3}
+``` 
+
+# Requirement Definition III
+
+The change vs I
+
 Integer => Long => BigInteger ?
- 
+
+# Build
+
+* JDK 11+
+* Apache Maven 3.6.3
+
 
 Create Mutation coverage via:
 ```bash
 mvn clean verify org.pitest:pitest-maven:mutationCoverage
 ```
-
-Another Test.
