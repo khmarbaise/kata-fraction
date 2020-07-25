@@ -62,7 +62,7 @@ class FractionBigIntegerTest {
       FractionBigInteger fraction = new FractionBigInteger(BigInteger.valueOf(Long.MIN_VALUE), BigInteger.ONE);
       assertThatExceptionOfType(ArithmeticException.class)
           .isThrownBy(() -> fraction.negate())
-          .withMessage("long overflow");
+          .withMessage("BigInteger overflow");
     }
   }
 
