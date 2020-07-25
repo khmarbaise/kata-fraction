@@ -1,0 +1,29 @@
+# We will define a fraction as written like the following:
+#
+# A fraction is introduced by "{" and limited by "}". The numerator is separated by "/" from the denominator.
+#
+# "{9/12}"
+#   !  !
+#   !  +--- denominator
+#   +------ numerator
+#
+# This file contains on each separate line fractions like "{1/3}" which are combined via given operations like "+"
+# "-", "/", "*" or "^".
+#
+# "+" addition
+# "-" subtract
+# "*" multiplication
+# "/" divide
+#
+# At the beginning of line we can have a comment which is introduced via "#" and can be ignored.
+# Each operator "+", "-", "*" or "/" is separated by
+#
+{1/3} + {1/4}
+#
+{5/3} - {6/9}
+#
+{12/32} * {4/6} / {2/3}
+#
+#
+{6/12}^3 - {1/4}
+#
