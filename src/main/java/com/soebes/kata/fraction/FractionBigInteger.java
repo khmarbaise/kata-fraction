@@ -13,16 +13,11 @@ public class FractionBigInteger implements Comparable<FractionBigInteger> {
     if (denominator.compareTo(BigInteger.ZERO) == 0) {
       throw new IllegalArgumentException("denominator is not allowed to be zero.");
     }
-    if (numerator.compareTo(BigInteger.ZERO) == 0) {
-      this.numerator = BigInteger.ZERO;
-      this.denominator = BigInteger.ONE;
-    } else {
-      BigInteger sign = BigInteger.valueOf(numerator.signum() * denominator.signum());
+    BigInteger sign = BigInteger.valueOf(numerator.signum() * denominator.signum());
 
-      BigInteger gcd = MathUtil.calculateGcd(numerator, denominator);
-      this.numerator = sign.multiply(numerator.abs().divide(gcd));
-      this.denominator = denominator.abs().divide(gcd);
-    }
+    BigInteger gcd = MathUtil.calculateGcd(numerator, denominator);
+    this.numerator = sign.multiply(numerator.abs().divide(gcd));
+    this.denominator = denominator.abs().divide(gcd);
   }
 
   public FractionBigInteger add(FractionBigInteger add) {

@@ -13,16 +13,11 @@ public class Fraction implements Comparable<Fraction> {
     if (denominator == 0) {
       throw new IllegalArgumentException("denominator is not allowed to be zero.");
     }
-    if (numerator == 0) {
-      this.numerator = 0;
-      this.denominator = 1;
-    } else {
-      int sign = Integer.signum(numerator) * Integer.signum(denominator);
+    int sign = Integer.signum(numerator) * Integer.signum(denominator);
 
-      int gcd = MathUtil.calculateGcd(numerator, denominator);
-      this.numerator = sign * Math.abs(numerator) / gcd;
-      this.denominator = Math.abs(denominator) / gcd;
-    }
+    int gcd = MathUtil.calculateGcd(numerator, denominator);
+    this.numerator = sign * Math.abs(numerator) / gcd;
+    this.denominator = Math.abs(denominator) / gcd;
   }
 
   public Fraction add(Fraction add) {
