@@ -119,7 +119,7 @@ class FractionTest {
       Fraction fraction_one = new Fraction(1, 1);
       Fraction fraction_two = new Fraction(1, 2);
 
-      assertThat(fraction_one.compareTo(fraction_two)).isPositive();
+      assertThat(fraction_one).isGreaterThan(fraction_two);
     }
 
     @Test
@@ -127,7 +127,7 @@ class FractionTest {
       Fraction fraction_one = new Fraction(1, 3);
       Fraction fraction_two = new Fraction(1, 2);
 
-      assertThat(fraction_one.compareTo(fraction_two)).isNegative();
+      assertThat(fraction_one).isLessThan(fraction_two);
     }
 
   }

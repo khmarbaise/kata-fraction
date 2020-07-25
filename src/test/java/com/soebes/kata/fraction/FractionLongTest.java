@@ -119,7 +119,7 @@ class FractionLongTest {
       FractionLong fractionLong_one = new FractionLong(1, 1);
       FractionLong fractionLong_two = new FractionLong(1, 2);
 
-      assertThat(fractionLong_one.compareTo(fractionLong_two)).isPositive();
+      assertThat(fractionLong_one).isGreaterThan(fractionLong_two);
     }
 
     @Test
@@ -127,7 +127,7 @@ class FractionLongTest {
       FractionLong fractionLong_one = new FractionLong(1, 3);
       FractionLong fractionLong_two = new FractionLong(1, 2);
 
-      assertThat(fractionLong_one.compareTo(fractionLong_two)).isNegative();
+      assertThat(fractionLong_one).isLessThan(fractionLong_two);
     }
 
   }

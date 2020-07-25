@@ -75,14 +75,6 @@ class FractionBigIntegerTest {
       assertThat(fraction.negate()).isEqualByComparingTo(new FractionBigInteger(BigInteger.valueOf(-Long.MAX_VALUE), BigInteger.ONE));
     }
 
-    @Test
-    @Disabled("Can not produce an exception here.")
-    void fraction_negate_min() {
-      FractionBigInteger fraction = new FractionBigInteger(BigInteger.valueOf(Long.MIN_VALUE), BigInteger.ONE);
-      assertThatExceptionOfType(ArithmeticException.class)
-          .isThrownBy(() -> fraction.negate())
-          .withMessage("BigInteger overflow");
-    }
   }
 
   @Nested
@@ -119,7 +111,7 @@ class FractionBigIntegerTest {
       FractionBigInteger fractionLong_one = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
       FractionBigInteger fractionLong_two = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
 
-      assertThat(fractionLong_one.compareTo(fractionLong_two)).isEqualTo(0);
+      assertThat(fractionLong_one).isEqualByComparingTo(fractionLong_two);
     }
 
     @Test
@@ -127,7 +119,7 @@ class FractionBigIntegerTest {
       FractionBigInteger fractionLong_one = new FractionBigInteger(BigInteger.ONE, BigInteger.ONE);
       FractionBigInteger fractionLong_two = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
 
-      assertThat(fractionLong_one.compareTo(fractionLong_two)).isPositive();
+      assertThat(fractionLong_one).isGreaterThan(fractionLong_two);
     }
 
     @Test
@@ -135,7 +127,7 @@ class FractionBigIntegerTest {
       FractionBigInteger fractionLong_one = new FractionBigInteger(BigInteger.ONE, THREE);
       FractionBigInteger fractionLong_two = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
 
-      assertThat(fractionLong_one.compareTo(fractionLong_two)).isNegative();
+      assertThat(fractionLong_one).isLessThan(fractionLong_two);
     }
 
   }
