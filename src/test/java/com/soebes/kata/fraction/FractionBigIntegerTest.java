@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 /**
- * Java Doc for FractionBigInteger.
+ * Test for {@link FractionBigInteger}.
  */
 class FractionBigIntegerTest {
 

@@ -5,9 +5,6 @@ import java.math.BigInteger;
 import java.util.Objects;
 import java.util.StringJoiner;
 
-/**
- * Test for JavaDoc.
- */
 public class FractionLong implements Comparable<FractionLong> {
   private final long numerator;
   private final long denominator;

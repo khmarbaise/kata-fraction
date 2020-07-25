@@ -12,6 +12,9 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
+/**
+ * Test for {@link FractionLong}.
+ */
 class FractionLongTest {
 
   @Nested
