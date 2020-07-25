@@ -77,7 +77,10 @@ Integer => Long => BigInteger ?
 * JDK 11+
 * Apache Maven 3.6.3
 
-
+Code coverage via:
+```bash
+mvn clean verify org.jacoco:jacoco-maven-plugin:report
+```
 Create Mutation coverage via:
 ```bash
 mvn clean verify org.pitest:pitest-maven:mutationCoverage
