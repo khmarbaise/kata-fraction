@@ -35,8 +35,8 @@ class ReadFileTest {
     return Files.lines(fileToRead).filter(Predicate.not(IS_COMMENT).or(IS_EMPTY_LINE));
   }
 
-  static IntStream streamIntoCodePoints(ReadFileTest readFileTest, Path fileToRead) throws IOException {
-    Stream<String> stringStream = ReadFileTest.readLinesWithoutComment(fileToRead);
+  static IntStream streamIntoCodePoints(Path fileToRead) throws IOException {
+    Stream<String> stringStream = readLinesWithoutComment(fileToRead);
     return stringStream
         .peek(s -> System.out.println("s = " + s))
         .flatMapToInt(String::codePoints)
@@ -46,7 +46,7 @@ class ReadFileTest {
   @Test
   void name() throws IOException {
     String pathToResource = this.getClass().getResource("/fractions.input").getPath();
-    streamIntoCodePoints(this, Path.of(pathToResource))
+    streamIntoCodePoints(Path.of(pathToResource))
         .forEach(s -> System.out.println("s = " + Integer.toHexString(s)));
   }
 
