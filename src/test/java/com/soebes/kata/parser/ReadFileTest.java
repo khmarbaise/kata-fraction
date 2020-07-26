@@ -20,23 +20,23 @@ class ReadFileTest {
   /**
    * This will check if a line is empty.
    */
-  private static final Predicate<String> IS_EMPTY_LINE = s -> s.isBlank();
+  private static final Predicate<String> IS_EMPTY_LINE = String::isBlank;
 
-  private static final IntPredicate IS_WHITESPACE = s -> Character.isWhitespace(s);
+  private static final IntPredicate IS_WHITESPACE = Character::isWhitespace;
 
   /**
    * Read the file and filter out comment lines and empty lines.
    *
    * @param fileToRead The file to be read.
    * @return Stream with lines which do not contain comments and no empty lines.
-   * @throws IOException
+   * @throws IOException in case of failure.
    */
-  Stream<String> readLinesWithoutComment(Path fileToRead) throws IOException {
+  static Stream<String> readLinesWithoutComment(Path fileToRead) throws IOException {
     return Files.lines(fileToRead).filter(Predicate.not(IS_COMMENT).or(IS_EMPTY_LINE));
   }
 
-  IntStream streamIntoCodePoints(Path fileToRead) throws IOException {
-    Stream<String> stringStream = readLinesWithoutComment(fileToRead);
+  static IntStream streamIntoCodePoints(ReadFileTest readFileTest, Path fileToRead) throws IOException {
+    Stream<String> stringStream = ReadFileTest.readLinesWithoutComment(fileToRead);
     return stringStream
         .peek(s -> System.out.println("s = " + s))
         .flatMapToInt(String::codePoints)
@@ -46,7 +46,7 @@ class ReadFileTest {
   @Test
   void name() throws IOException {
     String pathToResource = this.getClass().getResource("/fractions.input").getPath();
-    streamIntoCodePoints(Path.of(pathToResource))
+    streamIntoCodePoints(this, Path.of(pathToResource))
         .forEach(s -> System.out.println("s = " + Integer.toHexString(s)));
   }
 
