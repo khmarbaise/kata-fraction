@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 class ReadFileTest {
 
   /**
-   * This will remove the leading white spaces and check if a line contain {@code #} as
+   * This will remove the leading white spaces and check if a line starts with a {@code #} as
    * a comment marker.
    */
   private static final Predicate<String> IS_COMMENT = s -> s.stripLeading().startsWith("#");
