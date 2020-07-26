@@ -51,7 +51,6 @@ class ReadFileTest {
   static IntStream streamIntoCodePoints(Path fileToRead) throws IOException {
     Stream<String> stringStream = readLinesWithoutComment(fileToRead);
     return stringStream
-        .peek(s -> System.out.println("s = " + s))
         .flatMapToInt(String::codePoints)
         .filter(IS_WHITESPACE.negate());
   }
