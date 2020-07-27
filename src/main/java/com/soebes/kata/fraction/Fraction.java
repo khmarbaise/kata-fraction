@@ -92,9 +92,9 @@ public class Fraction implements Comparable<Fraction> {
   }
 
   /**
-   * Returns the signum function of this {@code Bruch}.
+   * Returns the signum function of this {@code Fraction}.
    *
-   * @return -1, 0, or 1 as the value of this {@code Bruch}
+   * @return -1, 0, or 1 as the value of this {@code Fraction}
    * is negative, zero, or positive.
    */
   public int signum() {

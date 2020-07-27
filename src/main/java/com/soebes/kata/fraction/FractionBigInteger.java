@@ -92,9 +92,9 @@ public class FractionBigInteger implements Comparable<FractionBigInteger> {
   }
 
   /**
-   * Returns the signum function of this {@code Bruch}.
+   * Returns the signum function of this {@code FractionBigInteger}.
    *
-   * @return -1, 0, or 1 as the value of this {@code Bruch}
+   * @return -1, 0, or 1 as the value of this {@code FractionBigInteger}
    * is negative, zero, or positive.
    */
   public int signum() {

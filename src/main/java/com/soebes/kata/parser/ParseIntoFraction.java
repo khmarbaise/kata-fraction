@@ -20,7 +20,11 @@ package com.soebes.kata.parser;
  */
 
 import com.soebes.kata.fraction.Fraction;
+import org.apiguardian.api.API;
 
+import static org.apiguardian.api.API.Status.EXPERIMENTAL;
+
+@API(status = EXPERIMENTAL)
 public final class ParseIntoFraction {
 
   private ParseIntoFraction() {

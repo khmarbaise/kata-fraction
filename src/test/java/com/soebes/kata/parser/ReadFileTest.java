@@ -19,47 +19,55 @@ package com.soebes.kata.parser;
  * under the License.
  */
 
+import com.soebes.kata.fraction.Fraction;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.function.IntPredicate;
-import java.util.function.Predicate;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.function.Function;
 
 class ReadFileTest {
 
-  private static final Predicate<String> IS_COMMENT = s -> s.stripLeading().startsWith("#");
 
-  private static final Predicate<String> IS_EMPTY_LINE = String::isBlank;
+  static class XXX {
 
-  private static final IntPredicate IS_WHITESPACE = Character::isWhitespace;
+    private char LB = '{';
+    private char RB = '}';
 
-  /**
-   * Read the file and filter out comment lines and empty lines.
-   *
-   * @param fileToRead The file to be read.
-   * @return Stream with lines which do not contain comments and no empty lines.
-   * @throws IOException in case of failure.
-   */
-  static Stream<String> readLinesWithoutComment(Path fileToRead) throws IOException {
-    return Files.lines(fileToRead).filter(Predicate.not(IS_COMMENT).or(IS_EMPTY_LINE));
+    void translateTo(int codePoint) {
+      if (codePoint == LB) {
+        System.out.println("Start");
+      }
+
+      if (codePoint == RB) {
+        System.out.println("End");
+      }
+    }
+
   }
 
-  static IntStream streamIntoCodePoints(Path fileToRead) throws IOException {
-    Stream<String> stringStream = readLinesWithoutComment(fileToRead);
-    return stringStream
-        .flatMapToInt(String::codePoints)
-        .filter(IS_WHITESPACE.negate());
+  enum Operators {
+    Plus,
+    Minus,
+    Multiply,
+    Divide,
+    Power
   }
+
+  // {1/2}+{1/3}-{5/6}
+  // Fract+Fract-Fract
+  //
+  private static Function<Integer, Fraction> translator = s -> new Fraction(1,2);
 
   @Test
   void name() throws IOException {
     String pathToResource = this.getClass().getResource("/fractions.input").getPath();
-    streamIntoCodePoints(Path.of(pathToResource))
+    ReadFile.streamIntoCodePoints(Path.of(pathToResource))
+//        .mapToObj()
         .forEach(s -> System.out.println("s = " + Integer.toHexString(s)));
+
+    List<String> a = List.of("A", "B", "C", "D");
   }
 
 }
