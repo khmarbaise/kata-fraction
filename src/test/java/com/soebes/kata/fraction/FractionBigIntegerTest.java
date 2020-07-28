@@ -108,26 +108,26 @@ class FractionBigIntegerTest {
   class CompareTo {
     @Test
     void fraction_one_identical_to_fraction_two() {
-      FractionBigInteger fractionLong_one = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
-      FractionBigInteger fractionLong_two = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
+      FractionBigInteger fractionBigInteger_one = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
+      FractionBigInteger fractionBigInteger_two = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
 
-      assertThat(fractionLong_one).isEqualByComparingTo(fractionLong_two);
+      assertThat(fractionBigInteger_one).isEqualByComparingTo(fractionBigInteger_two);
     }
 
     @Test
     void fraction_one_greater_than_fraction_two() {
-      FractionBigInteger fractionLong_one = new FractionBigInteger(BigInteger.ONE, BigInteger.ONE);
-      FractionBigInteger fractionLong_two = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
+      FractionBigInteger fractionBigInteger_one = new FractionBigInteger(BigInteger.ONE, BigInteger.ONE);
+      FractionBigInteger fractionBigInteger_two = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
 
-      assertThat(fractionLong_one).isGreaterThan(fractionLong_two);
+      assertThat(fractionBigInteger_one).isGreaterThan(fractionBigInteger_two);
     }
 
     @Test
     void fraction_one_less_than_fraction_two() {
-      FractionBigInteger fractionLong_one = new FractionBigInteger(BigInteger.ONE, THREE);
-      FractionBigInteger fractionLong_two = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
+      FractionBigInteger fractionBigInteger_one = new FractionBigInteger(BigInteger.ONE, THREE);
+      FractionBigInteger fractionBigInteger_two = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
 
-      assertThat(fractionLong_one).isLessThan(fractionLong_two);
+      assertThat(fractionBigInteger_one).isLessThan(fractionBigInteger_two);
     }
 
   }
@@ -136,7 +136,7 @@ class FractionBigIntegerTest {
   class Verification {
     @Test
     void hash_code_and_equals() {
-      EqualsVerifier.forClass(FractionLong.class).usingGetClass().verify();
+      EqualsVerifier.forClass(FractionBigInteger.class).usingGetClass().verify();
     }
 
     @Test
