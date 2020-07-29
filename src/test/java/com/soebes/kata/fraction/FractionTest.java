@@ -72,7 +72,7 @@ class FractionTest {
     void fraction_negate_min() {
       Fraction fraction = new Fraction(Integer.MIN_VALUE, 1);
       assertThatExceptionOfType(ArithmeticException.class)
-          .isThrownBy(() -> fraction.negate())
+          .isThrownBy(fraction::negate)
           .withMessage("integer overflow");
     }
   }
