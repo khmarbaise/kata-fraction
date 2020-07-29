@@ -50,7 +50,7 @@ We define the following operations as valid on fractions:
  * `-` subtraction
  * `*` multiplication
  * `/` divide
- * `^` power
+ * `^` power (need to reconsider.)
 
 We need to be able to add, subtract, divide, multiply or create the power of a fraction.
 
