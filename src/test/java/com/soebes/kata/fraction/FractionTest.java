@@ -38,6 +38,7 @@ class FractionTest {
 
   @Nested
   class BigDecimalValue {
+
     @Test
     void fraction_to_bigdecimal() {
       Fraction fraction = new Fraction(1, 1);
@@ -47,6 +48,7 @@ class FractionTest {
 
   @Nested
   class DoubleValue {
+
     @Test
     void fraction_to_double() {
       Fraction fraction = new Fraction(1, 1);
@@ -56,6 +58,7 @@ class FractionTest {
 
   @Nested
   class Negate {
+
     @Test
     void fraction_negate() {
       Fraction fraction = new Fraction(1, 1);
@@ -79,6 +82,7 @@ class FractionTest {
 
   @Nested
   class Signum {
+
     @Test
     void signum_for_z_pos_n_pos() {
       Fraction fraction = new Fraction(1, 2);
@@ -106,6 +110,7 @@ class FractionTest {
 
   @Nested
   class CompareTo {
+
     @Test
     void fraction_one_identical_to_fraction_two() {
       Fraction fraction_one = new Fraction(1, 2);
@@ -134,6 +139,7 @@ class FractionTest {
 
   @Nested
   class Verification {
+
     @Test
     void hash_code_and_equals() {
       EqualsVerifier.forClass(Fraction.class).usingGetClass().verify();
@@ -148,14 +154,17 @@ class FractionTest {
 
   @Nested
   class InvalideValues {
+
     @Test
     void denominator_is_not_allowed_to_be_zero() {
-      assertThatIllegalArgumentException().isThrownBy(() -> new Fraction(1, 0)).withMessage("denominator is not allowed to be zero.");
+      assertThatIllegalArgumentException().isThrownBy(() -> new Fraction(1, 0))
+          .withMessage("denominator is not allowed to be zero.");
     }
 
     @Test
     void compare_to_null() {
-      assertThatNullPointerException().isThrownBy(() -> new Fraction(1, 2).compareTo(null)).withMessage("compareTo is not allowed to be null.");
+      assertThatNullPointerException().isThrownBy(() -> new Fraction(1, 2).compareTo(null))
+          .withMessage("compareTo is not allowed to be null.");
     }
   }
 
@@ -194,6 +203,7 @@ class FractionTest {
 
   @Nested
   class Divide {
+
     @Test
     void divide_1_2_by_2_5() {
       Fraction dividend = new Fraction(1, 2);
@@ -251,6 +261,7 @@ class FractionTest {
 
   @Nested
   class Addition {
+
     @Test
     void chaining_addition_with_improper_fraction_result() {
       Fraction summand_1 = new Fraction(1, 2);
@@ -339,6 +350,7 @@ class FractionTest {
 
   @Nested
   class Limits {
+
     @Test
     void add_max_value() {
       Fraction summand_1 = new Fraction(Integer.MAX_VALUE / 2, 1);
