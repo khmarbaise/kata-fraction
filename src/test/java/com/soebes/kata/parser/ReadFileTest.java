@@ -59,6 +59,7 @@ class ReadFileTest {
   void name() throws IOException {
     String pathToResource = this.getClass().getResource("/fractions.input").getPath();
     removeWhitespaceLines(Path.of(pathToResource))
+        .flatMapToInt(s -> s.chars())
         .forEach(s -> System.out.println("s = " + s));
 
     List<String> a = List.of("A", "B", "C", "D");
