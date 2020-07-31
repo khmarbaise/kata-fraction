@@ -19,13 +19,13 @@ package com.soebes.kata.parser;
  * under the License.
  */
 
-import com.soebes.kata.fraction.Fraction;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.function.Function;
+
+import static com.soebes.kata.parser.ReadFile.removeWhitespaceLines;
 
 class ReadFileTest {
 
@@ -55,17 +55,11 @@ class ReadFileTest {
     Power
   }
 
-  // {1/2}+{1/3}-{5/6}
-  // Fract+Fract-Fract
-  //
-  private static Function<Integer, Fraction> translator = s -> new Fraction(1,2);
-
   @Test
   void name() throws IOException {
     String pathToResource = this.getClass().getResource("/fractions.input").getPath();
-    ReadFile.streamIntoCodePoints(Path.of(pathToResource))
-//        .mapToObj()
-        .forEach(s -> System.out.println("s = " + Integer.toHexString(s)));
+    removeWhitespaceLines(Path.of(pathToResource))
+        .forEach(s -> System.out.println("s = " + s));
 
     List<String> a = List.of("A", "B", "C", "D");
   }

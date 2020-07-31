@@ -7,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.apiguardian.api.API.Status.EXPERIMENTAL;
@@ -29,10 +28,8 @@ public class ReadFile {
     return Files.lines(fileToRead).filter(Predicate.not(IS_COMMENT).or(IS_EMPTY_LINE));
   }
 
-  static IntStream streamIntoCodePoints(Path fileToRead) throws IOException {
-    Stream<String> stringStream = readLinesWithoutComment(fileToRead);
-    return stringStream
-        .flatMapToInt(String::codePoints)
-        .filter(IS_WHITESPACE.negate());
+  static Stream<String> removeWhitespaceLines(Path fileToRead) throws IOException {
+    return readLinesWithoutComment(fileToRead)
+        .filter(s -> !s.isBlank());
   }
 }
