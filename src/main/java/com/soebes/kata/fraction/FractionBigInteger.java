@@ -47,7 +47,7 @@ public class FractionBigInteger implements Comparable<FractionBigInteger> {
     this.denominator = denominator.abs().divide(gcd);
   }
 
-  public FractionBigInteger add(FractionBigInteger add) {
+  public FractionBigInteger plus(FractionBigInteger add) {
     if (this.denominator.compareTo(add.denominator) == 0) {
       return new FractionBigInteger(add.numerator.add(this.numerator), this.denominator);
     } else {

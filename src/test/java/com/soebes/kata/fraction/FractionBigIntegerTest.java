@@ -21,7 +21,6 @@ package com.soebes.kata.fraction;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
 import org.assertj.core.data.Offset;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +28,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
@@ -257,7 +255,7 @@ class FractionBigIntegerTest {
       FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.ONE, THREE);
       FractionBigInteger summand_3 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(4));
 
-      FractionBigInteger sum = summand_1.add(summand_2).add(summand_3);
+      FractionBigInteger sum = summand_1.plus(summand_2).plus(summand_3);
 
       assertThat(sum).isEqualByComparingTo(new FractionBigInteger(BigInteger.valueOf(26), BigInteger.valueOf(24)));
     }
@@ -268,7 +266,7 @@ class FractionBigIntegerTest {
       FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.ONE, THREE);
       FractionBigInteger summand_3 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(4));
 
-      FractionBigInteger sum = summand_1.add(summand_2).add(summand_3);
+      FractionBigInteger sum = summand_1.plus(summand_2).plus(summand_3);
 
       assertThat(sum).isEqualByComparingTo(new FractionBigInteger(BigInteger.valueOf(13), BigInteger.valueOf(12)));
     }
@@ -278,7 +276,7 @@ class FractionBigIntegerTest {
       FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.TWO, THREE);
       FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(5));
 
-      FractionBigInteger sum = summand_1.add(summand_2);
+      FractionBigInteger sum = summand_1.plus(summand_2);
 
       assertThat(sum).isEqualByComparingTo(new FractionBigInteger(BigInteger.valueOf(13), BigInteger.valueOf(15)));
     }
@@ -288,7 +286,7 @@ class FractionBigIntegerTest {
       FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.ONE, THREE);
       FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.TWO, THREE);
 
-      FractionBigInteger sum = summand_1.add(summand_2);
+      FractionBigInteger sum = summand_1.plus(summand_2);
 
       assertThat(sum).isEqualByComparingTo(new FractionBigInteger(THREE, THREE));
     }
@@ -298,7 +296,7 @@ class FractionBigIntegerTest {
       FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.ONE, THREE);
       FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.TWO, THREE);
 
-      FractionBigInteger sum = summand_1.add(summand_2);
+      FractionBigInteger sum = summand_1.plus(summand_2);
 
       assertThat(sum.numerator()).isEqualByComparingTo(BigInteger.ONE);
       assertThat(sum.denominator()).isEqualByComparingTo(BigInteger.ONE);
@@ -344,7 +342,7 @@ class FractionBigIntegerTest {
       FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.valueOf(Long.MAX_VALUE).divide(BigInteger.TWO), BigInteger.ONE);
       FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.valueOf(Long.MAX_VALUE).divide(BigInteger.TWO), BigInteger.ONE);
 
-      FractionBigInteger sum = summand_1.add(summand_2);
+      FractionBigInteger sum = summand_1.plus(summand_2);
 
       assertThat(sum.numerator()).isEqualTo(BigInteger.valueOf(Long.MAX_VALUE).subtract(BigInteger.ONE));
       assertThat(sum.denominator()).isEqualByComparingTo(BigInteger.ONE);
@@ -355,7 +353,7 @@ class FractionBigIntegerTest {
       FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.valueOf(Long.MIN_VALUE).divide(BigInteger.TWO), BigInteger.ONE);
       FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.valueOf(Long.MIN_VALUE).divide(BigInteger.TWO), BigInteger.ONE);
 
-      FractionBigInteger sum = summand_1.add(summand_2);
+      FractionBigInteger sum = summand_1.plus(summand_2);
 
       assertThat(sum.numerator()).isEqualByComparingTo(BigInteger.valueOf(Long.MIN_VALUE));
       assertThat(sum.denominator()).isEqualByComparingTo(BigInteger.ONE);

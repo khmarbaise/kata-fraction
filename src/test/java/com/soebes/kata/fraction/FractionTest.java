@@ -268,7 +268,7 @@ class FractionTest {
       Fraction summand_2 = new Fraction(1, 3);
       Fraction summand_3 = new Fraction(1, 4);
 
-      Fraction sum = summand_1.add(summand_2).add(summand_3);
+      Fraction sum = summand_1.plus(summand_2).plus(summand_3);
 
       assertThat(sum).isEqualTo(new Fraction(26, 24));
     }
@@ -279,7 +279,7 @@ class FractionTest {
       Fraction summand_2 = new Fraction(1, 3);
       Fraction summand_3 = new Fraction(1, 4);
 
-      Fraction sum = summand_1.add(summand_2).add(summand_3);
+      Fraction sum = summand_1.plus(summand_2).plus(summand_3);
 
       assertThat(sum).isEqualTo(new Fraction(13, 12));
     }
@@ -289,7 +289,7 @@ class FractionTest {
       Fraction summand_1 = new Fraction(2, 3);
       Fraction summand_2 = new Fraction(1, 5);
 
-      Fraction sum = summand_1.add(summand_2);
+      Fraction sum = summand_1.plus(summand_2);
 
       assertThat(sum).isEqualTo(new Fraction(13, 15));
     }
@@ -299,7 +299,7 @@ class FractionTest {
       Fraction summand_1 = new Fraction(1, 3);
       Fraction summand_2 = new Fraction(2, 3);
 
-      Fraction sum = summand_1.add(summand_2);
+      Fraction sum = summand_1.plus(summand_2);
 
       assertThat(sum).isEqualTo(new Fraction(3, 3));
     }
@@ -309,7 +309,7 @@ class FractionTest {
       Fraction summand_1 = new Fraction(1, 3);
       Fraction summand_2 = new Fraction(2, 3);
 
-      Fraction sum = summand_1.add(summand_2);
+      Fraction sum = summand_1.plus(summand_2);
 
       assertThat(sum.numerator()).isEqualTo(1);
       assertThat(sum.denominator()).isEqualTo(1);
@@ -356,7 +356,7 @@ class FractionTest {
       Fraction summand_1 = new Fraction(Integer.MAX_VALUE / 2, 1);
       Fraction summand_2 = new Fraction(Integer.MAX_VALUE / 2, 1);
 
-      Fraction sum = summand_1.add(summand_2);
+      Fraction sum = summand_1.plus(summand_2);
 
       assertThat(sum.numerator()).isEqualTo(Integer.MAX_VALUE - 1);
       assertThat(sum.denominator()).isEqualTo(1);
@@ -367,7 +367,7 @@ class FractionTest {
       Fraction summand_1 = new Fraction(Integer.MIN_VALUE / 2, 1);
       Fraction summand_2 = new Fraction(Integer.MIN_VALUE / 2, 1);
 
-      Fraction sum = summand_1.add(summand_2);
+      Fraction sum = summand_1.plus(summand_2);
 
       assertThat(sum.numerator()).isEqualTo(Integer.MIN_VALUE);
       assertThat(sum.denominator()).isEqualTo(1);

@@ -257,7 +257,7 @@ class FractionLongTest {
       FractionLong summand_2 = new FractionLong(1, 3);
       FractionLong summand_3 = new FractionLong(1, 4);
 
-      FractionLong sum = summand_1.add(summand_2).add(summand_3);
+      FractionLong sum = summand_1.plus(summand_2).plus(summand_3);
 
       assertThat(sum).isEqualTo(new FractionLong(26, 24));
     }
@@ -268,7 +268,7 @@ class FractionLongTest {
       FractionLong summand_2 = new FractionLong(1, 3);
       FractionLong summand_3 = new FractionLong(1, 4);
 
-      FractionLong sum = summand_1.add(summand_2).add(summand_3);
+      FractionLong sum = summand_1.plus(summand_2).plus(summand_3);
 
       assertThat(sum).isEqualTo(new FractionLong(13, 12));
     }
@@ -278,7 +278,7 @@ class FractionLongTest {
       FractionLong summand_1 = new FractionLong(2, 3);
       FractionLong summand_2 = new FractionLong(1, 5);
 
-      FractionLong sum = summand_1.add(summand_2);
+      FractionLong sum = summand_1.plus(summand_2);
 
       assertThat(sum).isEqualTo(new FractionLong(13, 15));
     }
@@ -288,7 +288,7 @@ class FractionLongTest {
       FractionLong summand_1 = new FractionLong(1, 3);
       FractionLong summand_2 = new FractionLong(2, 3);
 
-      FractionLong sum = summand_1.add(summand_2);
+      FractionLong sum = summand_1.plus(summand_2);
 
       assertThat(sum).isEqualTo(new FractionLong(3, 3));
     }
@@ -298,7 +298,7 @@ class FractionLongTest {
       FractionLong summand_1 = new FractionLong(1, 3);
       FractionLong summand_2 = new FractionLong(2, 3);
 
-      FractionLong sum = summand_1.add(summand_2);
+      FractionLong sum = summand_1.plus(summand_2);
 
       assertThat(sum.numerator()).isEqualTo(1);
       assertThat(sum.denominator()).isEqualTo(1);
@@ -345,7 +345,7 @@ class FractionLongTest {
       FractionLong summand_1 = new FractionLong(Long.MAX_VALUE / 2, 1);
       FractionLong summand_2 = new FractionLong(Long.MAX_VALUE / 2, 1);
 
-      FractionLong sum = summand_1.add(summand_2);
+      FractionLong sum = summand_1.plus(summand_2);
 
       assertThat(sum.numerator()).isEqualTo(Long.MAX_VALUE - 1);
       assertThat(sum.denominator()).isEqualTo(1);
@@ -356,7 +356,7 @@ class FractionLongTest {
       FractionLong summand_1 = new FractionLong(Long.MIN_VALUE / 2, 1);
       FractionLong summand_2 = new FractionLong(Long.MIN_VALUE / 2, 1);
 
-      FractionLong sum = summand_1.add(summand_2);
+      FractionLong sum = summand_1.plus(summand_2);
 
       assertThat(sum.numerator()).isEqualTo(Long.MIN_VALUE);
       assertThat(sum.denominator()).isEqualTo(1);

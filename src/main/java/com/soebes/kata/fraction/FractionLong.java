@@ -47,7 +47,7 @@ public class FractionLong implements Comparable<FractionLong> {
     this.denominator = Math.abs(denominator) / gcd;
   }
 
-  public FractionLong add(FractionLong add) {
+  public FractionLong plus(FractionLong add) {
     if (this.denominator == add.denominator) {
       return new FractionLong(add.numerator + this.numerator, this.denominator);
     } else {
