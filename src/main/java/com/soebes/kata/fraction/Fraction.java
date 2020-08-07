@@ -55,7 +55,7 @@ public class Fraction implements Comparable<Fraction> {
     }
   }
 
-  public Fraction minus(Fraction subtrahend) {
+  public Fraction subtract(Fraction subtrahend) {
     if (this.denominator == subtrahend.denominator) {
       return new Fraction(this.numerator - subtrahend.numerator, this.denominator);
     } else {
@@ -88,7 +88,7 @@ public class Fraction implements Comparable<Fraction> {
     if (compareTo == null) {
       throw new NullPointerException("compareTo is not allowed to be null.");
     }
-    return this.minus(compareTo).signum();
+    return this.subtract(compareTo).signum();
   }
 
   /**

@@ -233,7 +233,7 @@ class FractionTest {
       Fraction minuend = new Fraction(2, 3);
       Fraction subtrahend = new Fraction(1, 5);
 
-      Fraction difference = minuend.minus(subtrahend);
+      Fraction difference = minuend.subtract(subtrahend);
 
       assertThat(difference).isEqualTo(new Fraction(7, 15));
     }
@@ -243,7 +243,7 @@ class FractionTest {
       Fraction minuend = new Fraction(5, 9);
       Fraction subtrahend = new Fraction(2, 9);
 
-      Fraction difference = minuend.minus(subtrahend);
+      Fraction difference = minuend.subtract(subtrahend);
 
       assertThat(difference).isEqualTo(new Fraction(3, 9));
     }
@@ -253,7 +253,7 @@ class FractionTest {
       Fraction minuend = new Fraction(21, 7);
       Fraction subtrahend = new Fraction(12, 7);
 
-      Fraction difference = minuend.minus(subtrahend);
+      Fraction difference = minuend.subtract(subtrahend);
 
       assertThat(difference).isEqualTo(new Fraction(9, 7));
     }
