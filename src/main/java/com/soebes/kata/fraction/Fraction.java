@@ -51,15 +51,21 @@ public class Fraction implements Comparable<Fraction> {
     if (this.denominator == add.denominator) {
       return new Fraction(add.numerator + this.numerator, this.denominator);
     } else {
-      return new Fraction(add.numerator * this.denominator + this.numerator * add.denominator, add.denominator * this.denominator);
+      int numerator = add.numerator * this.denominator + this.numerator * add.denominator;
+      int denominator = add.denominator * this.denominator;
+      return new Fraction(numerator, denominator);
     }
   }
 
   public Fraction subtract(Fraction subtrahend) {
     if (this.denominator == subtrahend.denominator) {
-      return new Fraction(this.numerator - subtrahend.numerator, this.denominator);
+      int numerator = this.numerator - subtrahend.numerator;
+      int denominator = this.denominator;
+      return new Fraction(numerator, denominator);
     } else {
-      return new Fraction(this.numerator * subtrahend.denominator - this.denominator * subtrahend.numerator, subtrahend.denominator * this.denominator);
+      int numerator = this.numerator * subtrahend.denominator - this.denominator * subtrahend.numerator;
+      int denominator = subtrahend.denominator * this.denominator;
+      return new Fraction(numerator, denominator);
     }
   }
 
@@ -72,7 +78,9 @@ public class Fraction implements Comparable<Fraction> {
   }
 
   public Fraction pow(int power) {
-    return new Fraction(BigInteger.valueOf(this.numerator).pow(power).intValueExact(), BigInteger.valueOf(this.denominator).pow(power).intValueExact());
+    int numerator = BigInteger.valueOf(this.numerator).pow(power).intValueExact();
+    int denominator = BigInteger.valueOf(this.denominator).pow(power).intValueExact();
+    return new Fraction(numerator, denominator);
   }
 
   public int numerator() {
