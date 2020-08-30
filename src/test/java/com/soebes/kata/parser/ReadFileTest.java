@@ -19,16 +19,41 @@ package com.soebes.kata.parser;
  * under the License.
  */
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.soebes.kata.parser.ReadFile.removeWhitespaceLines;
 
 class ReadFileTest {
 
+
+  @Test
+  void name() throws IOException {
+    String pathToResource = this.getClass().getResource("/fractions.input").getPath();
+    removeWhitespaceLines(Path.of(pathToResource))
+        .flatMapToInt(s -> s.chars())
+        .forEach(s -> System.out.println("s = " + s));
+
+    List<String> a = List.of("A", "B", "C", "D");
+  }
+
+  @Test
+  @DisplayName("ShouldReadLinesAndSeparateThem")
+  void shouldReadLinesAndSeparateThem() throws IOException {
+    String pathToResource = this.getClass().getResource("/fractions.input").getPath();
+    List<String> collect = removeWhitespaceLines(Path.of(pathToResource)).collect(Collectors.toList());
+    for (String s : collect) {
+      for (int i = 0; i < s.length(); i++) {
+        char c = s.charAt(i);
+        System.out.println("c = " + c);
+      }
+    }
+  }
 
   static class XXX {
 
@@ -45,24 +70,6 @@ class ReadFileTest {
       }
     }
 
-  }
-
-  enum Operators {
-    Plus,
-    Minus,
-    Multiply,
-    Divide,
-    Power
-  }
-
-  @Test
-  void name() throws IOException {
-    String pathToResource = this.getClass().getResource("/fractions.input").getPath();
-    removeWhitespaceLines(Path.of(pathToResource))
-        .flatMapToInt(s -> s.chars())
-        .forEach(s -> System.out.println("s = " + s));
-
-    List<String> a = List.of("A", "B", "C", "D");
   }
 
 }

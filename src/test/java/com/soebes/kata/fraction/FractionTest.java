@@ -50,7 +50,7 @@ class FractionTest {
   class DoubleValue {
 
     @Test
-    void fraction_to_double() {
+    void  fraction_to_double() {
       Fraction fraction = new Fraction(1, 1);
       assertThat(fraction.doubleValue()).isEqualTo(1.0, Offset.offset(1E-6));
     }
