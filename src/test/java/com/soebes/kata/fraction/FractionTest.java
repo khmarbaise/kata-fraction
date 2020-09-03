@@ -176,7 +176,7 @@ class FractionTest {
       Fraction fraction = new Fraction(0, 6);
 
       assertThat(fraction.numerator()).isZero();
-      assertThat(fraction.denominator()).isEqualTo(1);
+      assertThat(fraction.denominator()).isOne();
     }
 
     @Test
