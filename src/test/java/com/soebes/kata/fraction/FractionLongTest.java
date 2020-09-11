@@ -38,6 +38,7 @@ class FractionLongTest {
 
   @Nested
   class BigDecimalValue {
+
     @Test
     void fraction_to_bigdecimal() {
       FractionLong fraction = new FractionLong(1, 1);
@@ -47,6 +48,7 @@ class FractionLongTest {
 
   @Nested
   class DoubleValue {
+
     @Test
     void fraction_to_double() {
       FractionLong fraction = new FractionLong(1, 1);
@@ -56,6 +58,7 @@ class FractionLongTest {
 
   @Nested
   class Negate {
+
     @Test
     void fraction_negate() {
       FractionLong fraction = new FractionLong(1, 1);
@@ -79,6 +82,7 @@ class FractionLongTest {
 
   @Nested
   class Signum {
+
     @Test
     void signum_for_z_pos_n_pos() {
       FractionLong fractionLong = new FractionLong(1, 2);
@@ -106,6 +110,7 @@ class FractionLongTest {
 
   @Nested
   class CompareTo {
+
     @Test
     void fraction_one_identical_to_fraction_two() {
       FractionLong fractionLong_one = new FractionLong(1, 2);
@@ -134,6 +139,7 @@ class FractionLongTest {
 
   @Nested
   class Verification {
+
     @Test
     void hash_code_and_equals() {
       EqualsVerifier.forClass(FractionLong.class).usingGetClass().verify();
@@ -148,6 +154,7 @@ class FractionLongTest {
 
   @Nested
   class InvalideValues {
+
     @Test
     void denominator_is_not_allowed_to_be_zero() {
       assertThatIllegalArgumentException().isThrownBy(() -> new FractionLong(1, 0)).withMessage("denominator is not allowed to be zero.");
@@ -194,6 +201,7 @@ class FractionLongTest {
 
   @Nested
   class Divide {
+
     @Test
     void devide_1_2_by_2_5() {
       FractionLong dividend = new FractionLong(1, 2);
@@ -251,6 +259,7 @@ class FractionLongTest {
 
   @Nested
   class Addition {
+
     @Test
     void chaining_addition_with_improper_fraction_result() {
       FractionLong summand_1 = new FractionLong(1, 2);
