@@ -32,7 +32,7 @@ import static org.apiguardian.api.API.Status.EXPERIMENTAL;
  * @author Karl Heinz Marbaise
  */
 @API(status = EXPERIMENTAL)
-public class Fraction implements Comparable<Fraction> {
+public class Fraction implements Comparable<Fraction>,Operation<Fraction> {
   private final int numerator;
   private final int denominator;
 
