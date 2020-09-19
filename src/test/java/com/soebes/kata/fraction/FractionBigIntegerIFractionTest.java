@@ -26,15 +26,19 @@ import java.math.BigInteger;
  */
 class FractionBigIntegerIFractionTest implements IFractionTest<FractionBigInteger> {
 
-  public FractionBigInteger createSummand1() {
+  public FractionBigInteger createOne() {
+    return new FractionBigInteger(BigInteger.valueOf(1), BigInteger.valueOf(1));
+  }
+
+  public FractionBigInteger createOneAndAHalf() {
     return new FractionBigInteger(BigInteger.valueOf(1), BigInteger.valueOf(2));
   }
 
-  public FractionBigInteger createSummand2() {
+  public FractionBigInteger createOneThrid() {
     return new FractionBigInteger(BigInteger.valueOf(1), BigInteger.valueOf(3));
   }
 
-  public FractionBigInteger createSummand3() {
+  public FractionBigInteger createOneQuarter() {
     return new FractionBigInteger(BigInteger.valueOf(1), BigInteger.valueOf(4));
   }
 

@@ -24,15 +24,21 @@ package com.soebes.kata.fraction;
  */
 class FractionIFractionTest implements IFractionTest<Fraction> {
 
-  public Fraction createSummand1() {
+
+  @Override
+  public Fraction createOne() {
+    return new Fraction(1, 1);
+  }
+
+  public Fraction createOneAndAHalf() {
     return new Fraction(1, 2);
   }
 
-  public Fraction createSummand2() {
+  public Fraction createOneThrid() {
     return new Fraction(1, 3);
   }
 
-  public Fraction createSummand3() {
+  public Fraction createOneQuarter() {
     return new Fraction(1, 4);
   }
 

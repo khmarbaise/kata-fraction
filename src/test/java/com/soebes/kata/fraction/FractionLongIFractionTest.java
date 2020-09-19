@@ -24,15 +24,19 @@ package com.soebes.kata.fraction;
  */
 class FractionLongIFractionTest implements IFractionTest<FractionLong> {
 
-  public FractionLong createSummand1() {
+  public FractionLong createOne() {
+    return new FractionLong(1, 1);
+  }
+
+  public FractionLong createOneAndAHalf() {
     return new FractionLong(1, 2);
   }
 
-  public FractionLong createSummand2() {
+  public FractionLong createOneThrid() {
     return new FractionLong(1, 3);
   }
 
-  public FractionLong createSummand3() {
+  public FractionLong createOneQuarter() {
     return new FractionLong(1, 4);
   }
 
