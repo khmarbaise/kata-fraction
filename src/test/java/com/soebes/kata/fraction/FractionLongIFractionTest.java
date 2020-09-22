@@ -32,7 +32,7 @@ class FractionLongIFractionTest implements IFractionTest<FractionLong> {
     return new FractionLong(1, 2);
   }
 
-  public FractionLong createOneThrid() {
+  public FractionLong createOneThird() {
     return new FractionLong(1, 3);
   }
 

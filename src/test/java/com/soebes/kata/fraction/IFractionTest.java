@@ -12,7 +12,7 @@ interface IFractionTest<T extends Operation<T>> {
 
   T createOneAndAHalf();  // 1/2
 
-  T createOneThrid();  // 1/3
+  T createOneThird();  // 1/3
 
   T createOneQuarter();  // 1/4
 
@@ -22,7 +22,7 @@ interface IFractionTest<T extends Operation<T>> {
   @DisplayName("Create the sum of three summands which chaining the plus class.")
   default void create_sum_of_three_summands_while_chaining_the_plus_calls() {
     T summand_1 = createOneAndAHalf();
-    T summand_2 = createOneThrid();
+    T summand_2 = createOneThird();
     T summand_3 = createOneQuarter();
 
     T sum = summand_1.plus(summand_2).plus(summand_3);

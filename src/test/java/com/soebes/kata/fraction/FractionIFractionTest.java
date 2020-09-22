@@ -34,7 +34,7 @@ class FractionIFractionTest implements IFractionTest<Fraction> {
     return new Fraction(1, 2);
   }
 
-  public Fraction createOneThrid() {
+  public Fraction createOneThird() {
     return new Fraction(1, 3);
   }
 

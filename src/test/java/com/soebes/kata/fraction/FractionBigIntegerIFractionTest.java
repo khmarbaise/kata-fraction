@@ -34,7 +34,7 @@ class FractionBigIntegerIFractionTest implements IFractionTest<FractionBigIntege
     return new FractionBigInteger(BigInteger.valueOf(1), BigInteger.valueOf(2));
   }
 
-  public FractionBigInteger createOneThrid() {
+  public FractionBigInteger createOneThird() {
     return new FractionBigInteger(BigInteger.valueOf(1), BigInteger.valueOf(3));
   }
 
