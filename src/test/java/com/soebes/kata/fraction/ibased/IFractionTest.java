@@ -1,10 +1,11 @@
-package com.soebes.kata.fraction;
+package com.soebes.kata.fraction.ibased;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import com.soebes.kata.fraction.Operation;
 import org.assertj.core.data.Offset;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 interface IFractionTest<T extends Operation<T>> {
 

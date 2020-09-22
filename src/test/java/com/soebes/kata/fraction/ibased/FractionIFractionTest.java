@@ -1,4 +1,4 @@
-package com.soebes.kata.fraction;
+package com.soebes.kata.fraction.ibased;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -19,29 +19,33 @@ package com.soebes.kata.fraction;
  * under the License.
  */
 
+import com.soebes.kata.fraction.Fraction;
+
 /**
  * Test for {@link Fraction}.
  */
-class FractionLongIFractionTest implements IFractionTest<FractionLong> {
+class FractionIFractionTest implements IFractionTest<Fraction> {
 
-  public FractionLong createOne() {
-    return new FractionLong(1, 1);
+
+  @Override
+  public Fraction createOne() {
+    return new Fraction(1, 1);
   }
 
-  public FractionLong createOneAndAHalf() {
-    return new FractionLong(1, 2);
+  public Fraction createOneAndAHalf() {
+    return new Fraction(1, 2);
   }
 
-  public FractionLong createOneThird() {
-    return new FractionLong(1, 3);
+  public Fraction createOneThird() {
+    return new Fraction(1, 3);
   }
 
-  public FractionLong createOneQuarter() {
-    return new FractionLong(1, 4);
+  public Fraction createOneQuarter() {
+    return new Fraction(1, 4);
   }
 
-  public FractionLong expectedSum() {
-    return new FractionLong(26,24);
+  public Fraction expectedSum() {
+    return new Fraction(26,24);
   }
 
 }

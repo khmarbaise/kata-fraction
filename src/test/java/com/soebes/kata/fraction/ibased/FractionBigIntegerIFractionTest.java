@@ -1,4 +1,4 @@
-package com.soebes.kata.fraction;
+package com.soebes.kata.fraction.ibased;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -19,6 +19,8 @@ package com.soebes.kata.fraction;
  * under the License.
  */
 
+import com.soebes.kata.fraction.Fraction;
+import com.soebes.kata.fraction.FractionBigInteger;
 import java.math.BigInteger;
 
 /**
