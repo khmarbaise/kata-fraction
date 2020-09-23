@@ -15,12 +15,9 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.DynamicContainer.dynamicContainer;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
-@DisplayName("A dynamic test")
 class DynamicFractionTest {
 
     private static final Predicate<Class<?>> isNotInterfaceAndNotMember = s -> !s.isInterface()
@@ -39,7 +36,10 @@ class DynamicFractionTest {
                     dynamicContainer(theClass.getSimpleName(), Stream.of(
 //                            dynamicTest("isNotNullTest-" + theClass.getSimpleName(), isNotNullTest(theClass)),
 //                            dynamicTest("T2-" + theClass.getSimpleName(), () -> assertThat(theClass.isInterface()).isFalse()),
-                            dynamicTest("1/3+2/3 = 3/3 plus()", () -> addition_1_3_plus_2_3(theClass))
+                            dynamicContainer("Addition", Stream.of(
+                                    dynamicTest("1/3+2/3 = 1/1 plus()", () -> addition_1_3_plus_2_3(theClass)))
+                            )
+
                         )
                     )
                 );
@@ -74,7 +74,7 @@ class DynamicFractionTest {
 
     Object convertToParameterType(Class<?> parameterType, Long value) {
         if (int.class.equals(parameterType)) {
-            return Integer.valueOf(value.intValue());
+            return value.intValue();
         } else if (long.class.equals(parameterType)) {
             return Long.valueOf(value);
         } else if (BigInteger.class.equals(parameterType)) {
@@ -85,20 +85,17 @@ class DynamicFractionTest {
     }
 
 
-    @TestFactory
-    Stream<DynamicNode> dynamicTestsWithContainers() {
-        return Stream.of("A", "B", "C")
-                .map(input -> dynamicContainer("Container " + input, Stream.of(
-                        dynamicTest("not null", () -> assertNotNull(input)),
-                        dynamicContainer("properties", Stream.of(
-                                dynamicTest("length > 0", () -> assertTrue(input.length() > 0)),
-                                dynamicTest("not empty", () -> checkForValue(input))
-                        ))
-                )));
-    }
+//    @TestFactory
+//    Stream<DynamicNode> dynamicTestsWithContainers() {
+//        return Stream.of("A", "B", "C")
+//                .map(input -> dynamicContainer("Container " + input, Stream.of(
+//                        dynamicTest("not null", () -> assertNotNull(input)),
+//                        dynamicContainer("properties", Stream.of(
+//                                dynamicTest("length > 0", () -> assertTrue(input.length() > 0)),
+//                                dynamicTest("not empty", () -> checkForValue(input))
+//                        ))
+//                )));
+//    }
 
-    private void checkForValue(String input) {
-        assertTrue(input.isEmpty());
-    }
 }
 
