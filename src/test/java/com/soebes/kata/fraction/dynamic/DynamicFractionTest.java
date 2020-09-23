@@ -18,7 +18,9 @@ import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 @DisplayName("A dynamic test")
 class DynamicFractionTest {
 
-    private static final Predicate<Class<?>> isNotInterfaceAndNotMember = s -> !s.isInterface() && !s.isMemberClass();
+    private static final Predicate<Class<?>> isNotInterfaceAndNotMember = s -> !s.isInterface()
+            && !s.isMemberClass()
+            && s.getSimpleName().startsWith("Fraction");
     private static final Predicate<String> isNoTest = s -> !s.endsWith("Test");
 
     @Test
@@ -26,6 +28,7 @@ class DynamicFractionTest {
         List<Class<?>> allClassesInPackage = ReflectionSupport
                 .findAllClassesInPackage("com.soebes.kata.fraction", isNotInterfaceAndNotMember, isNoTest);
         allClassesInPackage.forEach(getXXXX());
+
     }
 
     private Consumer<Class<?>> getXXXX() {
