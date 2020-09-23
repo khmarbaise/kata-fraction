@@ -15,6 +15,8 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.DynamicContainer.dynamicContainer;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
@@ -23,7 +25,7 @@ class DynamicFractionTest {
 
     private static final Predicate<Class<?>> isNotInterfaceAndNotMember = s -> !s.isInterface()
             && !s.isMemberClass()
-            && s.getSimpleName().equals("Fraction");
+            && s.getSimpleName().startsWith("Fraction");
     private static final Predicate<String> isNoTest = s -> !s.endsWith("Test");
 
     @TestFactory
@@ -47,7 +49,7 @@ class DynamicFractionTest {
         return () -> assertThat(aClass.getSimpleName()).isNotNull();
     }
 
-    private Executable addition_1_3_plus_2_3(Class<?> aClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    private void addition_1_3_plus_2_3(Class<?> aClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Constructor<?>[] theConstructors = aClass.getConstructors();
         if (theConstructors.length != 1) {
             throw new IllegalArgumentException("Mehr als ein CTor definiert.");
@@ -64,9 +66,10 @@ class DynamicFractionTest {
 
         Object sum = plusMethod.invoke(summand_1, summand_2);
 
-        Object expectedResult = constructors.newInstance(convertToParameterType(parameterTypes[0], 1L), convertToParameterType(parameterTypes[0], 2L));
-        assertThat(sum).isEqualTo(expectedResult);
-        return () -> {};
+        Object expectedResult = constructors.newInstance(convertToParameterType(parameterTypes[0], 1L), convertToParameterType(parameterTypes[0], 1L));
+        assertThat(sum)
+                .as("Sum %s to be equal to expected value %s", sum, expectedResult)
+                .isEqualTo(expectedResult);
     }
 
     Object convertToParameterType(Class<?> parameterType, Long value) {
@@ -82,5 +85,20 @@ class DynamicFractionTest {
     }
 
 
+    @TestFactory
+    Stream<DynamicNode> dynamicTestsWithContainers() {
+        return Stream.of("A", "B", "C")
+                .map(input -> dynamicContainer("Container " + input, Stream.of(
+                        dynamicTest("not null", () -> assertNotNull(input)),
+                        dynamicContainer("properties", Stream.of(
+                                dynamicTest("length > 0", () -> assertTrue(input.length() > 0)),
+                                dynamicTest("not empty", () -> checkForValue(input))
+                        ))
+                )));
+    }
+
+    private void checkForValue(String input) {
+        assertTrue(input.isEmpty());
+    }
 }
 
