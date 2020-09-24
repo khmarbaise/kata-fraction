@@ -82,6 +82,15 @@ class DynamicFractionTest {
         } else {
             throw new IllegalArgumentException("Unbekannter Typ");
         }
+        /*
+                return switch (parameterType) {
+            case int.class -> value.intValue();
+            case long.class -> Long.valueOf(value);
+            case BigInteger.class -> BigInteger.valueOf(value);
+            default -> throw new IllegalArgumentException("");
+        };
+
+         */
     }
 
 
