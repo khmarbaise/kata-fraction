@@ -35,10 +35,11 @@ class DynamicFractionTest {
                         dynamicContainer(theClass.getSimpleName(), Stream.of(
                                 dynamicContainer("Addition", Stream.of(
                                         dynamicTest("1/3+2/3 = 1/1", () -> addition_1_3_plus_2_3(theClass)),
-                                        dynamicTest("2/3+1/5 = 13/15", () -> addition_2_3_plus_1_5(theClass))
-                                        )
+                                        dynamicTest("2/3+1/5 = 13/15", () -> addition_2_3_plus_1_5(theClass)),
+                                        dynamicTest("1/2+1/3+1/4 = 13/12", () -> addition_1_2_and_1_3_and_1_4(theClass))
+                                    )
                                 )
-                                )
+                            )
                         )
                 );
     }
@@ -78,6 +79,31 @@ class DynamicFractionTest {
         Object sum = plusMethod.invoke(summand_1, summand_2);
 
         Object expectedResult = newInstance(constructors, parameterType, 13L, 15L);
+        assertThat(sum)
+                .as("Sum %s to be equal to expected value %s", sum, expectedResult)
+                .isEqualTo(expectedResult);
+    }
+
+    private void addition_1_2_and_1_3_and_1_4(Class<?> aClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        Constructor<?>[] theConstructors = getConstructors(aClass);
+
+        Class<?> parameterType = theConstructors[0].getParameterTypes()[0];
+
+        Constructor<?> constructors = aClass.getConstructor(theConstructors[0].getParameterTypes());
+
+        Object summand_1 = newInstance(constructors, parameterType, 1L, 2L);
+        Object summand_2 = newInstance(constructors, parameterType, 1L, 3L);
+        Object summand_3 = newInstance(constructors, parameterType, 1L, 4L);
+
+        Method plusMethodFirst = summand_1.getClass().getMethod("plus", summand_1.getClass());
+
+        Object sum1 = plusMethodFirst.invoke(summand_1, summand_2);
+
+        Method plusMethodSecond = sum1.getClass().getMethod("plus", summand_1.getClass());
+
+        Object sum = plusMethodSecond.invoke(sum1, summand_3);
+
+        Object expectedResult = newInstance(constructors, parameterType, 13L, 12L);
         assertThat(sum)
                 .as("Sum %s to be equal to expected value %s", sum, expectedResult)
                 .isEqualTo(expectedResult);
