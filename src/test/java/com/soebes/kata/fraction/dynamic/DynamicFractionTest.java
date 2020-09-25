@@ -32,26 +32,19 @@ class DynamicFractionTest {
 
         return allClassesInPackage.stream()
                 .map(theClass ->
-                                dynamicContainer(theClass.getSimpleName(), Stream.of(
-//                            dynamicTest("isNotNullTest-" + theClass.getSimpleName(), isNotNullTest(theClass)),
-//                            dynamicTest("T2-" + theClass.getSimpleName(), () -> assertThat(theClass.isInterface()).isFalse()),
-                                        dynamicContainer("Addition", Stream.of(
-                                                dynamicTest("1/3+2/3 = 1/1 plus()", () -> addition_1_3_plus_2_3(theClass)))
-                                        )
-
+                        dynamicContainer(theClass.getSimpleName(), Stream.of(
+                                dynamicContainer("Addition", Stream.of(
+                                        dynamicTest("1/3+2/3 = 1/1", () -> addition_1_3_plus_2_3(theClass)),
+                                        dynamicTest("2/3+1/5 = 13/15", () -> addition_2_3_plus_1_5(theClass))
                                         )
                                 )
+                                )
+                        )
                 );
     }
 
     private void addition_1_3_plus_2_3(Class<?> aClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        Constructor<?>[] theConstructors = aClass.getConstructors();
-        if (theConstructors.length != 1) {
-            throw new IllegalArgumentException("More than one constructor defined.");
-        }
-        if (theConstructors[0].getParameterTypes().length != 2) {
-            throw new IllegalArgumentException("More than two parameters in constructor.");
-        }
+        Constructor<?>[] theConstructors = getConstructors(aClass);
 
         Class<?> parameterType = theConstructors[0].getParameterTypes()[0];
 
@@ -70,6 +63,37 @@ class DynamicFractionTest {
                 .isEqualTo(expectedResult);
     }
 
+    private void addition_2_3_plus_1_5(Class<?> aClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        Constructor<?>[] theConstructors = getConstructors(aClass);
+
+        Class<?> parameterType = theConstructors[0].getParameterTypes()[0];
+
+        Constructor<?> constructors = aClass.getConstructor(theConstructors[0].getParameterTypes());
+
+        Object summand_1 = newInstance(constructors, parameterType, 2L, 3L);
+        Object summand_2 = newInstance(constructors, parameterType, 1L, 5L);
+
+        Method plusMethod = summand_1.getClass().getMethod("plus", summand_1.getClass());
+
+        Object sum = plusMethod.invoke(summand_1, summand_2);
+
+        Object expectedResult = newInstance(constructors, parameterType, 13L, 15L);
+        assertThat(sum)
+                .as("Sum %s to be equal to expected value %s", sum, expectedResult)
+                .isEqualTo(expectedResult);
+    }
+
+    private Constructor<?>[] getConstructors(Class<?> aClass) {
+        Constructor<?>[] theConstructors = aClass.getConstructors();
+        if (theConstructors.length != 1) {
+            throw new IllegalArgumentException("More than one constructor defined.");
+        }
+        if (theConstructors[0].getParameterTypes().length != 2) {
+            throw new IllegalArgumentException("More than two parameters in constructor.");
+        }
+        return theConstructors;
+    }
+
     Object newInstance(Constructor<?> constructor, Class<?> parameterType, long first, long second) throws IllegalAccessException, InvocationTargetException, InstantiationException {
         return constructor.newInstance(convertToParameterType(parameterType, first), convertToParameterType(parameterType, second));
     }
@@ -84,29 +108,7 @@ class DynamicFractionTest {
         } else {
             throw new IllegalArgumentException("Unbekannter Typ");
         }
-        /*
-                return switch (parameterType) {
-            case int.class -> value.intValue();
-            case long.class -> Long.valueOf(value);
-            case BigInteger.class -> BigInteger.valueOf(value);
-            default -> throw new IllegalArgumentException("");
-        };
-
-         */
     }
-
-
-//    @TestFactory
-//    Stream<DynamicNode> dynamicTestsWithContainers() {
-//        return Stream.of("A", "B", "C")
-//                .map(input -> dynamicContainer("Container " + input, Stream.of(
-//                        dynamicTest("not null", () -> assertNotNull(input)),
-//                        dynamicContainer("properties", Stream.of(
-//                                dynamicTest("length > 0", () -> assertTrue(input.length() > 0)),
-//                                dynamicTest("not empty", () -> checkForValue(input))
-//                        ))
-//                )));
-//    }
 
 }
 
