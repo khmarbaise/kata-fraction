@@ -47,7 +47,10 @@ class DynamicFractionTest {
     private void addition_1_3_plus_2_3(Class<?> aClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Constructor<?>[] theConstructors = aClass.getConstructors();
         if (theConstructors.length != 1) {
-            throw new IllegalArgumentException("Mehr als ein CTor definiert.");
+            throw new IllegalArgumentException("More than one constructor defined.");
+        }
+        if (theConstructors[0].getParameterTypes().length != 2) {
+            throw new IllegalArgumentException("More than two parameters in constructor.");
         }
 
         Class<?> parameterType = theConstructors[0].getParameterTypes()[0];
