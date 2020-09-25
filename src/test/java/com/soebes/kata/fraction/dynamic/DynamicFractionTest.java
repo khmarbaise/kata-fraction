@@ -3,7 +3,6 @@ package com.soebes.kata.fraction.dynamic;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicNode;
 import org.junit.jupiter.api.TestFactory;
-import org.junit.jupiter.api.function.Executable;
 import org.junit.platform.commons.support.ReflectionSupport;
 
 import java.lang.reflect.Constructor;
@@ -45,10 +44,6 @@ class DynamicFractionTest {
                 );
     }
 
-    private Executable isNotNullTest(Class<?> aClass) {
-        return () -> assertThat(aClass.getSimpleName()).isNotNull();
-    }
-
     private void addition_1_3_plus_2_3(Class<?> aClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Constructor<?>[] theConstructors = aClass.getConstructors();
         if (theConstructors.length != 1) {
@@ -57,31 +52,23 @@ class DynamicFractionTest {
 
         Class<?> parameterType = theConstructors[0].getParameterTypes()[0];
 
-        Constructor<?> constructors = aClass.getConstructor(parameterType);
+        Constructor<?> constructors = aClass.getConstructor(theConstructors[0].getParameterTypes());
 
-        Object summand_1 = constructors.newInstance(one(parameterType), three(parameterType));
-        Object summand_2 = constructors.newInstance(two(parameterType), three(parameterType));
+        Object summand_1 = newInstance(constructors, parameterType, 1L, 3L);
+        Object summand_2 = newInstance(constructors, parameterType, 2L, 3L);
 
         Method plusMethod = summand_1.getClass().getMethod("plus", summand_1.getClass());
 
         Object sum = plusMethod.invoke(summand_1, summand_2);
 
-        Object expectedResult = constructors.newInstance(one(parameterType), one(parameterType));
+        Object expectedResult = newInstance(constructors, parameterType, 1L, 1L);
         assertThat(sum)
                 .as("Sum %s to be equal to expected value %s", sum, expectedResult)
                 .isEqualTo(expectedResult);
     }
 
-    Object one(Class<?> parameterType) {
-        return convertToParameterType(parameterType, 1L);
-    }
-
-    Object two(Class<?> parameterType) {
-        return convertToParameterType(parameterType, 2L);
-    }
-
-    Object three(Class<?> parameterType) {
-        return convertToParameterType(parameterType, 3L);
+    Object newInstance(Constructor<?> constructor, Class<?> parameterType, long first, long second) throws IllegalAccessException, InvocationTargetException, InstantiationException {
+        return constructor.newInstance(convertToParameterType(parameterType, first), convertToParameterType(parameterType, second));
     }
 
     Object convertToParameterType(Class<?> parameterType, Long value) {
