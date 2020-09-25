@@ -33,15 +33,15 @@ class DynamicFractionTest {
 
         return allClassesInPackage.stream()
                 .map(theClass ->
-                    dynamicContainer(theClass.getSimpleName(), Stream.of(
+                                dynamicContainer(theClass.getSimpleName(), Stream.of(
 //                            dynamicTest("isNotNullTest-" + theClass.getSimpleName(), isNotNullTest(theClass)),
 //                            dynamicTest("T2-" + theClass.getSimpleName(), () -> assertThat(theClass.isInterface()).isFalse()),
-                            dynamicContainer("Addition", Stream.of(
-                                    dynamicTest("1/3+2/3 = 1/1 plus()", () -> addition_1_3_plus_2_3(theClass)))
-                            )
+                                        dynamicContainer("Addition", Stream.of(
+                                                dynamicTest("1/3+2/3 = 1/1 plus()", () -> addition_1_3_plus_2_3(theClass)))
+                                        )
 
-                        )
-                    )
+                                        )
+                                )
                 );
     }
 
@@ -55,21 +55,33 @@ class DynamicFractionTest {
             throw new IllegalArgumentException("Mehr als ein CTor definiert.");
         }
 
-        Class<?>[] parameterTypes = theConstructors[0].getParameterTypes();
+        Class<?> parameterType = theConstructors[0].getParameterTypes()[0];
 
-        Constructor<?> constructors = aClass.getConstructor(parameterTypes);
+        Constructor<?> constructors = aClass.getConstructor(parameterType);
 
-        Object summand_1 = constructors.newInstance(convertToParameterType(parameterTypes[0], 1L), convertToParameterType(parameterTypes[0], 3L));
-        Object summand_2 = constructors.newInstance(convertToParameterType(parameterTypes[0], 2L), convertToParameterType(parameterTypes[0], 3L));
+        Object summand_1 = constructors.newInstance(one(parameterType), three(parameterType));
+        Object summand_2 = constructors.newInstance(two(parameterType), three(parameterType));
 
         Method plusMethod = summand_1.getClass().getMethod("plus", summand_1.getClass());
 
         Object sum = plusMethod.invoke(summand_1, summand_2);
 
-        Object expectedResult = constructors.newInstance(convertToParameterType(parameterTypes[0], 1L), convertToParameterType(parameterTypes[0], 1L));
+        Object expectedResult = constructors.newInstance(one(parameterType), one(parameterType));
         assertThat(sum)
                 .as("Sum %s to be equal to expected value %s", sum, expectedResult)
                 .isEqualTo(expectedResult);
+    }
+
+    Object one(Class<?> parameterType) {
+        return convertToParameterType(parameterType, 1L);
+    }
+
+    Object two(Class<?> parameterType) {
+        return convertToParameterType(parameterType, 2L);
+    }
+
+    Object three(Class<?> parameterType) {
+        return convertToParameterType(parameterType, 3L);
     }
 
     Object convertToParameterType(Class<?> parameterType, Long value) {
