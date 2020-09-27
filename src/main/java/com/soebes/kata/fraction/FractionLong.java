@@ -51,15 +51,21 @@ public class FractionLong implements Comparable<FractionLong>, Operation<Fractio
     if (this.denominator == add.denominator) {
       return new FractionLong(add.numerator + this.numerator, this.denominator);
     } else {
-      return new FractionLong(add.numerator * this.denominator + this.numerator * add.denominator, add.denominator * this.denominator);
+      long numerator = add.numerator * this.denominator + this.numerator * add.denominator;
+      long denominator = add.denominator * this.denominator;
+      return new FractionLong(numerator, denominator);
     }
   }
 
   public FractionLong subtract(FractionLong subtrahend) {
     if (this.denominator == subtrahend.denominator) {
-      return new FractionLong(this.numerator - subtrahend.numerator, this.denominator);
+      long numerator = this.numerator - subtrahend.numerator;
+      long denominator = this.denominator;
+      return new FractionLong(numerator, denominator);
     } else {
-      return new FractionLong(this.numerator * subtrahend.denominator - this.denominator * subtrahend.numerator, subtrahend.denominator * this.denominator);
+      long numerator = this.numerator * subtrahend.denominator - this.denominator * subtrahend.numerator;
+      long denominator = subtrahend.denominator * this.denominator;
+      return new FractionLong(numerator, denominator);
     }
   }
 
@@ -72,7 +78,9 @@ public class FractionLong implements Comparable<FractionLong>, Operation<Fractio
   }
 
   public FractionLong pow(int power) {
-    return new FractionLong(BigInteger.valueOf(this.numerator).pow(power).intValueExact(), BigInteger.valueOf(this.denominator).pow(power).intValueExact());
+    int numerator = BigInteger.valueOf(this.numerator).pow(power).intValueExact();
+    int denominator = BigInteger.valueOf(this.denominator).pow(power).intValueExact();
+    return new FractionLong(numerator, denominator);
   }
 
   public long numerator() {
