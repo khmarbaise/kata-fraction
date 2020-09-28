@@ -47,40 +47,40 @@ class DynamicFractionTest {
     }
 
     private static void addition_1_3_plus_2_3(Class<?> aClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        Constructor<?>[] theConstructors = getConstructors(aClass);
 
-        Class<?> parameterType = theConstructors[0].getParameterTypes()[0];
+        Class<?>[] parameterTypes = getConstructors(aClass)[0].getParameterTypes();
+        Class<?> parameterType = parameterTypes[0];
 
-        Constructor<?> constructors = aClass.getConstructor(theConstructors[0].getParameterTypes());
+        Constructor<?> constructor = aClass.getConstructor(parameterTypes);
 
-        Object summand_1 = newInstance(constructors, parameterType, 1L, 3L);
-        Object summand_2 = newInstance(constructors, parameterType, 2L, 3L);
+        Object summand_1 = newInstance(constructor, parameterType, 1L, 3L);
+        Object summand_2 = newInstance(constructor, parameterType, 2L, 3L);
 
         Method plusMethod = summand_1.getClass().getMethod("plus", summand_1.getClass());
 
         Object sum = plusMethod.invoke(summand_1, summand_2);
 
-        Object expectedResult = newInstance(constructors, parameterType, 1L, 1L);
+        Object expectedResult = newInstance(constructor, parameterType, 1L, 1L);
         assertThat(sum)
                 .as("Sum %s to be equal to expected value %s", sum, expectedResult)
                 .isEqualTo(expectedResult);
     }
 
     private static void addition_2_3_plus_1_5(Class<?> aClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        Constructor<?>[] theConstructors = getConstructors(aClass);
 
-        Class<?> parameterType = theConstructors[0].getParameterTypes()[0];
+        Constructor<?> theConstructor = getConstructors(aClass)[0];
+        Class<?> parameterType = theConstructor.getParameterTypes()[0];
 
-        Constructor<?> constructors = aClass.getConstructor(theConstructors[0].getParameterTypes());
+        Constructor<?> constructor = aClass.getConstructor(theConstructor.getParameterTypes());
 
-        Object summand_1 = newInstance(constructors, parameterType, 2L, 3L);
-        Object summand_2 = newInstance(constructors, parameterType, 1L, 5L);
+        Object summand_1 = newInstance(constructor, parameterType, 2L, 3L);
+        Object summand_2 = newInstance(constructor, parameterType, 1L, 5L);
 
         Method plusMethod = summand_1.getClass().getMethod("plus", summand_1.getClass());
 
         Object sum = plusMethod.invoke(summand_1, summand_2);
 
-        Object expectedResult = newInstance(constructors, parameterType, 13L, 15L);
+        Object expectedResult = newInstance(constructor, parameterType, 13L, 15L);
         assertThat(sum)
                 .as("Sum %s to be equal to expected value %s", sum, expectedResult)
                 .isEqualTo(expectedResult);
