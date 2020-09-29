@@ -25,7 +25,7 @@ public class ReadFile {
    * @throws IOException in case of failure.
    */
   static Stream<String> readLinesWithoutComment(Path fileToRead) throws IOException {
-    return Files.lines(fileToRead).filter(Predicate.not(IS_COMMENT).or(IS_EMPTY_LINE));
+    return Files.lines(fileToRead).filter(Predicate.not(IS_COMMENT.or(IS_EMPTY_LINE)));
   }
 
   static Stream<String> removeWhitespaceLines(Path fileToRead) throws IOException {
