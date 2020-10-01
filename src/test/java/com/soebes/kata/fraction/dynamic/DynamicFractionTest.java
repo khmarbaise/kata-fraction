@@ -24,7 +24,7 @@ class DynamicFractionTest {
     private static final Predicate<String> isNoTest = s -> !s.endsWith("Test");
 
     private static final Function<Class<?>, Stream<DynamicNode>> ADDITION_TESTS = theClass -> Stream.of(
-            dynamicTest("1/3+2/3 = 1/1", () -> addition_1_3_plus_2_3(theClass)),
+            dynamicTest("1/3+2/3 = 1/1", () -> addition_1_3_plus_2_3_should_be_3_3(theClass)),
             dynamicTest("2/3+1/5 = 13/15", () -> addition_2_3_plus_1_5_should_be_13_15(theClass)),
             dynamicTest("1/2+1/3+1/4 = 13/12", () -> addition_1_2_and_1_3_and_1_4(theClass)),
             dynamicTest("1/3+2/3 = 1/1", () -> addition_1_3_plus_2_3_should_be_1_1_reduced(theClass))

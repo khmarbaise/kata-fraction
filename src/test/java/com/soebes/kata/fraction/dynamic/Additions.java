@@ -9,28 +9,39 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class Additions {
 
-    static void addition_1_3_plus_2_3(Class<?> aClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        add_a_plus_b_result_c(aClass, 1L, 2L, 3L, 3L, 3L);
-    }
-
-    static void addition_2_3_plus_1_5_should_be_13_15(Class<?> aClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        add_a_plus_b_result_c(aClass, 2L, 1L, 5L, 13L, 15L);
-    }
-
-    private static void add_a_plus_b_result_c(Class<?> aClass, long summ1Numerator, long summ1Denominator, long summ2Numerator, long sumNumerator, long sumDenominator) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    static void addition_1_3_plus_2_3_should_be_3_3(Class<?> aClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Constructor<?> theConstructor = getConstructors(aClass)[0];
         Class<?> parameterType = theConstructor.getParameterTypes()[0];
 
         Constructor<?> constructor = aClass.getConstructor(theConstructor.getParameterTypes());
 
-        Object summand_1 = newInstance(constructor, parameterType, summ1Numerator, 3L);
-        Object summand_2 = newInstance(constructor, parameterType, summ1Denominator, summ2Numerator);
+        Object summand_1 = newInstance(constructor, parameterType, 1L, 3L);
+        Object summand_2 = newInstance(constructor, parameterType, 2L, 3L);
 
         Method plusMethod = summand_1.getClass().getMethod("plus", summand_1.getClass());
 
         Object sum = plusMethod.invoke(summand_1, summand_2);
 
-        Object expectedResult = newInstance(constructor, parameterType, sumNumerator, sumDenominator);
+        Object expectedResult = newInstance(constructor, parameterType, 3L, 3L);
+        assertThat(sum)
+                .as("Sum %s to be equal to expected value %s", sum, expectedResult)
+                .isEqualTo(expectedResult);
+    }
+
+    static void addition_2_3_plus_1_5_should_be_13_15(Class<?> aClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        Constructor<?> theConstructor = getConstructors(aClass)[0];
+        Class<?> parameterType = theConstructor.getParameterTypes()[0];
+
+        Constructor<?> constructor = aClass.getConstructor(theConstructor.getParameterTypes());
+
+        Object summand_1 = newInstance(constructor, parameterType, 2L, 3L);
+        Object summand_2 = newInstance(constructor, parameterType, 1L, 5L);
+
+        Method plusMethod = summand_1.getClass().getMethod("plus", summand_1.getClass());
+
+        Object sum = plusMethod.invoke(summand_1, summand_2);
+
+        Object expectedResult = newInstance(constructor, parameterType, 13L, 15L);
         assertThat(sum)
                 .as("Sum %s to be equal to expected value %s", sum, expectedResult)
                 .isEqualTo(expectedResult);
