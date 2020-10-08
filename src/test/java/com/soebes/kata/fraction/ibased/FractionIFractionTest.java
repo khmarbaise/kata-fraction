@@ -45,7 +45,7 @@ class FractionIFractionTest implements IFractionTest<Fraction> {
   }
 
   public Fraction expectedSum() {
-    return new Fraction(26,24);
+    return new Fraction(26, 24);
   }
 
 }

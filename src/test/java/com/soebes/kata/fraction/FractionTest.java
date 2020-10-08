@@ -26,7 +26,10 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 /**
  * Test for {@link Fraction}.
@@ -47,7 +50,7 @@ class FractionTest {
   class DoubleValue {
 
     @Test
-    void  fraction_to_double() {
+    void fraction_to_double() {
       Fraction fraction = new Fraction(1, 1);
       assertThat(fraction.doubleValue()).isEqualTo(1.0, Offset.offset(1E-6));
     }

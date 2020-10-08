@@ -44,7 +44,7 @@ class FractionLongIFractionTest implements IFractionTest<FractionLong> {
   }
 
   public FractionLong expectedSum() {
-    return new FractionLong(26,24);
+    return new FractionLong(26, 24);
   }
 
 }
