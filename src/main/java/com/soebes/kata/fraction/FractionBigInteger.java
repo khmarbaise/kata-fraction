@@ -51,7 +51,9 @@ public class FractionBigInteger implements Comparable<FractionBigInteger>, Opera
     if (this.denominator.compareTo(add.denominator) == 0) {
       return new FractionBigInteger(add.numerator.add(this.numerator), this.denominator);
     } else {
-      return new FractionBigInteger(add.numerator.multiply(this.denominator).add(this.numerator.multiply(add.denominator)), add.denominator.multiply(this.denominator));
+      BigInteger numerator = add.numerator.multiply(this.denominator).add(this.numerator.multiply(add.denominator));
+      BigInteger denominator = add.denominator.multiply(this.denominator);
+      return new FractionBigInteger(numerator, denominator);
     }
   }
 
@@ -59,7 +61,9 @@ public class FractionBigInteger implements Comparable<FractionBigInteger>, Opera
     if (this.denominator.compareTo(subtrahend.denominator) == 0) {
       return new FractionBigInteger(this.numerator.subtract(subtrahend.numerator), this.denominator);
     } else {
-      return new FractionBigInteger(this.numerator.multiply(subtrahend.denominator).subtract(this.denominator.multiply(subtrahend.numerator)), subtrahend.denominator.multiply(this.denominator));
+      BigInteger numerator = this.numerator.multiply(subtrahend.denominator).subtract(this.denominator.multiply(subtrahend.numerator));
+      BigInteger denominator = subtrahend.denominator.multiply(this.denominator);
+      return new FractionBigInteger(numerator, denominator);
     }
   }
 
