@@ -20,7 +20,7 @@ interface IFractionTest<T extends Operation<T>> {
   T expectedSum(); // 26/24
 
   @Test
-  @DisplayName("Create the sum of three summands which chaining the plus class.")
+  @DisplayName("Create the sum of three summands while chaining the plus class.")
   default void create_sum_of_three_summands_while_chaining_the_plus_calls() {
     T summand_1 = createOneAndAHalf();
     T summand_2 = createOneThird();
