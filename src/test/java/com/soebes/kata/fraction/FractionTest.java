@@ -29,7 +29,6 @@ import java.math.BigDecimal;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 /**
  * Test for {@link Fraction}.
@@ -163,7 +162,7 @@ class FractionTest {
 
     @Test
     void compare_to_null() {
-      assertThatNullPointerException().isThrownBy(() -> new Fraction(1, 2).compareTo(null))
+      assertThatIllegalArgumentException().isThrownBy(() -> new Fraction(1, 2).compareTo(null))
           .withMessage("compareTo is not allowed to be null.");
     }
   }

@@ -29,7 +29,6 @@ import java.math.BigDecimal;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 /**
  * Test for {@link FractionLong}.
@@ -157,12 +156,16 @@ class FractionLongTest {
 
     @Test
     void denominator_is_not_allowed_to_be_zero() {
-      assertThatIllegalArgumentException().isThrownBy(() -> new FractionLong(1, 0)).withMessage("denominator is not allowed to be zero.");
+      assertThatIllegalArgumentException()
+          .isThrownBy(() -> new FractionLong(1, 0))
+          .withMessage("denominator is not allowed to be zero.");
     }
 
     @Test
     void compare_to_null() {
-      assertThatNullPointerException().isThrownBy(() -> new FractionLong(1, 2).compareTo(null)).withMessage("compareTo is not allowed to be null.");
+      assertThatIllegalArgumentException()
+          .isThrownBy(() -> new FractionLong(1, 2).compareTo(null))
+          .withMessage("compareTo is not allowed to be null.");
     }
   }
 

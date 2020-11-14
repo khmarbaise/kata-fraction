@@ -94,7 +94,7 @@ public class Fraction implements Comparable<Fraction>,Operation<Fraction> {
   @Override
   public int compareTo(Fraction compareTo) {
     if (compareTo == null) {
-      throw new NullPointerException("compareTo is not allowed to be null.");
+      throw new IllegalArgumentException("compareTo is not allowed to be null.");
     }
     return this.subtract(compareTo).signum();
   }

@@ -90,7 +90,7 @@ public class FractionBigInteger implements Comparable<FractionBigInteger>, Opera
   @Override
   public int compareTo(FractionBigInteger compareTo) {
     if (compareTo == null) {
-      throw new NullPointerException("compareTo is not allowed to be null.");
+      throw new IllegalArgumentException("compareTo is not allowed to be null.");
     }
     return this.subtract(compareTo).signum();
   }

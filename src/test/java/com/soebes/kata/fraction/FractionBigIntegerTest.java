@@ -29,7 +29,6 @@ import java.math.BigInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 /**
  * Test for {@link FractionBigInteger}.
@@ -148,12 +147,16 @@ class FractionBigIntegerTest {
   class InvalideValues {
     @Test
     void denominator_is_not_allowed_to_be_zero() {
-      assertThatIllegalArgumentException().isThrownBy(() -> new FractionBigInteger(BigInteger.ONE, BigInteger.ZERO)).withMessage("denominator is not allowed to be zero.");
+      assertThatIllegalArgumentException()
+          .isThrownBy(() -> new FractionBigInteger(BigInteger.ONE, BigInteger.ZERO))
+          .withMessage("denominator is not allowed to be zero.");
     }
 
     @Test
     void compare_to_null() {
-      assertThatNullPointerException().isThrownBy(() -> new FractionBigInteger(BigInteger.ONE, BigInteger.TWO).compareTo(null)).withMessage("compareTo is not allowed to be null.");
+      assertThatIllegalArgumentException()
+          .isThrownBy(() -> new FractionBigInteger(BigInteger.ONE, BigInteger.TWO)
+          .compareTo(null)).withMessage("compareTo is not allowed to be null.");
     }
   }
 

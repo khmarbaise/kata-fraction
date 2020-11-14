@@ -94,7 +94,7 @@ public class FractionLong implements Comparable<FractionLong>, Operation<Fractio
   @Override
   public int compareTo(FractionLong compareTo) {
     if (compareTo == null) {
-      throw new NullPointerException("compareTo is not allowed to be null.");
+      throw new IllegalArgumentException("compareTo is not allowed to be null.");
     }
     return this.subtract(compareTo).signum();
   }
