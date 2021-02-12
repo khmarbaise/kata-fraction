@@ -53,6 +53,12 @@ class FractionLongTest {
       FractionLong fraction = new FractionLong(1, 1);
       assertThat(fraction.doubleValue()).isEqualTo(1.0, Offset.offset(1E-6));
     }
+
+    @Test
+    void double_value_1_2() {
+      FractionLong fraction = new FractionLong(1, 2);
+      assertThat(fraction.doubleValue()).isEqualTo(0.5, Offset.offset(1E-6));
+    }
   }
 
   @Nested
