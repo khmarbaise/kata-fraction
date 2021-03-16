@@ -29,7 +29,7 @@ expr: expr multiplicationOp expr
 
 numerator: NUM;
 denumerator: NUM;
-multiplicationOp: MUL | DIV | MOD ;
+multiplicationOp: MUL | DIV ;
 additionOp: ADD | SUB;
 
 NUM : [0-9][_0-9]*;
@@ -39,6 +39,5 @@ LPARENT: '(';
 RPARENT: ')';
 MUL: '*';
 DIV: '/';
-MOD: '%';
 ADD: '+';
 SUB: '-';
