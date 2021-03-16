@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 import static java.util.function.Predicate.not;
 import static org.junit.jupiter.api.DynamicContainer.dynamicContainer;
 
-class DynamicFractionTest {
+class DynamicFractionIntegerTest {
 
   private static final Predicate<Class<?>> isPublic = s -> Modifier.isPublic(s.getModifiers());
   private static final Predicate<Class<?>> isInterface = s -> s.isInterface();

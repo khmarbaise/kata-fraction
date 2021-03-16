@@ -19,7 +19,7 @@ package com.soebes.kata.parser;
  * under the License.
  */
 
-import com.soebes.kata.fraction.Fraction;
+import com.soebes.kata.fraction.FractionInteger;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -35,17 +35,17 @@ class ParseIntoFractionTest {
 
   static Stream<Arguments> fractionAsString() {
     return Stream.of(
-        of("1/3", new Fraction(1, 3)),
-        of("5/6", new Fraction(5, 6)),
-        of("391/247", new Fraction(391, 247))
+        of("1/3", new FractionInteger(1, 3)),
+        of("5/6", new FractionInteger(5, 6)),
+        of("391/247", new FractionInteger(391, 247))
     );
   }
 
   @ParameterizedTest
   @MethodSource("fractionAsString")
-  void convert_several_fractions_into_fraction_class(String fractionString, Fraction expectedFraction) {
-    Fraction fraction = ParseIntoFraction.parse(fractionString);
-    assertThat(fraction).isEqualTo(expectedFraction);
+  void convert_several_fractions_into_fraction_class(String fractionString, FractionInteger expectedFractionInteger) {
+    FractionInteger fractionInteger = ParseIntoFraction.parse(fractionString);
+    assertThat(fractionInteger).isEqualTo(expectedFractionInteger);
   }
 
   @Test

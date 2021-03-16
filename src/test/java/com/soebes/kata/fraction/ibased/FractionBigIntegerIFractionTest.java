@@ -19,13 +19,13 @@ package com.soebes.kata.fraction.ibased;
  * under the License.
  */
 
-import com.soebes.kata.fraction.Fraction;
 import com.soebes.kata.fraction.FractionBigInteger;
+import com.soebes.kata.fraction.FractionInteger;
 
 import java.math.BigInteger;
 
 /**
- * Test for {@link Fraction}.
+ * Test for {@link FractionInteger}.
  */
 class FractionBigIntegerIFractionTest implements IFractionTest<FractionBigInteger> {
 

@@ -32,11 +32,11 @@ import static org.apiguardian.api.API.Status.EXPERIMENTAL;
  * @author Karl Heinz Marbaise
  */
 @API(status = EXPERIMENTAL)
-public class Fraction implements Comparable<Fraction>,Operation<Fraction> {
+public class FractionInteger implements Comparable<FractionInteger>,Operation<FractionInteger> {
   private final int numerator;
   private final int denominator;
 
-  public Fraction(int numerator, int denominator) {
+  public FractionInteger(int numerator, int denominator) {
     if (denominator == 0) {
       throw new IllegalArgumentException("denominator is not allowed to be zero.");
     }
@@ -47,40 +47,40 @@ public class Fraction implements Comparable<Fraction>,Operation<Fraction> {
     this.denominator = Math.abs(denominator) / gcd;
   }
 
-  public Fraction plus(Fraction add) {
+  public FractionInteger plus(FractionInteger add) {
     if (this.denominator == add.denominator) {
-      return new Fraction(add.numerator + this.numerator, this.denominator);
+      return new FractionInteger(add.numerator + this.numerator, this.denominator);
     } else {
       int numerator = add.numerator * this.denominator + this.numerator * add.denominator;
       int denominator = add.denominator * this.denominator;
-      return new Fraction(numerator, denominator);
+      return new FractionInteger(numerator, denominator);
     }
   }
 
-  public Fraction subtract(Fraction subtrahend) {
+  public FractionInteger subtract(FractionInteger subtrahend) {
     if (this.denominator == subtrahend.denominator) {
       int numerator = this.numerator - subtrahend.numerator;
       int denominator = this.denominator;
-      return new Fraction(numerator, denominator);
+      return new FractionInteger(numerator, denominator);
     } else {
       int numerator = this.numerator * subtrahend.denominator - this.denominator * subtrahend.numerator;
       int denominator = subtrahend.denominator * this.denominator;
-      return new Fraction(numerator, denominator);
+      return new FractionInteger(numerator, denominator);
     }
   }
 
-  public Fraction multiply(Fraction factor) {
-    return new Fraction(this.numerator * factor.numerator, this.denominator * factor.denominator);
+  public FractionInteger multiply(FractionInteger factor) {
+    return new FractionInteger(this.numerator * factor.numerator, this.denominator * factor.denominator);
   }
 
-  public Fraction divide(Fraction divisor) {
-    return new Fraction(this.numerator * divisor.denominator, this.denominator * divisor.numerator);
+  public FractionInteger divide(FractionInteger divisor) {
+    return new FractionInteger(this.numerator * divisor.denominator, this.denominator * divisor.numerator);
   }
 
-  public Fraction pow(int power) {
+  public FractionInteger pow(int power) {
     int numerator = BigInteger.valueOf(this.numerator).pow(power).intValueExact();
     int denominator = BigInteger.valueOf(this.denominator).pow(power).intValueExact();
-    return new Fraction(numerator, denominator);
+    return new FractionInteger(numerator, denominator);
   }
 
   public int numerator() {
@@ -92,7 +92,7 @@ public class Fraction implements Comparable<Fraction>,Operation<Fraction> {
   }
 
   @Override
-  public int compareTo(Fraction compareTo) {
+  public int compareTo(FractionInteger compareTo) {
     if (compareTo == null) {
       throw new IllegalArgumentException("compareTo is not allowed to be null.");
     }
@@ -109,8 +109,8 @@ public class Fraction implements Comparable<Fraction>,Operation<Fraction> {
     return Integer.signum(numerator);
   }
 
-  public Fraction negate() {
-    return new Fraction(Math.negateExact(this.numerator), this.denominator);
+  public FractionInteger negate() {
+    return new FractionInteger(Math.negateExact(this.numerator), this.denominator);
   }
 
   public double doubleValue() {
@@ -125,9 +125,9 @@ public class Fraction implements Comparable<Fraction>,Operation<Fraction> {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    Fraction fraction = (Fraction) o;
-    return numerator == fraction.numerator &&
-        denominator == fraction.denominator;
+    FractionInteger fractionInteger = (FractionInteger) o;
+    return numerator == fractionInteger.numerator &&
+        denominator == fractionInteger.denominator;
   }
 
   @Override
@@ -137,7 +137,7 @@ public class Fraction implements Comparable<Fraction>,Operation<Fraction> {
 
   @Override
   public String toString() {
-    return new StringJoiner(", ", Fraction.class.getSimpleName() + "[", "]")
+    return new StringJoiner(", ", FractionInteger.class.getSimpleName() + "[", "]")
         .add("numerator=" + numerator)
         .add("denominator=" + denominator)
         .toString();

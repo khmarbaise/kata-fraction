@@ -19,33 +19,33 @@ package com.soebes.kata.fraction.ibased;
  * under the License.
  */
 
-import com.soebes.kata.fraction.Fraction;
+import com.soebes.kata.fraction.FractionInteger;
 
 /**
- * Test for {@link Fraction}.
+ * Test for {@link FractionInteger}.
  */
-class FractionIFractionTest implements IFractionTest<Fraction> {
+class FractionIFractionTest implements IFractionTest<FractionInteger> {
 
 
   @Override
-  public Fraction createOne() {
-    return new Fraction(1, 1);
+  public FractionInteger createOne() {
+    return new FractionInteger(1, 1);
   }
 
-  public Fraction createOneAndAHalf() {
-    return new Fraction(1, 2);
+  public FractionInteger createOneAndAHalf() {
+    return new FractionInteger(1, 2);
   }
 
-  public Fraction createOneThird() {
-    return new Fraction(1, 3);
+  public FractionInteger createOneThird() {
+    return new FractionInteger(1, 3);
   }
 
-  public Fraction createOneQuarter() {
-    return new Fraction(1, 4);
+  public FractionInteger createOneQuarter() {
+    return new FractionInteger(1, 4);
   }
 
-  public Fraction expectedSum() {
-    return new Fraction(26, 24);
+  public FractionInteger expectedSum() {
+    return new FractionInteger(26, 24);
   }
 
 }

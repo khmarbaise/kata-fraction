@@ -19,11 +19,11 @@ package com.soebes.kata.fraction.ibased;
  * under the License.
  */
 
-import com.soebes.kata.fraction.Fraction;
+import com.soebes.kata.fraction.FractionInteger;
 import com.soebes.kata.fraction.FractionLong;
 
 /**
- * Test for {@link Fraction}.
+ * Test for {@link FractionInteger}.
  */
 class FractionLongIFractionTest implements IFractionTest<FractionLong> {
 

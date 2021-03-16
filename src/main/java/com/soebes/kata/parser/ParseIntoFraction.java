@@ -19,7 +19,7 @@ package com.soebes.kata.parser;
  * under the License.
  */
 
-import com.soebes.kata.fraction.Fraction;
+import com.soebes.kata.fraction.FractionInteger;
 import org.apiguardian.api.API;
 
 import static org.apiguardian.api.API.Status.EXPERIMENTAL;
@@ -33,18 +33,18 @@ public final class ParseIntoFraction {
 
   /**
    * A fraction which is given as a string like {@code 4/5}
-   * will be converted into {@link Fraction}.
+   * will be converted into {@link FractionInteger}.
    *
    * @param fractionString The Fraction like {@code 4/5}
-   * @return {@link Fraction}
+   * @return {@link FractionInteger}
    */
-  public static Fraction parse(String fractionString) {
+  public static FractionInteger parse(String fractionString) {
     String[] split = fractionString.split("/");
     if (split.length != 2) {
       throw new IllegalArgumentException(String.format("The format is 'numerator/denominator' given: '%s'", fractionString));
     }
     int numerator = Integer.parseInt(split[0]);
     int denominator = Integer.parseInt(split[1]);
-    return new Fraction(numerator, denominator);
+    return new FractionInteger(numerator, denominator);
   }
 }
