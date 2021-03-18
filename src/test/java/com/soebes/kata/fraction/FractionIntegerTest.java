@@ -19,16 +19,14 @@ package com.soebes.kata.fraction;
  * under the License.
  */
 
-import nl.jqno.equalsverifier.EqualsVerifier;
-import org.assertj.core.data.Offset;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-
-import java.math.BigDecimal;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+
+import java.math.BigDecimal;
+import org.assertj.core.data.Offset;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test for {@link FractionInteger}.
@@ -145,10 +143,10 @@ class FractionIntegerTest {
   @Nested
   class Verification {
 
-    @Test
-    void hash_code_and_equals() {
-      EqualsVerifier.forClass(FractionInteger.class).usingGetClass().verify();
-    }
+//    @Test
+//    void hash_code_and_equals() {
+//      EqualsVerifier.forClass(FractionInteger.class).usingGetClass().verify();
+//    }
 
     @Test
     void check_to_string() {

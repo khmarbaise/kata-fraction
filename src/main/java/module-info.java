@@ -3,6 +3,6 @@ module com.soebes.kata.fraction {
 
 	requires org.apiguardian.api;
 
-	exports com.soebes.katas.fraction;
+	exports com.soebes.kata.fraction;
 
 }
