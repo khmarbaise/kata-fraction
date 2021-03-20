@@ -1,4 +1,4 @@
-module com.soebes.kata.fraction {
+module com.soebes.katas.fraction {
 	requires java.base;
 
 	requires org.apiguardian.api;

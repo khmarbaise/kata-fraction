@@ -1,4 +1,4 @@
-package com.soebes.kata.fraction;
+package fraction.test;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -19,6 +19,7 @@ package com.soebes.kata.fraction;
  * under the License.
  */
 
+import com.soebes.kata.fraction.FractionInteger;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

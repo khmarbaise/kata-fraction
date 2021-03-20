@@ -1,4 +1,4 @@
-package com.soebes.kata.fraction.dynamic;
+package fraction.test.dynamic;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

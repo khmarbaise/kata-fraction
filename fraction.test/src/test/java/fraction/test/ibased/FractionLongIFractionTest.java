@@ -1,4 +1,4 @@
-package com.soebes.kata.fraction.ibased;
+package fraction.test.ibased;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one

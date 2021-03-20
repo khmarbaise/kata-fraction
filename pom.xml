@@ -33,8 +33,9 @@
   </parent>
 
   <groupId>com.soebes.katas</groupId>
-  <artifactId>kata-fraction</artifactId>
+  <artifactId>fraction-parent</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
   <name>Code-Kata Fractions</name>
 
   <scm>
@@ -120,4 +121,8 @@
     </plugins>
   </build>
 
+  <modules>
+    <module>com.soebes.katas.fraction</module>
+    <module>fraction.test</module>
+  </modules>
 </project>

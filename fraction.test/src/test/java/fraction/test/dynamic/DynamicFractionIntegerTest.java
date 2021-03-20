@@ -1,4 +1,4 @@
-package com.soebes.kata.fraction.dynamic;
+package fraction.test.dynamic;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DynamicNode;

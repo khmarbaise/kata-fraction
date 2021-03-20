@@ -1,4 +1,4 @@
-package com.soebes.kata.fraction;
+package fraction.test;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -22,6 +22,7 @@ package com.soebes.kata.fraction;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
+import com.soebes.kata.fraction.FractionBigInteger;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import org.assertj.core.data.Offset;

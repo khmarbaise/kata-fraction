@@ -1,4 +1,4 @@
-package com.soebes.kata.fraction.dynamic;
+package fraction.test.dynamic;
 
 import org.junit.jupiter.api.DynamicNode;
 
@@ -8,8 +8,8 @@ import java.lang.reflect.Method;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-import static com.soebes.kata.fraction.dynamic.Helper.getConstructors;
-import static com.soebes.kata.fraction.dynamic.Helper.newInstance;
+import static fraction.test.dynamic.Helper.getConstructors;
+import static fraction.test.dynamic.Helper.newInstance;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 

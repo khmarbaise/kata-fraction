@@ -1,4 +1,4 @@
-package com.soebes.kata.fraction.ibased;
+package fraction.test.ibased;
 
 import com.soebes.kata.fraction.Operation;
 import org.assertj.core.data.Offset;
