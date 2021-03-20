@@ -6,7 +6,7 @@ import com.github.sormuras.bach.ProjectInfo.Tools;
     compileModulesForJavaRelease = 16,
     modules = "src/main/java",
     testModules = "src/test/{java,java-module}",
-    requires = "org.junit.platform.console",
+    requires = {"org.junit.platform.console", "org.junit.jupiter", "org.assertj.core"},
     tools = @Tools(skip = {"jdeps", "javadoc", "jlink"}),
     testTweaks = {
         @Tweak(tool = "junit(com.soebes.kata.fraction)", option = "--fail-if-no-tests"),
