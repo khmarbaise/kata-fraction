@@ -14,10 +14,10 @@ import com.github.sormuras.bach.ProjectInfo.Metadata.Checksum;
     },
 //    lookupExternal = @External(module = "org.assertj.core", via = "org.assertj:assertj-core:3.19.0"),
     lookupExternals = @Externals(name = Externals.Name.JUNIT, version = "5.7.1"),
-    testTweaks = @Tweak(tool = "junit", option = "--fail-if-no-tests")
-//    metadata = {
-//        @Metadata(module = "org.apiguardian.api", size = 6452, checksums = @Checksum("6d7c20e025e5ebbaca430f61be707579")),
-//    }
+    testTweaks = @Tweak(tool = "junit", option = "--fail-if-no-tests"),
+    metadata = {
+        @Metadata(module = "org.apiguardian.api", size = 6452, checksums = @Checksum("6d7c20e025e5ebbaca430f61be707579")),
+    }
 )
 module bach.info {
   requires com.github.sormuras.bach;
