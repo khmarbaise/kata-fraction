@@ -15,31 +15,35 @@ import static org.junit.jupiter.api.DynamicContainer.dynamicContainer;
 
 class DynamicFractionIntegerTest {
 
+  private static final String PACKAGE_NAME = "com.soebes.kata.fraction";
+
   private static final Predicate<Class<?>> isPublic = s -> Modifier.isPublic(s.getModifiers());
+
   private static final Predicate<Class<?>> isInterface = s -> s.isInterface();
+
   private static final Predicate<Class<?>> isMember = s -> s.isMemberClass();
 
-  private static final Predicate<Class<?>> isNotInterfaceAndNotMember = not(isInterface).and(isPublic).and(not(isMember));
+  private static final Predicate<Class<?>> isPackage = s -> s.getPackageName().equals(PACKAGE_NAME);
+
+  private static final Predicate<Class<?>> isNotInterfaceAndNotMember = not(isInterface).and(isPublic)
+      .and(not(isMember))
+      .and(isPackage);
 
   private static final Predicate<String> isNoTest = s -> !s.endsWith("Test");
 
   @TestFactory
   @DisplayName("Classes")
   Stream<DynamicNode> allClassesTest() {
-    List<Class<?>> allClassesInPackage = ReflectionSupport
-        .findAllClassesInPackage("com.soebes.kata.fraction", isNotInterfaceAndNotMember, isNoTest);
+    List<Class<?>> allClassesInPackage = ReflectionSupport.findAllClassesInPackage(PACKAGE_NAME,
+        isNotInterfaceAndNotMember, isNoTest);
 
     return allClassesInPackage.stream()
-        .map(theClass ->
-            dynamicContainer(theClass.getSimpleName(), Stream.of(
-                dynamicContainer("Addition", Additions.ADDITION_TESTS.apply(theClass)),
+        .map(theClass -> dynamicContainer(theClass.getSimpleName(),
+            Stream.of(dynamicContainer("Addition", Additions.ADDITION_TESTS.apply(theClass)),
                 dynamicContainer("Subtraction", Subtraction.SUBRACTION_TESTS.apply(theClass))
 
-                )
-            )
-        );
+            )));
   }
-
 
 }
 
