@@ -4,7 +4,7 @@ import com.github.sormuras.bach.ProjectInfo.Metadata.Checksum;
 
 @ProjectInfo(
     compileModulesForJavaRelease = 16,
-    tools = @Tools(skip = {"jdeps", "javadoc", "jlink"}),
+    tools = @Tools(skip = {"jdeps", "javadoc"}),
     requires = {"org.junit.platform.console"},
     lookupExternal = {
         @External(module = "org.assertj.core", via = "org.assertj:assertj-core:3.19.0"),
