@@ -1,4 +1,4 @@
-open module fraction.test {
+open module test.com.soebes.katas.fraction {
   requires java.base;
 
   requires org.assertj.core;

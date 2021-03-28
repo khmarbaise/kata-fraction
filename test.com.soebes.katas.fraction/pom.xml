@@ -29,7 +29,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>fraction.test</artifactId>
+  <artifactId>test.com.soebes.katas.fraction</artifactId>
   <name>Code-Kata Fractions : Tests</name>
 
   <dependencies>

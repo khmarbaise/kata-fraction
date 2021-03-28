@@ -123,6 +123,6 @@
 
   <modules>
     <module>com.soebes.katas.fraction</module>
-    <module>fraction.test</module>
+    <module>test.com.soebes.katas.fraction</module>
   </modules>
 </project>
