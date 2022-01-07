@@ -44,7 +44,7 @@ steps:
     image: plugins/codecov
     settings:
       token:
-        from_secret: codecov-token
+        from_secret: CODECOV_TOKEN
       files:
         - target/site/jacoco/jacoco.xml
   - name: rebuild
