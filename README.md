@@ -16,6 +16,12 @@
 -->
 # Code Kata for Fractions
 
+[![Apache License, Version 2.0, January 2004](https://img.shields.io/github/license/apache/maven.svg?label=License)][license]
+[![Build Status](https://cloud.drone.io/api/badges/khmarbaise/kata-fraction/status.svg)](https://cloud.drone.io/khmarbaise/kata-fraction)
+[![Issues](https://img.shields.io/github/issues/khmarbaise/kata-fraction)](https://github.com/khmarbaise/kata-fraction/issues)
+[![Issues Closed](https://img.shields.io/github/issues-closed/khmarbaise/kata-fraction)](https://github.com/khmarbaise/kata-fraction/issues?q=is%3Aissue+is%3Aclosed)
+[![codecov](https://codecov.io/gh/khmarbaise/kata-fraction/branch/master/graph/badge.svg?token=RULU3ULC3O)](https://codecov.io/gh/khmarbaise/kata-fraction)
+
 The idea of this code kata is to show separation of concerns in particular and other aspects
 like how to use code coverage tools like JaCoCo as well as Mutation Testing to support the development
 process.
