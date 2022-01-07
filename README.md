@@ -107,3 +107,6 @@ Create Mutation coverage via:
 ```bash
 mvn clean verify org.pitest:pitest-maven:mutationCoverage
 ```
+
+
+[license]: https://www.apache.org/licenses/LICENSE-2.0
