@@ -34,7 +34,6 @@ class DynamicFractionTest {
             dynamicContainer(theClass.getSimpleName(), Stream.of(
                 dynamicContainer("Addition", Additions.ADDITION_TESTS.apply(theClass)),
                 dynamicContainer("Subtraction", Subtraction.SUBTRACTION_TESTS.apply(theClass))
-
                 )
             )
         );
