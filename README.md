@@ -40,13 +40,13 @@ The file can contain comment lines which are identified
 by `#` at the beginning of the line and have to be ignored.
 
 ## Fraction Format
-A fraction starts by `{` and limited by `}`. The numerator separated by `/` from the denominator.
+A fraction starts by `(` and limited by `)`. The numerator separated by `;` from the denominator.
 The numerator as well as the denominator are integer values which can be prefixed by a `-` to define
 a negative fraction.
 
-* `{9/12}` This would define the fraction `9/12`.
-* `{-9/12}` This would define the fraction `-9/12`.
-* `{9/-12}` This would define the fraction `9/-12`.
+* `(9;12)` This would define the fraction `9/12`.
+* `(-9;12)` This would define the fraction `-9/12`.
+* `(9;-12)` This would define the fraction `9/-12`.
 
 ## Definition of the valid operations
 
@@ -63,16 +63,16 @@ We need to be able to add, subtract, divide, multiply or create the power of a f
 ## Definition of power
 
 * The following gives an example how to define the operation `^`:
-  `{1/3}^5`. The exponent can only be an integer. So this also valid: `{1/3}^-5`.
-* The following gives an example how to add two fractions: `{3/2}+{4/4}`
-* The following gives an example how to subtract two fractions: `{3/2}-{4/4}`
-* The following gives an example how to multiply two fractions: `{3/2}*{4/4}`
-* The following gives an example how to divide two fractions: `{3/2}/{4/4}`
+  `(1;3)^5`. The exponent can only be an integer. So this also valid: `(1;3)^-5`.
+* The following gives an example how to add two fractions: `(3;2)+(4;4)`
+* The following gives an example how to subtract two fractions: `(3;2)-(4;4)`
+* The following gives an example how to multiply two fractions: `(3;2)*(4;4)`
+* The following gives an example how to divide two fractions: `(3;2)/(4;4)`
 
 ## Example Lines
 The following is an example of a line of operations on fractions:
 ```
-{3/2}+{4/4}/{2/3}
+(3/2)+(4/4)/(2/3)
 ``` 
 
 and it should be handled to calculate the results of those
@@ -85,7 +85,7 @@ The change vs I.
 
 Introduce parenthesis like this:
 ```
-( {3/2}+{4/4} ) / {2/3}
+( (3/2+(4/4) ) / (2/3)
 ``` 
 
 # Requirement Definition III
