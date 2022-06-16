@@ -25,7 +25,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -148,7 +147,6 @@ class FractionIntegerTest {
 
     @Test
     void hash_code_and_equals() {
-      List.of();
       EqualsVerifier.forClass(FractionInteger.class).usingGetClass().verify();
     }
 
