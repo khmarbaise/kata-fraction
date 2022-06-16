@@ -16,8 +16,8 @@ import static org.junit.jupiter.api.DynamicContainer.dynamicContainer;
 class DynamicFractionTest {
 
   private static final Predicate<Class<?>> isPublic = s -> Modifier.isPublic(s.getModifiers());
-  private static final Predicate<Class<?>> isInterface = s -> s.isInterface();
-  private static final Predicate<Class<?>> isMember = s -> s.isMemberClass();
+  private static final Predicate<Class<?>> isInterface = Class::isInterface;
+  private static final Predicate<Class<?>> isMember = Class::isMemberClass;
 
   private static final Predicate<Class<?>> isNotInterfaceAndNotMember = not(isInterface).and(isPublic).and(not(isMember));
 
