@@ -12,7 +12,7 @@ platform:
 
 steps:
   - name: restore
-    image: meltwater/drone-cache:v1.2.2
+    image: meltwater/drone-cache:v1.3.0
     pull: always
     volumes:
       - name: jdk17m2cache
@@ -48,7 +48,7 @@ steps:
       files:
         - target/site/jacoco/jacoco.xml
   - name: rebuild
-    image: meltwater/drone-cache:v1.2.2
+    image: meltwater/drone-cache:v1.3.0
     pull: always
     volumes:
       - name: jdk17m2cache
