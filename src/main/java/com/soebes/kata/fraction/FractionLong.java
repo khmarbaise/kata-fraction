@@ -60,8 +60,7 @@ public class FractionLong implements Comparable<FractionLong>, Operation<Fractio
   public FractionLong subtract(FractionLong subtrahend) {
     if (this.denominator == subtrahend.denominator) {
       long lNumerator = this.numerator - subtrahend.numerator;
-      long lDenominator = this.denominator;
-      return new FractionLong(lNumerator, lDenominator);
+      return new FractionLong(lNumerator, this.denominator);
     } else {
       long lNumerator = this.numerator * subtrahend.denominator - this.denominator * subtrahend.numerator;
       long lDenominator = subtrahend.denominator * this.denominator;
@@ -78,8 +77,8 @@ public class FractionLong implements Comparable<FractionLong>, Operation<Fractio
   }
 
   public FractionLong pow(int power) {
-    int lNumerator = BigInteger.valueOf(this.numerator).pow(power).intValueExact();
-    int lDenominator = BigInteger.valueOf(this.denominator).pow(power).intValueExact();
+    long lNumerator = BigInteger.valueOf(this.numerator).pow(power).longValue();
+    long lDenominator = BigInteger.valueOf(this.denominator).pow(power).longValueExact();
     return new FractionLong(lNumerator, lDenominator);
   }
 
