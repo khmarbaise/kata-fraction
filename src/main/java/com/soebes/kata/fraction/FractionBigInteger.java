@@ -40,7 +40,7 @@ public class FractionBigInteger implements Comparable<FractionBigInteger>, Opera
     if (denominator.compareTo(BigInteger.ZERO) == 0) {
       throw new IllegalArgumentException("denominator is not allowed to be zero.");
     }
-    BigInteger sign = BigInteger.valueOf(numerator.signum() * denominator.signum());
+    BigInteger sign = BigInteger.valueOf(numerator.signum() * (long) denominator.signum());
 
     BigInteger gcd = MathUtil.calculateGcd(numerator, denominator);
     this.numerator = sign.multiply(numerator.abs().divide(gcd));
@@ -51,9 +51,9 @@ public class FractionBigInteger implements Comparable<FractionBigInteger>, Opera
     if (this.denominator.compareTo(add.denominator) == 0) {
       return new FractionBigInteger(add.numerator.add(this.numerator), this.denominator);
     } else {
-      BigInteger numerator = add.numerator.multiply(this.denominator).add(this.numerator.multiply(add.denominator));
-      BigInteger denominator = add.denominator.multiply(this.denominator);
-      return new FractionBigInteger(numerator, denominator);
+      BigInteger lNumerator = add.numerator.multiply(this.denominator).add(this.numerator.multiply(add.denominator));
+      BigInteger lDenominator = add.denominator.multiply(this.denominator);
+      return new FractionBigInteger(lNumerator, lDenominator);
     }
   }
 
@@ -61,9 +61,9 @@ public class FractionBigInteger implements Comparable<FractionBigInteger>, Opera
     if (this.denominator.compareTo(subtrahend.denominator) == 0) {
       return new FractionBigInteger(this.numerator.subtract(subtrahend.numerator), this.denominator);
     } else {
-      BigInteger numerator = this.numerator.multiply(subtrahend.denominator).subtract(this.denominator.multiply(subtrahend.numerator));
-      BigInteger denominator = subtrahend.denominator.multiply(this.denominator);
-      return new FractionBigInteger(numerator, denominator);
+      BigInteger lNumerator = this.numerator.multiply(subtrahend.denominator).subtract(this.denominator.multiply(subtrahend.numerator));
+      BigInteger lDenominator = subtrahend.denominator.multiply(this.denominator);
+      return new FractionBigInteger(lNumerator, lDenominator);
     }
   }
 

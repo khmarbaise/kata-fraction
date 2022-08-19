@@ -51,21 +51,21 @@ public class FractionInteger implements Comparable<FractionInteger>,Operation<Fr
     if (this.denominator == add.denominator) {
       return new FractionInteger(add.numerator + this.numerator, this.denominator);
     } else {
-      int numerator = add.numerator * this.denominator + this.numerator * add.denominator;
-      int denominator = add.denominator * this.denominator;
-      return new FractionInteger(numerator, denominator);
+      int lNumerator = add.numerator * this.denominator + this.numerator * add.denominator;
+      int lDenominator = add.denominator * this.denominator;
+      return new FractionInteger(lNumerator, lDenominator);
     }
   }
 
   public FractionInteger subtract(FractionInteger subtrahend) {
     if (this.denominator == subtrahend.denominator) {
-      int numerator = this.numerator - subtrahend.numerator;
-      int denominator = this.denominator;
-      return new FractionInteger(numerator, denominator);
+      int lNumerator = this.numerator - subtrahend.numerator;
+      int lDenominator = this.denominator;
+      return new FractionInteger(lNumerator, lDenominator);
     } else {
-      int numerator = this.numerator * subtrahend.denominator - this.denominator * subtrahend.numerator;
-      int denominator = subtrahend.denominator * this.denominator;
-      return new FractionInteger(numerator, denominator);
+      int lNumerator = this.numerator * subtrahend.denominator - this.denominator * subtrahend.numerator;
+      int lDenominator = subtrahend.denominator * this.denominator;
+      return new FractionInteger(lNumerator, lDenominator);
     }
   }
 
@@ -78,9 +78,9 @@ public class FractionInteger implements Comparable<FractionInteger>,Operation<Fr
   }
 
   public FractionInteger pow(int power) {
-    int numerator = BigInteger.valueOf(this.numerator).pow(power).intValueExact();
-    int denominator = BigInteger.valueOf(this.denominator).pow(power).intValueExact();
-    return new FractionInteger(numerator, denominator);
+    int lNumerator = BigInteger.valueOf(this.numerator).pow(power).intValueExact();
+    int lDenominator = BigInteger.valueOf(this.denominator).pow(power).intValueExact();
+    return new FractionInteger(lNumerator, lDenominator);
   }
 
   public int numerator() {
