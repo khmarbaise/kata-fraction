@@ -59,8 +59,7 @@ public class FractionLong implements Comparable<FractionLong>, Operation<Fractio
 
   public FractionLong subtract(FractionLong subtrahend) {
     if (this.denominator == subtrahend.denominator) {
-      long lNumerator = this.numerator - subtrahend.numerator;
-      return new FractionLong(lNumerator, this.denominator);
+      return new FractionLong(this.numerator - subtrahend.numerator, this.denominator);
     } else {
       long lNumerator = this.numerator * subtrahend.denominator - this.denominator * subtrahend.numerator;
       long lDenominator = subtrahend.denominator * this.denominator;

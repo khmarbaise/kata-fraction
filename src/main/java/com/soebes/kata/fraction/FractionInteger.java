@@ -59,9 +59,7 @@ public class FractionInteger implements Comparable<FractionInteger>,Operation<Fr
 
   public FractionInteger subtract(FractionInteger subtrahend) {
     if (this.denominator == subtrahend.denominator) {
-      int lNumerator = this.numerator - subtrahend.numerator;
-      int lDenominator = this.denominator;
-      return new FractionInteger(lNumerator, lDenominator);
+      return new FractionInteger(this.numerator - subtrahend.numerator, this.denominator);
     } else {
       int lNumerator = this.numerator * subtrahend.denominator - this.denominator * subtrahend.numerator;
       int lDenominator = subtrahend.denominator * this.denominator;
