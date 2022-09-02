@@ -96,8 +96,8 @@ Integer => Long => BigInteger ?
 
 # Build
 
-* JDK 11+
-* Apache Maven 3.8.4
+* JDK 17+
+* Apache Maven 3.8.6
 
 Code coverage via:
 ```bash
