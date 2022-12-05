@@ -117,6 +117,9 @@
           <groupId>org.pitest</groupId>
           <artifactId>pitest-maven</artifactId>
           <version>1.10.1</version>
+          <configuration>
+            <outputFormats>xml,html</outputFormats>
+          </configuration>
           <dependencies>
             <dependency>
               <groupId>com.groupcdg.pitest</groupId>
