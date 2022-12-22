@@ -107,6 +107,13 @@ Create Mutation coverage via:
 ```bash
 mvn clean verify org.pitest:pitest-maven:mutationCoverage
 ```
-
+Create an SonarQube analysis including the mutation coverage. The prerequisite is that
+the mutation plugin in SonarQube is installed.
+```
+mvn clean verify org.pitest:pitest-maven:mutationCoverage sonar:sonar \
+    -Dsonar.pitest.mode=reuseReport \
+    -Dsonar.login=<token> \
+    -Dsonar.host.url=<sonar-host-url>
+```
 
 [license]: https://www.apache.org/licenses/LICENSE-2.0
