@@ -29,7 +29,7 @@
   <parent>
     <groupId>com.soebes.smpp</groupId>
     <artifactId>smpp</artifactId>
-    <version>5.3.14</version>
+    <version>6.0.1</version>
   </parent>
 
   <groupId>com.soebes.katas</groupId>
@@ -62,7 +62,7 @@
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
-        <version>5.9.2</version>
+        <version>5.9.3</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
@@ -74,7 +74,7 @@
       <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-core</artifactId>
-        <version>3.23.1</version>
+        <version>3.24.2</version>
       </dependency>
       <dependency>
         <groupId>org.apiguardian</groupId>
@@ -116,7 +116,7 @@
         <plugin>
           <groupId>org.pitest</groupId>
           <artifactId>pitest-maven</artifactId>
-          <version>1.10.1</version>
+          <version>1.14.1</version>
           <configuration>
             <outputFormats>xml,html</outputFormats>
           </configuration>
@@ -124,12 +124,12 @@
             <dependency>
               <groupId>com.groupcdg.pitest</groupId>
               <artifactId>pitest-accelerator-junit5</artifactId>
-              <version>1.0.4</version>
+              <version>1.0.5</version>
             </dependency>
             <dependency>
               <groupId>org.pitest</groupId>
               <artifactId>pitest-junit5-plugin</artifactId>
-              <version>1.1.0</version>
+              <version>1.2.0</version>
             </dependency>
           </dependencies>
         </plugin>
