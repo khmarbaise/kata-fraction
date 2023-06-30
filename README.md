@@ -17,7 +17,7 @@
 # Code Kata for Fractions
 
 [![Apache License, Version 2.0, January 2004](https://img.shields.io/github/license/apache/maven.svg?label=License)][license]
-[![Build Status](https://cloud.drone.io/api/badges/khmarbaise/kata-fraction/status.svg)](https://cloud.drone.io/khmarbaise/kata-fraction)
+[![JDKBuilds](https://github.com/khmarbaise/kata-fraction/actions/workflows/jdkbuilds.yml/badge.svg)](https://github.com/khmarbaise/kata-fraction/actions/workflows/jdkbuilds.yml)
 [![Issues](https://img.shields.io/github/issues/khmarbaise/kata-fraction)](https://github.com/khmarbaise/kata-fraction/issues)
 [![Issues Closed](https://img.shields.io/github/issues-closed/khmarbaise/kata-fraction)](https://github.com/khmarbaise/kata-fraction/issues?q=is%3Aissue+is%3Aclosed)
 [![codecov](https://codecov.io/gh/khmarbaise/kata-fraction/branch/master/graph/badge.svg?token=RULU3ULC3O)](https://codecov.io/gh/khmarbaise/kata-fraction)
