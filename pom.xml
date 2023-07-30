@@ -30,6 +30,7 @@
     <groupId>com.soebes.smpp</groupId>
     <artifactId>smpp</artifactId>
     <version>6.0.3</version>
+    <relativePath/>
   </parent>
 
   <groupId>com.soebes.katas</groupId>
@@ -76,7 +77,7 @@
       <dependency>
         <groupId>nl.jqno.equalsverifier</groupId>
         <artifactId>equalsverifier</artifactId>
-        <version>3.14.3</version>
+        <version>3.15</version>
       </dependency>
       <dependency>
         <groupId>org.apiguardian</groupId>
