@@ -80,7 +80,7 @@ class FractionLongTest {
     void fraction_negate_min() {
       FractionLong fraction = new FractionLong(Long.MIN_VALUE, 1);
       assertThatExceptionOfType(ArithmeticException.class)
-          .isThrownBy(() -> fraction.negate())
+          .isThrownBy(fraction::negate)
           .withMessage("long overflow");
     }
   }
