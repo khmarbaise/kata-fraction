@@ -1,7 +1,7 @@
-#Latest licence for this subscription available at https://subscriptions.arcmutate.com/c81fe76f-59c1-4c08-948c-e3e47f2cfca5/cdg-pitest-licence.txt
-#Tue Aug 22 18:25:30 UTC 2023
-expires=22/08/2024
-signature=GtNfijxzeMY/ypiRKmX32Grkpf8JTAvTZNXG43zUGNNv9hTEPX+oOhvWTCbO6Hw1BlSVFuk9G2ThTJMSQ+jO1dyt8bNeln6+3QSLa1aCt4Ei0QYfaeMutfIYL5zCfPb1odnVUrlFETmDI2eXN6Dh16LyQHIxiwxagi1zrVf32yY\=
+#Latest licence for this subscription available at https://subscriptions.arcmutate.com/c81fe76f-59c1-4c08-948c-e3e47f2cfca5/arcmutate-licence.txt
+#Thu Aug 22 18:24:30 UTC 2024
+expires=22/08/2025
+signature=SJBphPEsfLQ3pO+jVl4KWowORdjuBdYcLr79JSHGlAibkhtamv3IaSDfSEwrSdHLUEwvE9AwSfiLy65LPBVw0DORqPQ7dO946PYgvj9IX3pGjfO5DjC62THAlFPank+h/w5KO/fexbcEkckfmXI//O2Duxh3G/NVQm+zC2Rr6Eg\=
 packages=com.soebes.*
 type=COMMERCIAL
 users=1
