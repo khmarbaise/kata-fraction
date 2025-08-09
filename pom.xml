@@ -56,9 +56,16 @@
   <properties>
     <smpp.component>kata-fraction</smpp.component>
     <maven.compiler.release>22</maven.compiler.release>
+    <opentest4.reporting.version>0.2.4</opentest4.reporting.version>
   </properties>
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.opentest4j.reporting</groupId>
+        <artifactId>open-test-reporting-cli</artifactId>
+        <classifier>standalone</classifier>
+        <version>${opentest4.reporting.version}</version>
+      </dependency>
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
@@ -101,8 +108,19 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-reporting</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.opentest4j.reporting</groupId>
+      <artifactId>open-test-reporting-cli</artifactId>
+      <classifier>standalone</classifier>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -138,12 +156,57 @@
       </plugins>
     </pluginManagement>
     <plugins>
-      <plugin>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <configuration>
-          <failOnError>false</failOnError>
-        </configuration>
-      </plugin>
+        <plugin>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <configuration>
+              <failOnError>false</failOnError>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+                <systemPropertyVariables>
+                    <junit.platform.reporting.open.xml.enabled>true</junit.platform.reporting.open.xml.enabled>
+                    <junit.platform.reporting.output.dir>${project.build.directory}/tests/</junit.platform.reporting.output.dir>
+                </systemPropertyVariables>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>properties</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <phase>test</phase>
+                    <goals>
+                        <goal>exec</goal>
+                    </goals>
+                    <configuration>
+                        <arguments>
+                            <argument>-jar</argument>
+                            <argument>${org.opentest4j.reporting:open-test-reporting-cli:jar:standalone}</argument>
+                            <argument>html-report</argument>
+                            <argument>${project.build.directory}/tests/open-test-report.xml</argument>
+                            <argument>--output</argument>
+                            <argument>${project.build.directory}/tests/open-test-report.html</argument>
+                        </arguments>
+                        <executable>java</executable>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
     </plugins>
   </build>
 
