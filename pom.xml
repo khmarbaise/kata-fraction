@@ -167,7 +167,7 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <configuration>
                 <systemPropertyVariables>
-                    <junit.platform.discovery.issue.severity.critical>true</junit.platform.discovery.issue.severity.critical>
+                    <junit.platform.discovery.issue.severity.critical>INFO</junit.platform.discovery.issue.severity.critical>
                     <junit.platform.reporting.open.xml.enabled>true</junit.platform.reporting.open.xml.enabled>
                     <junit.platform.reporting.output.dir>${project.build.directory}/tests/</junit.platform.reporting.output.dir>
                 </systemPropertyVariables>
