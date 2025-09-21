@@ -1,7 +1,7 @@
 #Latest licence for this subscription available at https://subscriptions.arcmutate.com/c81fe76f-59c1-4c08-948c-e3e47f2cfca5/arcmutate-licence.txt
-#Thu Aug 22 18:24:30 UTC 2024
-expires=22/08/2025
-signature=SJBphPEsfLQ3pO+jVl4KWowORdjuBdYcLr79JSHGlAibkhtamv3IaSDfSEwrSdHLUEwvE9AwSfiLy65LPBVw0DORqPQ7dO946PYgvj9IX3pGjfO5DjC62THAlFPank+h/w5KO/fexbcEkckfmXI//O2Duxh3G/NVQm+zC2Rr6Eg\=
+#Fri Aug 22 18:22:51 UTC 2025
+expires=22/08/2026
+signature=G1P68M4S3JkSJHB/gL0P+HbnoXa3O1D5tnJX97iW8Ps3QLhyXxp9MM2vp0rIMIqSkuJby5gsH14ZOjrEoivEXbpE/0G1Jc3boXVRtrqi83IRXVi/9+LakA/SoW5MZonFxIUo811X8yD6/p2U7Dh0KlaNg3zjsqjIVomEKlYcVpg\=
 packages=com.soebes.*
 type=COMMERCIAL
 users=1
