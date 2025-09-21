@@ -20,6 +20,7 @@ package com.soebes.kata.fraction;
  */
 
 import org.apiguardian.api.API;
+import org.jspecify.annotations.NonNull;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -88,7 +89,7 @@ public class FractionBigInteger implements Comparable<FractionBigInteger>, Opera
   }
 
   @Override
-  public int compareTo(FractionBigInteger compareTo) {
+  public int compareTo(@NonNull FractionBigInteger compareTo) {
     if (compareTo == null) {
       throw new IllegalArgumentException("compareTo is not allowed to be null.");
     }

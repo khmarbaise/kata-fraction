@@ -73,6 +73,7 @@
         <scope>import</scope>
         <type>pom</type>
       </dependency>
+
       <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-bom</artifactId>
@@ -93,7 +94,12 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
-    <dependency>
+      <dependency>
+          <groupId>org.jspecify</groupId>
+          <artifactId>jspecify</artifactId>
+          <version>1.0.0</version>
+      </dependency>
+      <dependency>
       <groupId>nl.jqno.equalsverifier</groupId>
       <artifactId>equalsverifier</artifactId>
       <scope>test</scope>
