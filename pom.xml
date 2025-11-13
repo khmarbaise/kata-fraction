@@ -55,7 +55,7 @@
 
   <properties>
     <smpp.component>kata-fraction</smpp.component>
-    <maven.compiler.release>22</maven.compiler.release>
+    <maven.compiler.release>25</maven.compiler.release>
     <opentest4.reporting.version>0.2.4</opentest4.reporting.version>
   </properties>
   <dependencyManagement>
