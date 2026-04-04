@@ -105,26 +105,26 @@ class FractionBigIntegerTest {
   class CompareTo {
     @Test
     void fraction_one_identical_to_fraction_two() {
-      FractionBigInteger fractionBigInteger_one = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
-      FractionBigInteger fractionBigInteger_two = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
+      FractionBigInteger fractionBigIntegerOne = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
+      FractionBigInteger fractionBigIntegerTwo = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
 
-      assertThat(fractionBigInteger_one).isEqualByComparingTo(fractionBigInteger_two);
+      assertThat(fractionBigIntegerOne).isEqualByComparingTo(fractionBigIntegerTwo);
     }
 
     @Test
     void fraction_one_greater_than_fraction_two() {
-      FractionBigInteger fractionBigInteger_one = new FractionBigInteger(BigInteger.ONE, BigInteger.ONE);
-      FractionBigInteger fractionBigInteger_two = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
+      FractionBigInteger fractionBigIntegerOne = new FractionBigInteger(BigInteger.ONE, BigInteger.ONE);
+      FractionBigInteger fractionBigIntegerTwo = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
 
-      assertThat(fractionBigInteger_one).isGreaterThan(fractionBigInteger_two);
+      assertThat(fractionBigIntegerOne).isGreaterThan(fractionBigIntegerTwo);
     }
 
     @Test
     void fraction_one_less_than_fraction_two() {
-      FractionBigInteger fractionBigInteger_one = new FractionBigInteger(BigInteger.ONE, THREE);
-      FractionBigInteger fractionBigInteger_two = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
+      FractionBigInteger fractionBigIntegerOne = new FractionBigInteger(BigInteger.ONE, THREE);
+      FractionBigInteger fractionBigIntegerTwo = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
 
-      assertThat(fractionBigInteger_one).isLessThan(fractionBigInteger_two);
+      assertThat(fractionBigIntegerOne).isLessThan(fractionBigIntegerTwo);
     }
 
   }
@@ -156,7 +156,8 @@ class FractionBigIntegerTest {
     void compare_to_null() {
       assertThatIllegalArgumentException()
           .isThrownBy(() -> new FractionBigInteger(BigInteger.ONE, BigInteger.TWO)
-          .compareTo(null)).withMessage("compareTo is not allowed to be null.");
+          .compareTo(null))
+              .withMessage("compareTo is not allowed to be null.");
     }
   }
 
@@ -196,7 +197,7 @@ class FractionBigIntegerTest {
   @Nested
   class Divide {
     @Test
-    void devide_1_2_by_2_5() {
+    void divide_1_2_by_2_5() {
       FractionBigInteger dividend = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
       FractionBigInteger divisor = new FractionBigInteger(BigInteger.TWO, BigInteger.valueOf(5));
 
@@ -206,7 +207,7 @@ class FractionBigIntegerTest {
     }
 
     @Test
-    void devide_the_same_fraction() {
+    void divide_the_same_fraction() {
       FractionBigInteger dividend = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
       FractionBigInteger divisor = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
 
@@ -254,52 +255,52 @@ class FractionBigIntegerTest {
   class Addition {
     @Test
     void chaining_addition_with_improper_fraction_result() {
-      FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
-      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.ONE, THREE);
-      FractionBigInteger summand_3 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(4));
+      FractionBigInteger summand1 = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
+      FractionBigInteger summand2 = new FractionBigInteger(BigInteger.ONE, THREE);
+      FractionBigInteger summand3 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(4));
 
-      FractionBigInteger sum = summand_1.plus(summand_2).plus(summand_3);
+      FractionBigInteger sum = summand1.plus(summand2).plus(summand3);
 
       assertThat(sum).isEqualByComparingTo(new FractionBigInteger(BigInteger.valueOf(26), BigInteger.valueOf(24)));
     }
 
     @Test
     void chaining_addition_with_proper_fraction_result() {
-      FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
-      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.ONE, THREE);
-      FractionBigInteger summand_3 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(4));
+      FractionBigInteger summand1 = new FractionBigInteger(BigInteger.ONE, BigInteger.TWO);
+      FractionBigInteger summand2 = new FractionBigInteger(BigInteger.ONE, THREE);
+      FractionBigInteger summand3 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(4));
 
-      FractionBigInteger sum = summand_1.plus(summand_2).plus(summand_3);
+      FractionBigInteger sum = summand1.plus(summand2).plus(summand3);
 
       assertThat(sum).isEqualByComparingTo(new FractionBigInteger(BigInteger.valueOf(13), BigInteger.valueOf(12)));
     }
 
     @Test
     void addition_with_two_proper_fractions() {
-      FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.TWO, THREE);
-      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(5));
+      FractionBigInteger summand1 = new FractionBigInteger(BigInteger.TWO, THREE);
+      FractionBigInteger summand2 = new FractionBigInteger(BigInteger.ONE, BigInteger.valueOf(5));
 
-      FractionBigInteger sum = summand_1.plus(summand_2);
+      FractionBigInteger sum = summand1.plus(summand2);
 
       assertThat(sum).isEqualByComparingTo(new FractionBigInteger(BigInteger.valueOf(13), BigInteger.valueOf(15)));
     }
 
     @Test
     void add_1_3_plus_2_3_should_be_1_1() {
-      FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.ONE, THREE);
-      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.TWO, THREE);
+      FractionBigInteger summand1 = new FractionBigInteger(BigInteger.ONE, THREE);
+      FractionBigInteger summand2 = new FractionBigInteger(BigInteger.TWO, THREE);
 
-      FractionBigInteger sum = summand_1.plus(summand_2);
+      FractionBigInteger sum = summand1.plus(summand2);
 
       assertThat(sum).isEqualByComparingTo(new FractionBigInteger(THREE, THREE));
     }
 
     @Test
     void add_1_3_plus_2_3_should_be_1_1_reduced() {
-      FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.ONE, THREE);
-      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.TWO, THREE);
+      FractionBigInteger summand1 = new FractionBigInteger(BigInteger.ONE, THREE);
+      FractionBigInteger summand2 = new FractionBigInteger(BigInteger.TWO, THREE);
 
-      FractionBigInteger sum = summand_1.plus(summand_2);
+      FractionBigInteger sum = summand1.plus(summand2);
 
       assertThat(sum.numerator()).isEqualByComparingTo(BigInteger.ONE);
       assertThat(sum.denominator()).isEqualByComparingTo(BigInteger.ONE);
@@ -342,10 +343,10 @@ class FractionBigIntegerTest {
   class Limits {
     @Test
     void add_max_value() {
-      FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.valueOf(Long.MAX_VALUE).divide(BigInteger.TWO), BigInteger.ONE);
-      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.valueOf(Long.MAX_VALUE).divide(BigInteger.TWO), BigInteger.ONE);
+      FractionBigInteger summand1 = new FractionBigInteger(BigInteger.valueOf(Long.MAX_VALUE).divide(BigInteger.TWO), BigInteger.ONE);
+      FractionBigInteger summand2 = new FractionBigInteger(BigInteger.valueOf(Long.MAX_VALUE).divide(BigInteger.TWO), BigInteger.ONE);
 
-      FractionBigInteger sum = summand_1.plus(summand_2);
+      FractionBigInteger sum = summand1.plus(summand2);
 
       assertThat(sum.numerator()).isEqualTo(BigInteger.valueOf(Long.MAX_VALUE).subtract(BigInteger.ONE));
       assertThat(sum.denominator()).isEqualByComparingTo(BigInteger.ONE);
@@ -353,10 +354,10 @@ class FractionBigIntegerTest {
 
     @Test
     void add_min_value() {
-      FractionBigInteger summand_1 = new FractionBigInteger(BigInteger.valueOf(Long.MIN_VALUE).divide(BigInteger.TWO), BigInteger.ONE);
-      FractionBigInteger summand_2 = new FractionBigInteger(BigInteger.valueOf(Long.MIN_VALUE).divide(BigInteger.TWO), BigInteger.ONE);
+      FractionBigInteger summand1 = new FractionBigInteger(BigInteger.valueOf(Long.MIN_VALUE).divide(BigInteger.TWO), BigInteger.ONE);
+      FractionBigInteger summand2 = new FractionBigInteger(BigInteger.valueOf(Long.MIN_VALUE).divide(BigInteger.TWO), BigInteger.ONE);
 
-      FractionBigInteger sum = summand_1.plus(summand_2);
+      FractionBigInteger sum = summand1.plus(summand2);
 
       assertThat(sum.numerator()).isEqualByComparingTo(BigInteger.valueOf(Long.MIN_VALUE));
       assertThat(sum.denominator()).isEqualByComparingTo(BigInteger.ONE);
