@@ -24,11 +24,7 @@ import java.math.BigInteger;
 /**
  * @author Karl Heinz Marbaise
  */
-class MathUtil {
-
-  private MathUtil() {
-    // intentionally empty.
-  }
+interface MathUtil {
 
   /**
    * @param numerator Numerator

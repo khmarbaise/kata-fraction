@@ -47,6 +47,7 @@ public class FractionLong implements Comparable<FractionLong>, Operation<Fractio
     this.denominator = Math.abs(denominator) / gcd;
   }
 
+  // region Add
   public FractionLong plus(FractionLong add) {
     if (this.denominator == add.denominator) {
       return new FractionLong(add.numerator + this.numerator, this.denominator);
@@ -66,7 +67,9 @@ public class FractionLong implements Comparable<FractionLong>, Operation<Fractio
       return new FractionLong(lNumerator, lDenominator);
     }
   }
+  // endregion Add
 
+  // region Multiplication
   public FractionLong multiply(FractionLong factor) {
     return new FractionLong(this.numerator * factor.numerator, this.denominator * factor.denominator);
   }
@@ -74,6 +77,7 @@ public class FractionLong implements Comparable<FractionLong>, Operation<Fractio
   public FractionLong divide(FractionLong divisor) {
     return new FractionLong(this.numerator * divisor.denominator, this.denominator * divisor.numerator);
   }
+  // endregion Multiplication
 
   public FractionLong pow(int power) {
     long lNumerator = BigInteger.valueOf(this.numerator).pow(power).longValue();
