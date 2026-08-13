@@ -22,11 +22,11 @@ interface IFractionTest<T extends Operation<T>> {
   @Test
   @DisplayName("Create the sum of three summands while chaining the plus class.")
   default void create_sum_of_three_summands_while_chaining_the_plus_calls() {
-    T summand_1 = createOneAndAHalf();
-    T summand_2 = createOneThird();
-    T summand_3 = createOneQuarter();
+    T summand1 = createOneAndAHalf();
+    T summand2 = createOneThird();
+    T summand3 = createOneQuarter();
 
-    T sum = summand_1.plus(summand_2).plus(summand_3);
+    T sum = summand1.plus(summand2).plus(summand3);
 
     assertThat(sum).isEqualTo(expectedSum());
   }
